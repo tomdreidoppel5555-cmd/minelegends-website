@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MineLegends - Offizielle Webseite</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #0f1626, #1b2440, #0f1626);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 80px;
+      position: relative;
+      background: linear-gradient(180deg, #131a2f, #1c2541);
+    }
+
+    header img {
+      max-width: 350px;
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 15px #FFD700);
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    .header-discord {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #5865F2;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 20px;
+      transition: background 0.3s;
+    }
+
+    .header-discord:hover {
+      background: #4752c4;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 200px;
+      background: url("https://svgshare.com/i/uVv.svg");
+      background-repeat: repeat-x;
+      animation: wave 10s linear infinite;
+      pointer-events: none; /* <<< FIX: Links bleiben klickbar */
+    }
+
+    @keyframes wave {
+      from { background-position-x: 0; }
+      to { background-position-x: 1000px; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #ccc;
+    }
+
+    .contact {
+      background: rgba(0,0,0,0.6);
+      border-radius: 10px;
+      padding: 20px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .discord-btn, .server-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #5865F2;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .discord-btn:hover, .server-btn:hover {
+      background: #4752c4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="149e2136-abc6-4b27-a632-ee3c030994c0.png" alt="MineLegends Logo">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">Über uns</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Kontakt</a>
+      <a href="https://discord.gg/PeDMDgcTsQ" target="_blank" class="header-discord">
+        ✨ Discord beitreten
+      </a>
+    </nav>
+    <div class="wave"></div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home">
+    <h1>Willkommen bei MineLegends</h1>
+    <p>
+      Willkommen auf <strong>MineLegends</strong> – deinem Minecraft-Server für Abenteuer, 
+      Community und unvergessliche Geschichten. 
+      Egal ob allein oder mit Freunden, hier wirst du Teil von etwas Großem.
+    </p>
+    <button class="server-btn" onclick="copyServer()">🌍 Server beitreten</button>
+  </section>
+
+  <!-- ÜBER UNS -->
+  <section id="about">
+    <h2>Über uns</h2>
+    <p>
+      MineLegends wurde aus einer einfachen Idee geboren: 
+      einen Ort zu schaffen, an dem Spieler nicht nur Blöcke stapeln, 
+      sondern echte Abenteuer erleben können. 
+      Wir wollten mehr als nur einen weiteren Minecraft-Server – wir wollten 
+      eine <strong>Community</strong>, in der jeder willkommen ist und seine Legende schreibt.
+    </p>
+    <p>
+      Unsere Gründer, <strong>Adminmax</strong> und <strong>teufel45</strong>, 
+      sind seit Jahren begeisterte Minecraft-Spieler. 
+      Nach unzähligen Welten, Projekten und Erlebnissen entstand der Wunsch, 
+      etwas Eigenes aufzubauen – eine Welt, die wir nach unseren Vorstellungen formen können.  
+    </p>
+    <p>
+      Warum gibt es MineLegends? 
+      Weil wir an ein Spielerlebnis glauben, das mehr ist als nur „spielen“. 
+      Hier kannst du Freunde finden, an Events teilnehmen, 
+      Handel treiben, riesige Bauwerke erschaffen oder in epischen Kämpfen zeigen, 
+      was in dir steckt.  
+    </p>
+    <p>
+      Wir machen das, weil wir Minecraft lieben. 
+      Aber noch mehr, weil wir die <strong>Menschen dahinter</strong> lieben – 
+      die Spieler, die Community, die Ideen. 
+      Gemeinsam schaffen wir eine Welt, die nie langweilig wird und in der 
+      jeder Spieler Teil einer Geschichte wird: <em>der Geschichte von MineLegends</em>.
+    </p>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <h2>Unsere Features</h2>
+    <ul style="list-style:none; padding:0; font-size:18px;">
+      <li>⚔️ Custom Slash Commands</li>
+      <li>🎛️ Buttons & Select Menus</li>
+      <li>🛡️ Auto Moderation</li>
+      <li>📢 Social Notifications</li>
+      <li>⭐ Reaction Roles</li>
+      <li>📜 Logging</li>
+      <li>💬 Custom (ephemeral) Messages</li>
+      <li>⏰ Scheduled Messages</li>
+      <li>⚡ Automatisierte & getriggerte Nachrichten</li>
+      <li>... und vieles mehr!</li>
+    </ul>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <div class="contact">
+      <p>👑 Owner: <strong>Adminmax</strong></p>
+      <p>👑 Owner: <strong>teufel45</strong></p>
+      <p>🏠 Bewohner: <strong>Wir beide</strong></p>
+      <a href="https://discord.gg/PeDMDgcTsQ" target="_blank" class="discord-btn">
+        ✨ Join our Discord
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 MineLegends - Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script>
+    function copyServer() {
+      const ip = "141.147.38.27:25020";
+      navigator.clipboard.writeText(ip).then(() => {
+        alert("✅ Server-IP kopiert: " + ip);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
