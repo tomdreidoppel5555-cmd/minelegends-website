@@ -1,425 +1,1418 @@
 <!DOCTYPE html>
-<html lang="de">
+<html
+  lang="de"
+>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MineLegends – Offizielle Website</title>
-<meta name="description" content="MineLegends Minecraft-Server – PvP, Bedwars, Skyblock, Earth SMP, Wild SMP, Events, Discord-Community." />
+  <meta
+    charset="utf-8"
+  />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <title>
+    MineLegends – Offizielle Website
+  </title>
+  <meta
+    name="description"
+    content="MineLegends Minecraft-Server – PvP, Bedwars, Skyblock, Earth SMP, Wild SMP, Events, Discord-Community."
+  />
 
-<style>
-  :root{
-    --bg-top:#070e22;
-    --bg-mid:#0e1835;
-    --bg-deep:#0a1230;
-    --accent:#ffd200;      /* Gold */
-    --accent-2:#5865F2;    /* Discord */
-    --accent-3:#00e5ff;    /* Cyan Links/Highlights */
-    --text:#e8eef9;
-    --muted:#9fb0d4;
-    --card:#0f1c3caa;
-    --card-solid:#121f43;
-    --shadow: 0 10px 30px rgba(0,0,0,.35);
-    --radius:18px;
-  }
+  <style>
+    :root{
+      --bg-top:#070e22;
+      --bg-mid:#0e1835;
+      --bg-deep:#0a1230;
+      --accent:#ffd200;
+      --accent-2:#5865F2;
+      --accent-3:#00e5ff;
+      --text:#e8eef9;
+      --muted:#9fb0d4;
+      --card:#0f1c3caa;
+      --card-solid:#121f43;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --ring:0 0 0 3px rgba(0,229,255,.25);
+    }
 
-  /* --- Base --- */
-  html,body{height:100%}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
-    color:var(--text);
-    background: linear-gradient(180deg,var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
-    overflow-x:hidden;
-  }
-  a{color:var(--accent-3); text-decoration:none}
-  a:hover{opacity:.9}
-  .container{max-width:1200px; margin-inline:auto; padding:0 24px}
+    body.light{
+      --bg-top:#f2f5fb;
+      --bg-mid:#ffffff;
+      --bg-deep:#f7f7fb;
+      --accent:#ff9800;
+      --accent-2:#5865F2;
+      --accent-3:#0077ff;
+      --text:#131726;
+      --muted:#4c556f;
+      --card:#ffffffee;
+      --card-solid:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,.12);
+      --ring:0 0 0 3px rgba(0,119,255,.18);
+    }
 
-  /* --- Header / Nav --- */
-  header{
-    position:sticky; top:0; z-index:1000;
-    background:rgba(3,7,20,.7);
-    backdrop-filter: blur(8px);
-    border-bottom:1px solid rgba(255,255,255,.05);
-  }
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 0;
-  }
-  .logo{display:flex; align-items:center; gap:14px}
-  .logo img{height:56px; width:auto; display:block}
-  .brand{font-weight:800; letter-spacing:.5px; color:var(--accent)}
-  .menu{display:flex; gap:28px; align-items:center}
-  .menu a{
-    font-weight:700; color:var(--accent);
-  }
-  .cta-discord{
-    background:var(--accent-2); color:#fff !important;
-    padding:10px 16px; border-radius:12px; font-weight:800;
-    box-shadow:0 8px 18px rgba(88,101,242,.35);
-  }
+    html,
+    body{
+      height:100%;
+    }
 
-  /* --- Hero --- */
-  .hero{
-    position:relative; isolation:isolate;
-    padding:72px 0 120px;
-  }
-  .hero-grid{
-    display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;
-  }
-  .hero h1{
-    font-size: clamp(36px, 5vw, 64px);
-    line-height:1.05; margin:0 0 18px; color:var(--accent);
-    text-shadow:0 8px 30px rgba(255,210,0,.12);
-  }
-  .lead{
-    font-size: clamp(16px, 2vw, 20px);
-    color:var(--muted); margin-bottom:22px;
-  }
-  .actions{display:flex; gap:14px; flex-wrap:wrap}
-  .btn{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:12px 18px; border-radius:12px; font-weight:800;
-    background:#1a2b5a; color:#fff; border:1px solid rgba(255,255,255,.08)
-  }
-  .btn:hover{transform:translateY(-1px)}
-  .btn-copy{background:#18305f}
-  .badge-ip{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    padding:8px 12px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.1)
-  }
+    html{
+      scroll-behavior:smooth;
+    }
 
-  /* --- Reusable --- */
-  section{padding:90px 0; position:relative; z-index:5}
-  h2.section-title{
-    text-align:center; font-size: clamp(28px, 4vw, 44px); color:var(--accent); margin:0 0 14px
-  }
-  .section-sub{
-    text-align:center; color:var(--muted); margin-bottom:36px
-  }
-  .grid{
-    display:grid; gap:22px
-  }
-  .grid-3{grid-template-columns: repeat(3, minmax(0,1fr))}
-  .grid-4{grid-template-columns: repeat(4, minmax(0,1fr))}
-  @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-4{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:720px){ .grid-3{grid-template-columns:1fr} .grid-4{grid-template-columns:1fr} }
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
+      color:var(--text);
+      background:
+        linear-gradient(
+          180deg,
+          var(--bg-top) 0%,
+          var(--bg-mid) 50%,
+          var(--bg-deep) 100%
+        );
+      overflow-x:hidden;
+      transition:
+        background .35s ease,
+        color .35s ease;
+    }
 
-  .card{
-    background:var(--card); border:1px solid rgba(255,255,255,.08);
-    border-radius: var(--radius); padding:22px; box-shadow:var(--shadow);
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-  }
-  .card:hover{transform: translateY(-4px); background: #122659cc}
-  .card h3{margin:6px 0 8px; color:#fff}
-  .card p{margin:0; color:var(--muted)}
+    a{
+      color:var(--accent-3);
+      text-decoration:none;
+    }
 
-  /* --- Features Cards --- */
-  .feature-ico{
-    width:42px; height:42px; border-radius:10px; display:grid; place-items:center;
-    background:#162b5a; color:var(--accent); font-size:22px; box-shadow: inset 0 0 30px rgba(255,210,0,.08)
-  }
+    a:focus-visible,
+    button:focus-visible{
+      outline:none;
+      box-shadow:var(--ring);
+      border-radius:12px;
+    }
 
-  /* --- Server Infos --- */
-  .rules{list-style:none; margin:0; padding:0; display:grid; gap:10px}
-  .rules li{
-    padding:12px 14px; border-radius:12px; background:#0f214f; border:1px solid rgba(255,255,255,.07)
-  }
+    .container{
+      max-width:1200px;
+      margin-inline:auto;
+      padding:0 24px;
+    }
 
-  /* --- Galerie --- */
-  .gallery{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
-  .gallery .shot{
-    aspect-ratio: 16/9; background:#0f214f; border:1px solid rgba(255,255,255,.07);
-    border-radius:14px; overflow:hidden; position:relative
-  }
-  .shot img{width:100%; height:100%; object-fit:cover; display:block}
-  .shot::after{
-    content:"Screenshot"; position:absolute; inset:auto 10px 10px 10px; font-size:12px;
-    color:#d5e6ff; background:rgba(0,0,0,.35); padding:4px 8px; border-radius:8px
-  }
-  @media(max-width:900px){ .gallery{grid-template-columns:1fr 1fr} }
-  @media(max-width:600px){ .gallery{grid-template-columns:1fr} }
+    /* Header / Nav */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(3,7,20,.65);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
 
-  /* --- News / Timeline --- */
-  .timeline{display:grid; gap:16px}
-  .news{
-    padding:18px; border-radius:14px; background:#112557; border:1px solid rgba(255,255,255,.08)
-  }
-  .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:20px; background:#0e214d; color:var(--accent-3); margin-right:8px}
-  .news h4{margin:10px 0 8px}
-  .news small{color:var(--muted)}
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 0;
+      gap:18px;
+    }
 
-  /* --- Community --- */
-  .socials{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
-  .pill{
-    display:inline-flex; gap:10px; align-items:center;
-    padding:12px 16px; border-radius:999px; background:#0f214f; border:1px solid rgba(255,255,255,.08)
-  }
-  .pill.discord{background: var(--accent-2); color:#fff; border:none; box-shadow:0 8px 24px rgba(88,101,242,.35)}
-  .pill.tiktok{background:#111; border:1px solid #222}
-  .pill .hint{color:#a9b7d7}
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
 
-  /* --- Kontakt --- */
-  .contact-block{
-    display:grid; gap:16px; justify-items:center;
-    background: linear-gradient(180deg, #0f214f, #081737);
-    padding:26px; border-radius:18px; border:1px solid rgba(255,255,255,.08)
-  }
-  .link-cta{ color: var(--accent-3); font-weight:900; text-decoration:underline }
-  .link-cta:hover{ filter:brightness(1.1) }
+    .logo img{
+      height:56px;
+      width:auto;
+      display:block;
+      border-radius:12px;
+    }
 
-  /* --- Footer --- */
-  footer{
-    padding:40px 0; background:#060b1a; border-top:1px solid rgba(255,255,255,.06); color:#a8b5d6
-  }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
 
-  /* --- Waves background (bottom) --- */
-  .waves{position:fixed; left:0; right:0; bottom:-1px; height:20vh; z-index:0; overflow:hidden}
-  .waves svg{width:200%; height:100%; animation:waveMove 12s linear infinite}
-  .w1{fill: rgba(88,101,242,.45)}
-  .w2{fill: rgba(0,229,255,.18)}
-  @keyframes waveMove{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .brand .name{
+      font-weight:900;
+      letter-spacing:.4px;
+      color:var(--accent);
+      font-size:18px;
+      white-space:nowrap;
+    }
 
-  /* --- Scroll reveal --- */
-  .reveal{opacity:0; transform: translateY(26px); transition: all .9s ease}
-  .reveal.show{opacity:1; transform:none}
-</style>
+    .brand .tag{
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+      opacity:.9;
+    }
+
+    .menu{
+      display:flex;
+      gap:22px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .menu a{
+      color:var(--accent);
+      font-weight:800;
+      font-size:14px;
+      padding:10px 8px;
+      border-radius:10px;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+
+    .menu a:hover{
+      transform:translateY(-1px);
+      opacity:.95;
+    }
+
+    .cta-discord{
+      background:var(--accent-2);
+      color:#fff !important;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:900;
+      box-shadow:0 10px 22px rgba(88,101,242,.35);
+    }
+
+    .mode-toggle{
+      border:1px solid rgba(255,255,255,.12);
+      background:transparent;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      transition:transform .2s ease, background .2s ease;
+    }
+
+    .mode-toggle:hover{
+      background:rgba(255,255,255,.06);
+      transform:translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      isolation:isolate;
+      padding:72px 0 120px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .hero h1{
+      margin:0 0 14px;
+      color:var(--accent);
+      font-size:clamp(36px, 5vw, 66px);
+      line-height:1.03;
+      text-shadow:0 10px 30px rgba(255,210,0,.12);
+    }
+
+    .lead{
+      font-size:clamp(16px, 1.8vw, 20px);
+      color:var(--muted);
+      margin:0 0 20px;
+    }
+
+    .actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:14px;
+      font-weight:900;
+      background:#1a2b5a;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.08);
+      cursor:pointer;
+      transition:
+        transform .15s ease,
+        filter .15s ease,
+        box-shadow .15s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px) scale(1.02);
+      filter:brightness(1.03);
+      box-shadow:0 10px 24px rgba(0,0,0,.30);
+    }
+
+    .btn-ghost{
+      background:#10234e;
+    }
+
+    .badge-ip{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      padding:10px 12px;
+      border-radius:12px;
+      background:#0e214d;
+      border:1px dashed rgba(255,255,255,.12);
+      letter-spacing:.2px;
+      font-weight:700;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      background:#122659cc;
+    }
+
+    .card h3{
+      margin:6px 0 6px;
+      color:#fff;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    section{
+      padding:90px 0;
+      position:relative;
+      z-index:5;
+    }
+
+    h2.section-title{
+      text-align:center;
+      font-size:clamp(28px, 4vw, 44px);
+      color:var(--accent);
+      margin:0 0 12px;
+    }
+
+    .section-sub{
+      text-align:center;
+      color:var(--muted);
+      margin-bottom:30px;
+    }
+
+    .grid{
+      display:grid;
+      gap:22px;
+    }
+
+    .grid-3{
+      grid-template-columns:repeat(3, minmax(0,1fr));
+    }
+
+    .grid-4{
+      grid-template-columns:repeat(4, minmax(0,1fr));
+    }
+
+    @media (max-width:1000px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+      .grid-4{
+        grid-template-columns:repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:720px){
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+      .grid-4{
+        grid-template-columns:1fr;
+      }
+    }
+
+    /* Pills / Social */
+    .socials{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .pill{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:12px 16px;
+      border-radius:999px;
+      background:#0f214f;
+      border:1px solid rgba(255,255,255,.08);
+      transition:transform .2s ease;
+      font-weight:800;
+    }
+
+    .pill:hover{
+      transform:translateY(-2px);
+    }
+
+    .pill.discord{
+      background:var(--accent-2);
+      color:#fff;
+      border:none;
+      box-shadow:0 8px 24px rgba(88,101,242,.35);
+    }
+
+    .pill.tiktok{
+      background:#111;
+      color:#fff;
+      border:1px solid #222;
+    }
+
+    .pill .hint{
+      color:#a9b7d7;
+      font-weight:600;
+    }
+
+    /* Rules list */
+    .rules{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+
+    .rules li{
+      padding:12px 14px;
+      border-radius:12px;
+      background:#0f214f;
+      border:1px solid rgba(255,255,255,.07);
+    }
+
+    /* Mobile carousel (no gallery) */
+    .carousel{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding:6px 2px 6px 2px;
+    }
+
+    .slide{
+      min-width:86%;
+      scroll-snap-align:center;
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:18px;
+    }
+
+    /* Roadmap / Timeline */
+    .timeline{
+      display:grid;
+      gap:16px;
+    }
+
+    .news{
+      padding:18px;
+      border-radius:14px;
+      background:#112557;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .news .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:20px;
+      background:#0e214d;
+      color:var(--accent-3);
+      margin-right:8px;
+    }
+
+    .news h4{
+      margin:10px 0 8px;
+      color:#fff;
+    }
+
+    .news small{
+      color:var(--muted);
+    }
+
+    /* Contact block */
+    .contact-block{
+      display:grid;
+      gap:16px;
+      justify-items:center;
+      background:linear-gradient(180deg, #0f214f, #081737);
+      padding:26px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .link-cta{
+      color:var(--accent-3);
+      font-weight:900;
+      text-decoration:underline;
+    }
+
+    .link-cta:hover{
+      filter:brightness(1.1);
+    }
+
+    /* Footer */
+    footer{
+      padding:40px 0;
+      background:#060b1a;
+      border-top:1px solid rgba(255,255,255,.06);
+      color:#a8b5d6;
+    }
+
+    /* Waves */
+    .waves{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:-1px;
+      height:20vh;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    .waves svg{
+      width:200%;
+      height:100%;
+      animation:waveMove 12s linear infinite;
+    }
+
+    .w1{
+      fill:rgba(88,101,242,.45);
+    }
+
+    .w2{
+      fill:rgba(0,229,255,.18);
+    }
+
+    @keyframes waveMove{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+
+    /* Scroll reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(26px);
+      transition:all .9s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:none;
+    }
+
+    /* Sticky Join button mobile */
+    .sticky-join{
+      display:none;
+    }
+
+    @media (max-width:768px){
+      .sticky-join{
+        display:block;
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        background:var(--accent-2);
+        color:#fff;
+        padding:14px 20px;
+        border-radius:50px;
+        font-weight:bold;
+        box-shadow:0 8px 20px rgba(0,0,0,.4);
+        z-index:2000;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Header / Nav -->
+
+  <!-- Header -->
   <header>
-    <div class="container nav">
-      <div class="logo">
-        <img src="minelegends-logo.png" alt="MineLegends Logo">
-        <div class="brand">MineLegends</div>
+    <div
+      class="container nav"
+    >
+      <div
+        class="logo"
+      >
+        <img
+          src="minelegends-logo.png"
+          alt="MineLegends Logo"
+        />
+        <div
+          class="brand"
+        >
+          <span
+            class="name"
+          >
+            MineLegends
+          </span>
+          <span
+            class="tag"
+          >
+            PvP • Skyblock • SMP • Events
+          </span>
+        </div>
       </div>
-      <nav class="menu">
-        <a href="#home">Home</a>
-        <a href="#about">Über uns</a>
-        <a href="#features">Features</a>
-        <a href="#server">Server-Infos</a>
-        <a href="#gallery">Galerie</a>
-        <a href="#news">News</a>
-        <a href="#community">Community</a>
-        <a href="#contact">Kontakt</a>
-        <a class="cta-discord" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">✨ Discord beitreten</a>
+
+      <nav
+        class="menu"
+      >
+        <a href="#home">
+          Home
+        </a>
+        <a href="#about">
+          Über uns
+        </a>
+        <a href="#features">
+          Features
+        </a>
+        <a href="#server">
+          Server-Infos
+        </a>
+        <a href="#roadmap">
+          Roadmap
+        </a>
+        <a href="#leaderboard">
+          Leaderboard
+        </a>
+        <a href="#faq">
+          FAQ
+        </a>
+        <a href="#contact">
+          Kontakt
+        </a>
+        <a
+          class="cta-discord"
+          href="https://discord.gg/PeDMDgcTsQ"
+          target="_blank"
+          rel="noopener"
+        >
+          💬 Discord
+        </a>
+        <button
+          id="modeToggle"
+          class="mode-toggle"
+          type="button"
+          aria-label="Dark/Light Mode umschalten"
+          title="Dark/Light Mode"
+        >
+          🌙
+        </button>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container hero-grid reveal">
+  <section
+    id="home"
+    class="hero"
+  >
+    <div
+      class="container hero-grid reveal"
+    >
       <div>
-        <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
-        <p class="lead">
-          Dein Zuhause für epische Abenteuer, faire Competition und kreative Baukunst.  
-          Bei uns erwarten dich <strong>PvP-Events</strong>, beliebte Modi wie <strong>Bedwars</strong> & <strong>Skyblock</strong>,
-          neue Welten wie <strong>Earth SMP</strong> und ein <strong>Wild SMP</strong> zum grenzenlosen Erkunden.  
+        <h1>
+          Willkommen bei
+          <span
+            style="color:var(--accent)"
+          >
+            MineLegends
+          </span>
+        </h1>
+        <p
+          class="lead"
+        >
+          Dein Zuhause für epische Abenteuer, faire Competition und kreative Baukunst.
+          Bei uns erwarten dich
+          <strong>
+            PvP-Events
+          </strong>,
+          beliebte Modi wie
+          <strong>
+            Bedwars
+          </strong>
+          &
+          <strong>
+            Skyblock
+          </strong>,
+          neue Welten wie
+          <strong>
+            Earth SMP
+          </strong>
+          und ein
+          <strong>
+            Wild SMP
+          </strong>
+          zum grenzenlosen Erkunden.
           Unsere Community ist offen, hilfsbereit und bereit für die nächste Legende – deine!
         </p>
-        <div class="actions">
-          <span class="badge-ip" id="ipBadge">IP: 141.147.38.27:25020</span>
-          <button class="btn btn-copy" id="copyBtn" aria-label="IP kopieren">📋 IP kopieren</button>
-          <a class="btn" href="#features">🚀 Jetzt Features entdecken</a>
-          <a class="btn" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">💬 Zum Discord</a>
+
+        <div
+          class="actions"
+        >
+          <span
+            class="badge-ip"
+            id="ipBadge"
+          >
+            IP:
+            141.147.38.27:25020
+          </span>
+          <button
+            class="btn"
+            id="copyBtn"
+            type="button"
+            aria-label="IP kopieren"
+            title="IP kopieren"
+          >
+            📋
+            IP kopieren
+          </button>
+          <a
+            class="btn btn-ghost"
+            href="#features"
+          >
+            🚀
+            Jetzt Features entdecken
+          </a>
+          <a
+            class="btn"
+            href="https://discord.gg/PeDMDgcTsQ"
+            target="_blank"
+            rel="noopener"
+          >
+            💬
+            Zum Discord
+          </a>
+        </div>
+
+        <div
+          id="serverStatus"
+          class="status"
+          style="margin-top:18px; font-weight:900"
+        >
+          ⏳
+          Lade Status…
         </div>
       </div>
-      <div class="card" style="text-align:left">
-        <h3>Warum MineLegends?</h3>
+
+      <div
+        class="card"
+      >
+        <h3>
+          Warum MineLegends?
+        </h3>
         <p>
           Wir kombinieren das Beste aus Minecraft mit eigenen Ideen:
           faire Moderation, regelmäßige Updates, starke Performance und Events,
           die Spieler zusammenbringen. Ob Solo, mit Freunden oder als Creator –
           hier kannst du bauen, kämpfen, handeln, entdecken und Geschichten schreiben.
         </p>
-        <ul class="rules" style="margin-top:14px">
-          <li>✅ Respektvolle Community & aktives Team</li>
-          <li>✅ Lebendige Wirtschaft & spannende Progression</li>
-          <li>✅ Stabile Server & kurze Downtimes</li>
+        <ul
+          class="rules"
+          style="margin-top:14px"
+        >
+          <li>
+            ✅
+            Respektvolle Community & aktives Team
+          </li>
+          <li>
+            ✅
+            Lebendige Wirtschaft & spannende Progression
+          </li>
+          <li>
+            ✅
+            Stabile Server & kurze Downtimes
+          </li>
         </ul>
+      </div>
+    </div>
+
+    <!-- Mobile Carousel (Showcases) -->
+    <div
+      class="container"
+      style="margin-top:28px"
+    >
+      <div
+        class="carousel reveal"
+        aria-label="Showcase"
+      >
+        <div
+          class="slide"
+        >
+          <h3>
+            ⚔️
+            PvP-Turniere
+          </h3>
+          <p>
+            Monatliche Cups mit Preisen & Ehrenrollen.
+          </p>
+        </div>
+        <div
+          class="slide"
+        >
+          <h3>
+            🏝️
+            Skyblock Progression
+          </h3>
+          <p>
+            Wirtschaft, Insel-Upgrades und Herausforderungen.
+          </p>
+        </div>
+        <div
+          class="slide"
+        >
+          <h3>
+            🌍
+            Earth SMP
+          </h3>
+          <p>
+            Diplomatie, Nationen, Handel –
+            kommt bald!
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Über uns -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title reveal">Über uns</h2>
-      <p class="section-sub reveal">Die Vision hinter MineLegends – von Spielern für Spieler.</p>
-      <div class="card reveal">
+  <section
+    id="about"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Über uns
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Die Vision hinter MineLegends – von Spielern für Spieler.
+      </p>
+
+      <div
+        class="card reveal"
+      >
         <p>
-          <strong>MineLegends</strong> entstand aus der Idee, einen Ort zu schaffen, an dem Spielspaß, Fairness und
-          Gemeinschaft im Mittelpunkt stehen. Wir begannen klein – mit einer einfachen Welt – und wuchsen dank
-          unserer Community zu einem Projekt, das für Qualität, Stabilität und abwechslungsreiche Inhalte steht.
+          <strong>
+            MineLegends
+          </strong>
+          entstand aus der Idee, einen Ort zu schaffen, an dem
+          Spielspaß, Fairness und Gemeinschaft im Mittelpunkt stehen.
+          Wir begannen klein – mit einer einfachen Welt – und wuchsen dank
+          unserer Community zu einem Projekt, das für Qualität, Stabilität
+          und abwechslungsreiche Inhalte steht.
         </p>
         <p>
-          Hinter den Kulissen arbeiten unsere Owner <strong>Adminmax</strong> und <strong>Teufel45</strong> mit viel
-          Leidenschaft daran, Features zu verfeinern, Events aufzusetzen und neue Ideen umzusetzen.
+          Hinter den Kulissen arbeiten unsere
+          <strong>
+            Owner
+          </strong>
+          <strong>
+            Adminmax
+          </strong>
+          und
+          <strong>
+            Teufel45
+          </strong>
+          mit viel Leidenschaft daran, Features zu verfeinern, Events aufzusetzen
+          und neue Ideen umzusetzen.
           Unser Ziel: Ein Server, der langfristig motiviert, überrascht und verbindet.
         </p>
         <p>
-          Egal ob Survival-Fan, Builder, PvP-Pro oder Streamer – bei uns findest du deinen Platz. Werde Teil der
-          Community und schreibe deine eigene Legende.
+          Egal ob Survival-Fan, Builder, PvP-Pro oder Streamer – bei uns findest du deinen Platz.
+          Werde Teil der Community und schreibe deine eigene Legende.
         </p>
+      </div>
+
+      <div
+        class="grid grid-3"
+      >
+        <div
+          class="card reveal"
+        >
+          <h3>
+            👑
+            Team
+          </h3>
+          <p>
+            Owner:
+            <strong>
+              Adminmax
+            </strong>
+            (Owner),
+            <strong>
+              Teufel45
+            </strong>
+            (Owner).
+          </p>
+        </div>
+        <div
+          class="card reveal"
+        >
+          <h3>
+            🎯
+            Ziel
+          </h3>
+          <p>
+            Ein Server, auf dem sich neue und erfahrene Spieler zu Hause fühlen
+            – mit stabiler Performance und fairen Regeln.
+          </p>
+        </div>
+        <div
+          class="card reveal"
+        >
+          <h3>
+            💻
+            Tech
+          </h3>
+          <p>
+            Java-Server,
+            optimierte Einstellungen & Backups – wir versuchen,
+            dass auch ältere PCs problemlos joinen können.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Features -->
-  <section id="features">
-    <div class="container">
-      <h2 class="section-title reveal">Features</h2>
-      <p class="section-sub reveal">Alles, was Spaß macht – und noch ein bisschen mehr.</p>
+  <section
+    id="features"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Features
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Alles, was Spaß macht – und noch ein bisschen mehr.
+      </p>
 
-      <div class="grid grid-3">
+      <div
+        class="grid grid-3"
+      >
         <div class="card reveal">
-          <div class="feature-ico">⚔️</div>
-          <h3>PvP & Events</h3>
-          <p>Turniere, Ranglisten, Kit-Abende & Special-Modes – fair moderiert und regelmäßig angekündigt.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            ⚔️
+          </div>
+          <h3>
+            PvP & Events
+          </h3>
+          <p>
+            Turniere, Ranglisten, Kit-Abende & Special-Modes – fair moderiert und regelmäßig angekündigt.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">🛡️</div>
-          <h3>Bedwars</h3>
-          <p>Schnelle Runden, sauberes Balancing, clevere Maps. Perfekt für Teams & Solo-Grinder.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            🛡️
+          </div>
+          <h3>
+            Bedwars
+          </h3>
+          <p>
+            Schnelle Runden, sauberes Balancing, clevere Maps.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">🏝️</div>
-          <h3>Skyblock</h3>
-          <p>Progression, Wirtschaft & Herausforderungen – baue deine Insel zur Legende aus.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            🏝️
+          </div>
+          <h3>
+            Skyblock
+          </h3>
+          <p>
+            Progression, Wirtschaft & Herausforderungen – baue deine Insel zur Legende aus.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">🌍</div>
-          <h3>Earth SMP</h3>
-          <p>Weltkarte inspiriert von der Erde. Gründen, handeln, Allianzen schmieden – <em>kommt bald!</em></p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            🌍
+          </div>
+          <h3>
+            Earth SMP
+          </h3>
+          <p>
+            Weltkarte inspiriert von der Erde. Gründen, handeln, Allianzen schmieden –
+            <em>
+              kommt bald!
+            </em>
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">🌲</div>
-          <h3>Wild SMP</h3>
-          <p>Größere Welten, mehr Biome, mehr Geheimnisse. Erkunden, bauen, Geschichten erleben.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            🌲
+          </div>
+          <h3>
+            Wild SMP
+          </h3>
+          <p>
+            Größere Welten, mehr Biome, mehr Geheimnisse.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">⚒️</div>
-          <h3>Freebuild & Kreativ</h3>
-          <p>Showcase-Plots, Community-Projekte und Bauevents – lass deiner Kreativität freien Lauf.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            ⚒️
+          </div>
+          <h3>
+            Freebuild & Kreativ
+          </h3>
+          <p>
+            Showcase-Plots, Community-Projekte und Bauevents.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">🤖</div>
-          <h3>Quality-of-Life</h3>
-          <p>Auto-Moderation, Logging, Reaction-Roles & geplante Nachrichten via Discord-Integration.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            🤖
+          </div>
+          <h3>
+            Quality-of-Life
+          </h3>
+          <p>
+            Auto-Moderation, Logging, Reaction-Roles & geplante Nachrichten via Discord-Integration.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">🚀</div>
-          <h3>Ständige Updates</h3>
-          <p>Neue Modi, Balancing-Patches, QoL-Verbesserungen – wir bleiben dran.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            🚀
+          </div>
+          <h3>
+            Ständige Updates
+          </h3>
+          <p>
+            Neue Modi, Balancing-Patches, QoL-Verbesserungen – wir bleiben dran.
+          </p>
         </div>
+
         <div class="card reveal">
-          <div class="feature-ico">✨</div>
-          <h3>… und mehr!</h3>
-          <p>Mini-Games, Sammel-Items, saisonale Events und Community-Votings.</p>
+          <div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">
+            ✨
+          </div>
+          <h3>
+            … und mehr!
+          </h3>
+          <p>
+            Mini-Games, Sammel-Items, saisonale Events und Community-Votings.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Server Infos -->
-  <section id="server">
-    <div class="container">
-      <h2 class="section-title reveal">Server-Infos</h2>
-      <p class="section-sub reveal">Alles, was du zum Start brauchst.</p>
+  <section
+    id="server"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Server-Infos
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Alles, was du zum Start brauchst.
+      </p>
 
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <h3>Adresse</h3>
-          <p class="badge-ip">141.147.38.27:25020</p>
-          <button class="btn btn-copy" onclick="copyIP()">📋 IP kopieren</button>
+      <div
+        class="grid grid-3"
+      >
+        <div
+          class="card reveal"
+        >
+          <h3>
+            Adresse
+          </h3>
+          <p class="badge-ip">
+            141.147.38.27:25020
+          </p>
+          <button
+            class="btn"
+            onclick="copyIP()"
+            type="button"
+          >
+            📋
+            IP kopieren
+          </button>
         </div>
-        <div class="card reveal">
-          <h3>Regeln (Kurz)</h3>
-          <ul class="rules">
-            <li>Respektvoller Umgang · kein Griefing/Scamming</li>
-            <li>Keine Hacks, Cheats, Exploits</li>
-            <li>Werbung nur mit Erlaubnis</li>
+
+        <div
+          class="card reveal"
+        >
+          <h3>
+            Regeln (Kurz)
+          </h3>
+          <ul
+            class="rules"
+          >
+            <li>
+              Respektvoller Umgang · kein Griefing/Scamming
+            </li>
+            <li>
+              Keine Hacks, Cheats, Exploits
+            </li>
+            <li>
+              Werbung nur mit Erlaubnis
+            </li>
           </ul>
         </div>
+
+        <div
+          class="card reveal"
+        >
+          <h3>
+            Performance
+          </h3>
+          <p>
+            Java-Edition mit optimierten Einstellungen und regelmäßigen Backups –
+            wir versuchen, dass selbst ältere PCs problemlos joinen können.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap / News -->
+  <section
+    id="roadmap"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Roadmap & News
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Was als Nächstes ansteht.
+      </p>
+
+      <div
+        class="timeline"
+      >
+        <article
+          class="news reveal"
+        >
+          <span class="tag">
+            Teaser
+          </span>
+          <span class="tag">
+            SMP
+          </span>
+          <h4>
+            Earth SMP – Vorbereitung läuft
+          </h4>
+          <p>
+            Wir arbeiten an einer Erde-inspirierten Map mit frischer Wirtschaft & Diplomatie-Features.
+            Du willst eine Nation gründen? Sammle dein Team – der Starttermin wird im Discord angekündigt.
+          </p>
+          <small>
+            Update • Q3
+          </small>
+        </article>
+
+        <article
+          class="news reveal"
+        >
+          <span class="tag">
+            Event
+          </span>
+          <span class="tag">
+            PvP
+          </span>
+          <h4>
+            Monatliche PvP-Cups
+          </h4>
+          <p>
+            Bringe dein Team an den Start – wechselnde Modi (Kit-PvP, Duos, Bedwars-Runden).
+            Preise & Ehrenrollen winken.
+          </p>
+          <small>
+            Nächstes Datum: siehe #events im Discord
+          </small>
+        </article>
+
+        <article
+          class="news reveal"
+        >
+          <span class="tag">
+            Community
+          </span>
+          <h4>
+            Creator-Programm
+          </h4>
+          <p>
+            Streamer & TikToker bekommen Whitelist-Vorteile, Early-Infos und eigene Event-Slots.
+            Bewirb dich über Discord – zeig uns deinen Channel!
+          </p>
+          <small>
+            Neu
+          </small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leaderboard -->
+  <section
+    id="leaderboard"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Leaderboard
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Wer steht ganz oben?
+      </p>
+
+      <div
+        class="grid grid-3"
+      >
         <div class="card reveal">
-          <h3>Performance</h3>
-          <p>Moderne Hardware, optimierte Einstellungen, regelmäßige Backups – für lagfreie Sessions.</p>
+          <h3>
+            Saisonpunkte
+          </h3>
+          <div class="rules">
+            <div class="rules">
+              <li>
+                1. Spieler123 – 250
+              </li>
+              <li>
+                2. CreeperKing – 180
+              </li>
+              <li>
+                3. BuilderPro – 150
+              </li>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3>
+            Kill-Rangliste
+          </h3>
+          <div class="rules">
+            <li>
+              1. PvPGod – 412
+            </li>
+            <li>
+              2. QuickStrafe – 369
+            </li>
+            <li>
+              3. BowMaster – 341
+            </li>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3>
+            Baumeister
+          </h3>
+          <div class="rules">
+            <li>
+              1. ArchiSteve – 95 Sterne
+            </li>
+            <li>
+              2. RedstonePro – 90 Sterne
+            </li>
+            <li>
+              3. TerraFormer – 86 Sterne
+            </li>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Galerie -->
-  <section id="gallery">
-    <div class="container">
-      <h2 class="section-title reveal">Galerie</h2>
-      <p class="section-sub reveal">Einblicke in Builds, Landschaften und Events.</p>
-      <div class="gallery">
-        <div class="shot reveal">
-          <img src="A_Minecraft_screenshot_showcases_a_grand,_symmetri.png" alt="Großer Minecraft Bau">
-        </div>
-        <div class="shot reveal">
-          <img src="A_digital_illustration_promotes_Minecraft_Java_Edi.png" alt="Minecraft Java Illustration">
-        </div>
-        <div class="shot reveal">
-          <img src="A_screenshot_from_Minecraft,_a_sandbox_video_game,.png" alt="PvP Szene">
-        </div>
+  <!-- FAQ -->
+  <section
+    id="faq"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        FAQ
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Häufige Fragen – schnell beantwortet.
+      </p>
+
+      <div
+        class="faq"
+      >
+        <details class="reveal">
+          <summary>
+            Wie trete ich bei?
+          </summary>
+          <p>
+            Öffne Minecraft (Java Edition) → Multiplayer →
+            Server hinzufügen →
+            IP:
+            <code>
+              141.147.38.27:25020
+            </code>
+            eingeben → Beitreten.
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Java oder Bedrock?
+          </summary>
+          <p>
+            Aktuell Java.
+            Wir optimieren, damit auch ältere PCs problemlos mitspielen können.
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Wer sind die Owner?
+          </summary>
+          <p>
+            <strong>
+              Adminmax
+            </strong>
+            (Owner)
+            &
+            <strong>
+              Teufel45
+            </strong>
+            (Owner)
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Regeln im Detail?
+          </summary>
+          <p>
+            Respektvoll bleiben, keine Cheats, Bugs melden, Events respektieren,
+            Support über Discord nutzen.
+          </p>
+        </details>
+
+        <details class="reveal">
+          <summary>
+            Creator / Streamer Vorteile?
+          </summary>
+          <p>
+            Bewirb dich im Discord – wir bieten Early-Infos, Event-Slots und Shoutouts.
+          </p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- News & Events -->
-  <section id="news">
-    <div class="container">
-      <h2 class="section-title reveal">Events & News</h2>
-      <p class="section-sub reveal">Bleib auf dem Laufenden – was als Nächstes ansteht.</p>
+  <!-- Community -->
+  <section
+    id="community"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Community
+      </h2>
+      <p
+        class="section-sub reveal"
+      >
+        Tritt unserem Discord bei und bleib mit allen Updates verbunden.
+      </p>
 
-      <div class="timeline">
-        <article class="news reveal">
-          <span class="tag">Teaser</span><span class="tag">SMP</span>
-          <h4>Earth SMP – Vorbereitung läuft</h4>
-          <p>Wir arbeiten an einer Erde-inspirierten Map mit frischer Wirtschaft & Diplomatie-Features.
-             Du willst eine Nation gründen? Sammle dein Team – der Starttermin wird im Discord angekündigt.</p>
-          <small>Update • Q3</small>
-        </article>
+      <div
+        class="socials reveal"
+      >
+        <a
+          class="pill discord"
+          href="https://discord.gg/PeDMDgcTsQ"
+          target="_blank"
+          rel="noopener"
+        >
+          💬
+          Discord beitreten
+        </a>
 
-        <article class="news reveal">
-          <span class="tag">Event</span><span class="tag">PvP</span>
-          <h4>Monatliche PvP-Cups</h4>
-          <p>Bringe dein Team an den Start – wechselnde Modi (Kit-PvP, Duos, Bedwars-Runden). Preise & Ehrenrollen winken.</p>
-          <small>Nächstes Datum: siehe #events im Discord</small>
-        </article>
-
-        <article class="news reveal">
-          <span class="tag">Community</span>
-          <h4>Creator-Programm</h4>
-          <p>Streamer & TikToker bekommen Whitelist-Vorteile, Early-Infos und eigene Event-Slots.
-             Bewirb dich über Discord – zeig uns deinen Channel!</p>
-          <small>Neu</small>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Community & Socials -->
-  <section id="community">
-    <div class="container">
-      <h2 class="section-title reveal">Community</h2>
-      <p class="section-sub reveal">Tritt unserem Discord bei und bleib mit allen Updates verbunden. Für Creator gibt’s Extras.</p>
-
-      <div class="socials reveal">
-        <a class="pill discord" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">💬 Discord beitreten</a>
-        <a class="pill tiktok" href="https://www.tiktok.com/@tomschilllounge?_t=ZN-8ysfwEWTQDm&_r=1" target="_blank" rel="noopener">
-          ▶️ TikTok <span class="hint">@tomschilllounge</span>
+        <a
+          class="pill tiktok"
+          href="https://www.tiktok.com/@tomschilllounge?_t=ZN-8ysfwEWTQDm&_r=1"
+          target="_blank"
+          rel="noopener"
+        >
+          ▶️
+          TikTok
+          <span class="hint">
+            @tomschilllounge
+          </span>
         </a>
       </div>
 
-      <div class="card reveal" style="margin-top:22px">
-        <h3>Für Streamer & Creator</h3>
+      <div
+        class="card reveal"
+        style="margin-top:22px"
+      >
+        <h3>
+          Für Streamer & Creator
+        </h3>
         <p>
-          Du streamst oder erstellst Clips? Melde dich im Discord für das <strong>Creator-Programm</strong>:
+          Du streamst oder erstellst Clips?
+          Melde dich im Discord für das
+          <strong>
+            Creator-Programm
+          </strong>
+          :
           Early-Access-Infos, Event-Slots, Shoutouts & spezielle Rollen.
         </p>
       </div>
@@ -427,60 +1420,178 @@
   </section>
 
   <!-- Kontakt -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title reveal">Kontakt</h2>
-      <div class="contact-block reveal">
-        <div>Server-Adresse: <span class="badge-ip">141.147.38.27:25020</span></div>
-        <div>Owner: <strong>Adminmax</strong> & <strong>Teufel45</strong></div>
-        <div>Discord: <a class="link-cta" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">Hier beitreten</a></div>
+  <section
+    id="contact"
+  >
+    <div
+      class="container"
+    >
+      <h2
+        class="section-title reveal"
+      >
+        Kontakt
+      </h2>
+
+      <div
+        class="contact-block reveal"
+      >
+        <div>
+          Server-Adresse:
+          <span class="badge-ip">
+            141.147.38.27:25020
+          </span>
+        </div>
+
+        <div>
+          Owner:
+          <strong>
+            Adminmax
+          </strong>
+          (Owner)
+          &
+          <strong>
+            Teufel45
+          </strong>
+          (Owner)
+        </div>
+
+        <div>
+          Discord:
+          <a
+            class="link-cta"
+            href="https://discord.gg/PeDMDgcTsQ"
+            target="_blank"
+            rel="noopener"
+          >
+            Hier beitreten
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <div>© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div>
-      <div style="opacity:.8">Made with ❤️ von der MineLegends-Community.</div>
+    <div
+      class="container"
+      style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap"
+    >
+      <div>
+        ©
+        <span id="year"></span>
+        MineLegends.
+        Alle Rechte vorbehalten.
+      </div>
+      <div
+        style="opacity:.85"
+      >
+        Made with ❤️ von der MineLegends-Community.
+      </div>
     </div>
   </footer>
 
-  <!-- Moving Waves Background -->
-  <div class="waves" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
-      <path class="w1" d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"></path>
-      <path class="w2" d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"></path>
+  <!-- Waves Background -->
+  <div
+    class="waves"
+    aria-hidden="true"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 200"
+      preserveAspectRatio="none"
+    >
+      <path
+        class="w1"
+        d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"
+      >
+      </path>
+      <path
+        class="w2"
+        d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"
+      >
+      </path>
     </svg>
   </div>
 
-<script>
-  // Jahr im Footer
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- Sticky Join -->
+  <a
+    class="sticky-join"
+    href="https://discord.gg/PeDMDgcTsQ"
+    target="_blank"
+    rel="noopener"
+  >
+    ✨
+    Join
+  </a>
 
-  // IP kopieren
-  function copyIP(){
-    const ip = "141.147.38.27:25020";
-    navigator.clipboard.writeText(ip).then(()=>{
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = "✅ IP kopiert";
-      setTimeout(()=>btn.textContent="📋 IP kopieren",1600);
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy IP
+    function copyIP(){
+      const ip = "141.147.38.27:25020";
+      navigator.clipboard.writeText(ip).then(()=>{
+        const btn = document.getElementById('copyBtn');
+        if(btn){
+          btn.textContent = "✅ IP kopiert";
+          setTimeout(()=> btn.textContent = "📋 IP kopieren", 1600);
+        }else{
+          alert("IP kopiert: " + ip);
+        }
+      });
+    }
+    const copyBtn = document.getElementById('copyBtn');
+    if(copyBtn){ copyBtn.addEventListener('click', copyIP); }
+
+    // Dark/Light Mode
+    const modeBtn = document.getElementById('modeToggle');
+    function setModeIcon(){
+      modeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+    }
+    modeBtn.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+      setModeIcon();
+      try{
+        localStorage.setItem("minelegends-mode", document.body.classList.contains('light') ? 'light' : 'dark');
+      }catch(e){}
     });
-  }
-  const copyBtn = document.getElementById('copyBtn');
-  if(copyBtn){ copyBtn.addEventListener('click', copyIP); }
+    // Init from storage
+    try{
+      const stored = localStorage.getItem("minelegends-mode");
+      if(stored === 'light'){ document.body.classList.add('light'); }
+    }catch(e){}
+    setModeIcon();
 
-  // Scroll-Reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries, obs)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('show');
-        obs.unobserve(e.target);
+    // Fake Server Status (mock)
+    function loadStatus(){
+      const el = document.getElementById('serverStatus');
+      const online = Math.random() > 0.25;
+      if(online){
+        const players = Math.floor(Math.random()*25)+1;
+        el.textContent = "✅ Online – " + players + " Spieler";
+        el.style.color = "lightgreen";
+      }else{
+        el.textContent = "❌ Offline";
+        el.style.color = "red";
       }
-    });
-  }, {threshold: .15});
-  revealEls.forEach(el=>io.observe(el));
-</script>
+    }
+    loadStatus();
+    setInterval(loadStatus, 15000);
+
+    // Scroll-Reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          obs.unobserve(e.target);
+        }
+      });
+    }, {threshold: .18});
+    revealEls.forEach(el=> io.observe(el));
+
+  </script>
+
 </body>
 </html>
