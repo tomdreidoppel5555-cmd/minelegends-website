@@ -11,9 +11,9 @@
     --bg-top:#070e22;
     --bg-mid:#0e1835;
     --bg-deep:#0a1230;
-    --accent:#ffd200;      
-    --accent-2:#5865F2;    
-    --accent-3:#00e5ff;    
+    --accent:#ffd200;      /* Gold */
+    --accent-2:#5865F2;    /* Discord */
+    --accent-3:#00e5ff;    /* Cyan Links/Highlights */
     --text:#e8eef9;
     --muted:#9fb0d4;
     --card:#0f1c3caa;
@@ -22,11 +22,12 @@
     --radius:18px;
   }
 
+  /* --- Base --- */
   html,body{height:100%}
   html{scroll-behavior:smooth}
   body{
     margin:0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
     color:var(--text);
     background: linear-gradient(180deg,var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
     overflow-x:hidden;
@@ -35,6 +36,7 @@
   a:hover{opacity:.9}
   .container{max-width:1200px; margin-inline:auto; padding:0 24px}
 
+  /* --- Header / Nav --- */
   header{
     position:sticky; top:0; z-index:1000;
     background:rgba(3,7,20,.7);
@@ -49,17 +51,32 @@
   .logo img{height:56px; width:auto; display:block}
   .brand{font-weight:800; letter-spacing:.5px; color:var(--accent)}
   .menu{display:flex; gap:28px; align-items:center}
-  .menu a{font-weight:700; color:var(--accent);}
+  .menu a{
+    font-weight:700; color:var(--accent);
+  }
   .cta-discord{
     background:var(--accent-2); color:#fff !important;
     padding:10px 16px; border-radius:12px; font-weight:800;
     box-shadow:0 8px 18px rgba(88,101,242,.35);
   }
 
-  .hero{position:relative; isolation:isolate; padding:72px 0 120px;}
-  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;}
-  .hero h1{font-size: clamp(36px, 5vw, 64px); line-height:1.05; margin:0 0 18px; color:var(--accent);}
-  .lead{font-size: clamp(16px, 2vw, 20px); color:var(--muted); margin-bottom:22px;}
+  /* --- Hero --- */
+  .hero{
+    position:relative; isolation:isolate;
+    padding:72px 0 120px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(36px, 5vw, 64px);
+    line-height:1.05; margin:0 0 18px; color:var(--accent);
+    text-shadow:0 8px 30px rgba(255,210,0,.12);
+  }
+  .lead{
+    font-size: clamp(16px, 2vw, 20px);
+    color:var(--muted); margin-bottom:22px;
+  }
   .actions{display:flex; gap:14px; flex-wrap:wrap}
   .btn{
     display:inline-flex; align-items:center; gap:10px;
@@ -68,128 +85,401 @@
   }
   .btn:hover{transform:translateY(-1px)}
   .btn-copy{background:#18305f}
-  .badge-ip{font-family: monospace; padding:8px 12px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.1)}
+  .badge-ip{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    padding:8px 12px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.1)
+  }
 
+  /* --- Reusable --- */
   section{padding:90px 0; position:relative; z-index:5}
-  h2.section-title{text-align:center; font-size: clamp(28px, 4vw, 44px); color:var(--accent); margin:0 0 14px}
-  .section-sub{text-align:center; color:var(--muted); margin-bottom:36px}
-  .grid{display:grid; gap:22px}
+  h2.section-title{
+    text-align:center; font-size: clamp(28px, 4vw, 44px); color:var(--accent); margin:0 0 14px
+  }
+  .section-sub{
+    text-align:center; color:var(--muted); margin-bottom:36px
+  }
+  .grid{
+    display:grid; gap:22px
+  }
   .grid-3{grid-template-columns: repeat(3, minmax(0,1fr))}
   .grid-4{grid-template-columns: repeat(4, minmax(0,1fr))}
   @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-4{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:720px){ .grid-3{grid-template-columns:1fr} .grid-4{grid-template-columns:1fr} }
 
-  .card{background:var(--card); border:1px solid rgba(255,255,255,.08);
-    border-radius: var(--radius); padding:22px; box-shadow:var(--shadow);}
+  .card{
+    background:var(--card); border:1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius); padding:22px; box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .card:hover{transform: translateY(-4px); background: #122659cc}
   .card h3{margin:6px 0 8px; color:#fff}
   .card p{margin:0; color:var(--muted)}
 
-  .feature-ico{width:42px; height:42px; border-radius:10px; display:grid; place-items:center;
-    background:#162b5a; color:var(--accent); font-size:22px;}
+  /* --- Features Cards --- */
+  .feature-ico{
+    width:42px; height:42px; border-radius:10px; display:grid; place-items:center;
+    background:#162b5a; color:var(--accent); font-size:22px; box-shadow: inset 0 0 30px rgba(255,210,0,.08)
+  }
 
+  /* --- Server Infos --- */
   .rules{list-style:none; margin:0; padding:0; display:grid; gap:10px}
-  .rules li{padding:12px 14px; border-radius:12px; background:#0f214f; border:1px solid rgba(255,255,255,.07)}
+  .rules li{
+    padding:12px 14px; border-radius:12px; background:#0f214f; border:1px solid rgba(255,255,255,.07)
+  }
 
+  /* --- Galerie --- */
   .gallery{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
-  .gallery .shot{aspect-ratio: 16/9; border-radius:14px; overflow:hidden; position:relative}
+  .gallery .shot{
+    aspect-ratio: 16/9; background:#0f214f; border:1px solid rgba(255,255,255,.07);
+    border-radius:14px; overflow:hidden; position:relative
+  }
   .shot img{width:100%; height:100%; object-fit:cover; display:block}
-  .shot::after{content:"Screenshot"; position:absolute; inset:auto 10px 10px 10px; font-size:12px; color:#d5e6ff; background:rgba(0,0,0,.35); padding:4px 8px; border-radius:8px}
+  .shot::after{
+    content:"Screenshot"; position:absolute; inset:auto 10px 10px 10px; font-size:12px;
+    color:#d5e6ff; background:rgba(0,0,0,.35); padding:4px 8px; border-radius:8px
+  }
   @media(max-width:900px){ .gallery{grid-template-columns:1fr 1fr} }
   @media(max-width:600px){ .gallery{grid-template-columns:1fr} }
 
+  /* --- News / Timeline --- */
   .timeline{display:grid; gap:16px}
-  .news{padding:18px; border-radius:14px; background:#112557; border:1px solid rgba(255,255,255,.08)}
+  .news{
+    padding:18px; border-radius:14px; background:#112557; border:1px solid rgba(255,255,255,.08)
+  }
   .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:20px; background:#0e214d; color:var(--accent-3); margin-right:8px}
   .news h4{margin:10px 0 8px}
   .news small{color:var(--muted)}
 
+  /* --- Community --- */
   .socials{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
-  .pill{display:inline-flex; gap:10px; align-items:center; padding:12px 16px; border-radius:999px; background:#0f214f;}
-  .pill.discord{background: var(--accent-2); color:#fff;}
-  .pill.tiktok{background:#111;}
+  .pill{
+    display:inline-flex; gap:10px; align-items:center;
+    padding:12px 16px; border-radius:999px; background:#0f214f; border:1px solid rgba(255,255,255,.08)
+  }
+  .pill.discord{background: var(--accent-2); color:#fff; border:none; box-shadow:0 8px 24px rgba(88,101,242,.35)}
+  .pill.tiktok{background:#111; border:1px solid #222}
   .pill .hint{color:#a9b7d7}
 
-  .contact-block{display:grid; gap:16px; justify-items:center; background: linear-gradient(180deg, #0f214f, #081737);
-    padding:26px; border-radius:18px; border:1px solid rgba(255,255,255,.08)}
+  /* --- Kontakt --- */
+  .contact-block{
+    display:grid; gap:16px; justify-items:center;
+    background: linear-gradient(180deg, #0f214f, #081737);
+    padding:26px; border-radius:18px; border:1px solid rgba(255,255,255,.08)
+  }
   .link-cta{ color: var(--accent-3); font-weight:900; text-decoration:underline }
+  .link-cta:hover{ filter:brightness(1.1) }
 
-  footer{padding:40px 0; background:#060b1a; border-top:1px solid rgba(255,255,255,.06); color:#a8b5d6}
+  /* --- Footer --- */
+  footer{
+    padding:40px 0; background:#060b1a; border-top:1px solid rgba(255,255,255,.06); color:#a8b5d6
+  }
 
+  /* --- Waves background (bottom) --- */
   .waves{position:fixed; left:0; right:0; bottom:-1px; height:20vh; z-index:0; overflow:hidden}
   .waves svg{width:200%; height:100%; animation:waveMove 12s linear infinite}
   .w1{fill: rgba(88,101,242,.45)}
   .w2{fill: rgba(0,229,255,.18)}
   @keyframes waveMove{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
+  /* --- Scroll reveal --- */
   .reveal{opacity:0; transform: translateY(26px); transition: all .9s ease}
   .reveal.show{opacity:1; transform:none}
 </style>
 </head>
 
 <body>
-<header>
-  <div class="container nav">
-    <div class="logo"><img src="minelegends-logo.png" alt="MineLegends Logo"><div class="brand">MineLegends</div></div>
-    <nav class="menu">
-      <a href="#home">Home</a><a href="#about">Über uns</a><a href="#features">Features</a>
-      <a href="#server">Server-Infos</a><a href="#gallery">Galerie</a><a href="#news">News</a>
-      <a href="#community">Community</a><a href="#contact">Kontakt</a>
-      <a class="cta-discord" href="https://discord.gg/PeDMDgcTsQ" target="_blank">✨ Discord beitreten</a>
-    </nav>
-  </div>
-</header>
-
-<section id="home" class="hero">
-  <div class="container hero-grid reveal">
-    <div>
-      <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
-      <p class="lead">Dein Zuhause für epische Abenteuer, faire Competition und kreative Baukunst.  
-      PvP-Events, <strong>Bedwars</strong>, <strong>Skyblock</strong>, neue Welten wie <strong>Earth SMP</strong> & ein <strong>Wild SMP</strong> zum grenzenlosen Erkunden warten auf dich.</p>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="minelegends-logo.png" alt="MineLegends Logo">
+        <div class="brand">MineLegends</div>
+      </div>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">Über uns</a>
+        <a href="#features">Features</a>
+        <a href="#server">Server-Infos</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#news">News</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Kontakt</a>
+        <a class="cta-discord" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">✨ Discord beitreten</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="server">
-  <div class="container">
-    <h2 class="section-title reveal">Server-Infos</h2>
-    <div class="grid grid-3">
-      <div class="card reveal"><h3>Adresse</h3><p class="badge-ip">141.147.38.27:25020</p></div>
-      <div class="card reveal"><h3>Regeln (Kurz)</h3><ul class="rules"><li>Respektvoller Umgang · kein Griefing</li><li>Keine Hacks</li></ul></div>
-      <div class="card reveal"><h3>Performance</h3><p>Optimiert für die <strong>Minecraft Java Edition</strong>. Egal wie alt dein PC ist – wir geben alles, damit du ohne Probleme joinen kannst.</p></div>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-grid reveal">
+      <div>
+        <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
+        <p class="lead">
+          Dein Zuhause für epische Abenteuer, faire Competition und kreative Baukunst.  
+          Bei uns erwarten dich <strong>PvP-Events</strong>, beliebte Modi wie <strong>Bedwars</strong> & <strong>Skyblock</strong>,
+          neue Welten wie <strong>Earth SMP</strong> und ein <strong>Wild SMP</strong> zum grenzenlosen Erkunden.  
+          Unsere Community ist offen, hilfsbereit und bereit für die nächste Legende – deine!
+        </p>
+        <div class="actions">
+          <span class="badge-ip" id="ipBadge">IP: 141.147.38.27:25020</span>
+          <button class="btn btn-copy" id="copyBtn" aria-label="IP kopieren">📋 IP kopieren</button>
+          <a class="btn" href="#features">🚀 Jetzt Features entdecken</a>
+          <a class="btn" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">💬 Zum Discord</a>
+        </div>
+      </div>
+      <div class="card" style="text-align:left">
+        <h3>Warum MineLegends?</h3>
+        <p>
+          Wir kombinieren das Beste aus Minecraft mit eigenen Ideen:
+          faire Moderation, regelmäßige Updates, starke Performance und Events,
+          die Spieler zusammenbringen. Ob Solo, mit Freunden oder als Creator –
+          hier kannst du bauen, kämpfen, handeln, entdecken und Geschichten schreiben.
+        </p>
+        <ul class="rules" style="margin-top:14px">
+          <li>✅ Respektvolle Community & aktives Team</li>
+          <li>✅ Lebendige Wirtschaft & spannende Progression</li>
+          <li>✅ Stabile Server & kurze Downtimes</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="gallery">
-  <div class="container">
-    <h2 class="section-title reveal">Galerie</h2>
-    <div class="gallery">
-      <div class="shot reveal"><img src="A_Minecraft_screenshot_showcases_a_grand,_symmetri.png" alt="Minecraft Build"></div>
-      <div class="shot reveal"><img src="A_digital_illustration_promotes_Minecraft_Java_Edi.png" alt="Minecraft Java Poster"></div>
-      <div class="shot reveal"><img src="A_screenshot_from_Minecraft,_a_sandbox_video_game,.png" alt="PvP Szene"></div>
+  <!-- Über uns -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title reveal">Über uns</h2>
+      <p class="section-sub reveal">Die Vision hinter MineLegends – von Spielern für Spieler.</p>
+      <div class="card reveal">
+        <p>
+          <strong>MineLegends</strong> entstand aus der Idee, einen Ort zu schaffen, an dem Spielspaß, Fairness und
+          Gemeinschaft im Mittelpunkt stehen. Wir begannen klein – mit einer einfachen Welt – und wuchsen dank
+          unserer Community zu einem Projekt, das für Qualität, Stabilität und abwechslungsreiche Inhalte steht.
+        </p>
+        <p>
+          Hinter den Kulissen arbeiten unsere Owner <strong>Adminmax</strong> und <strong>Teufel45</strong> mit viel
+          Leidenschaft daran, Features zu verfeinern, Events aufzusetzen und neue Ideen umzusetzen.
+          Unser Ziel: Ein Server, der langfristig motiviert, überrascht und verbindet.
+        </p>
+        <p>
+          Egal ob Survival-Fan, Builder, PvP-Pro oder Streamer – bei uns findest du deinen Platz. Werde Teil der
+          Community und schreibe deine eigene Legende.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <div class="container">
-    <h2 class="section-title reveal">Kontakt</h2>
-    <div class="contact-block reveal">
-      <div>Server-Adresse: <span class="badge-ip">141.147.38.27:25020</span></div>
-      <div>Owner: <strong>Adminmax</strong> & <strong>Teufel45</strong></div>
-      <div>Discord: <a class="link-cta" href="https://discord.gg/PeDMDgcTsQ" target="_blank">Hier beitreten</a></div>
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title reveal">Features</h2>
+      <p class="section-sub reveal">Alles, was Spaß macht – und noch ein bisschen mehr.</p>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="feature-ico">⚔️</div>
+          <h3>PvP & Events</h3>
+          <p>Turniere, Ranglisten, Kit-Abende & Special-Modes – fair moderiert und regelmäßig angekündigt.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">🛡️</div>
+          <h3>Bedwars</h3>
+          <p>Schnelle Runden, sauberes Balancing, clevere Maps. Perfekt für Teams & Solo-Grinder.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">🏝️</div>
+          <h3>Skyblock</h3>
+          <p>Progression, Wirtschaft & Herausforderungen – baue deine Insel zur Legende aus.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">🌍</div>
+          <h3>Earth SMP</h3>
+          <p>Weltkarte inspiriert von der Erde. Gründen, handeln, Allianzen schmieden – <em>kommt bald!</em></p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">🌲</div>
+          <h3>Wild SMP</h3>
+          <p>Größere Welten, mehr Biome, mehr Geheimnisse. Erkunden, bauen, Geschichten erleben.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">⚒️</div>
+          <h3>Freebuild & Kreativ</h3>
+          <p>Showcase-Plots, Community-Projekte und Bauevents – lass deiner Kreativität freien Lauf.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">🤖</div>
+          <h3>Quality-of-Life</h3>
+          <p>Auto-Moderation, Logging, Reaction-Roles & geplante Nachrichten via Discord-Integration.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">🚀</div>
+          <h3>Ständige Updates</h3>
+          <p>Neue Modi, Balancing-Patches, QoL-Verbesserungen – wir bleiben dran.</p>
+        </div>
+        <div class="card reveal">
+          <div class="feature-ico">✨</div>
+          <h3>… und mehr!</h3>
+          <p>Mini-Games, Sammel-Items, saisonale Events und Community-Votings.</p>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- Server Infos -->
+  <section id="server">
+    <div class="container">
+      <h2 class="section-title reveal">Server-Infos</h2>
+      <p class="section-sub reveal">Alles, was du zum Start brauchst.</p>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <h3>Adresse</h3>
+          <p class="badge-ip">141.147.38.27:25020</p>
+          <button class="btn btn-copy" onclick="copyIP()">📋 IP kopieren</button>
+        </div>
+        <div class="card reveal">
+          <h3>Regeln (Kurz)</h3>
+          <ul class="rules">
+            <li>Respektvoller Umgang · kein Griefing/Scamming</li>
+            <li>Keine Hacks, Cheats, Exploits</li>
+            <li>Werbung nur mit Erlaubnis</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Performance</h3>
+          <p>Moderne Hardware, optimierte Einstellungen, regelmäßige Backups – für lagfreie Sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerie -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title reveal">Galerie</h2>
+      <p class="section-sub reveal">Einblicke in Builds, Landschaften und Events.</p>
+      <div class="gallery">
+        <div class="shot reveal">
+          <img src="A_Minecraft_screenshot_showcases_a_grand,_symmetri.png" alt="Großer Minecraft Bau">
+        </div>
+        <div class="shot reveal">
+          <img src="A_digital_illustration_promotes_Minecraft_Java_Edi.png" alt="Minecraft Java Illustration">
+        </div>
+        <div class="shot reveal">
+          <img src="A_screenshot_from_Minecraft,_a_sandbox_video_game,.png" alt="PvP Szene">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News & Events -->
+  <section id="news">
+    <div class="container">
+      <h2 class="section-title reveal">Events & News</h2>
+      <p class="section-sub reveal">Bleib auf dem Laufenden – was als Nächstes ansteht.</p>
+
+      <div class="timeline">
+        <article class="news reveal">
+          <span class="tag">Teaser</span><span class="tag">SMP</span>
+          <h4>Earth SMP – Vorbereitung läuft</h4>
+          <p>Wir arbeiten an einer Erde-inspirierten Map mit frischer Wirtschaft & Diplomatie-Features.
+             Du willst eine Nation gründen? Sammle dein Team – der Starttermin wird im Discord angekündigt.</p>
+          <small>Update • Q3</small>
+        </article>
+
+        <article class="news reveal">
+          <span class="tag">Event</span><span class="tag">PvP</span>
+          <h4>Monatliche PvP-Cups</h4>
+          <p>Bringe dein Team an den Start – wechselnde Modi (Kit-PvP, Duos, Bedwars-Runden). Preise & Ehrenrollen winken.</p>
+          <small>Nächstes Datum: siehe #events im Discord</small>
+        </article>
+
+        <article class="news reveal">
+          <span class="tag">Community</span>
+          <h4>Creator-Programm</h4>
+          <p>Streamer & TikToker bekommen Whitelist-Vorteile, Early-Infos und eigene Event-Slots.
+             Bewirb dich über Discord – zeig uns deinen Channel!</p>
+          <small>Neu</small>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community & Socials -->
+  <section id="community">
+    <div class="container">
+      <h2 class="section-title reveal">Community</h2>
+      <p class="section-sub reveal">Tritt unserem Discord bei und bleib mit allen Updates verbunden. Für Creator gibt’s Extras.</p>
+
+      <div class="socials reveal">
+        <a class="pill discord" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">💬 Discord beitreten</a>
+        <a class="pill tiktok" href="https://www.tiktok.com/@tomschilllounge?_t=ZN-8ysfwEWTQDm&_r=1" target="_blank" rel="noopener">
+          ▶️ TikTok <span class="hint">@tomschilllounge</span>
+        </a>
+      </div>
+
+      <div class="card reveal" style="margin-top:22px">
+        <h3>Für Streamer & Creator</h3>
+        <p>
+          Du streamst oder erstellst Clips? Melde dich im Discord für das <strong>Creator-Programm</strong>:
+          Early-Access-Infos, Event-Slots, Shoutouts & spezielle Rollen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Kontakt</h2>
+      <div class="contact-block reveal">
+        <div>Server-Adresse: <span class="badge-ip">141.147.38.27:25020</span></div>
+        <div>Owner: <strong>Adminmax</strong> & <strong>Teufel45</strong></div>
+        <div>Discord: <a class="link-cta" href="https://discord.gg/PeDMDgcTsQ" target="_blank" rel="noopener">Hier beitreten</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div>© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div>
+      <div style="opacity:.8">Made with ❤️ von der MineLegends-Community.</div>
+    </div>
+  </footer>
+
+  <!-- Moving Waves Background -->
+  <div class="waves" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+      <path class="w1" d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"></path>
+      <path class="w2" d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"></path>
+    </svg>
   </div>
-</section>
-
-<footer><div class="container">© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div></footer>
-
-<div class="waves"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><path class="w1" d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"></path><path class="w2" d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"></path></svg></div>
 
 <script>
+  // Jahr im Footer
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // IP kopieren
+  function copyIP(){
+    const ip = "141.147.38.27:25020";
+    navigator.clipboard.writeText(ip).then(()=>{
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = "✅ IP kopiert";
+      setTimeout(()=>btn.textContent="📋 IP kopieren",1600);
+    });
+  }
+  const copyBtn = document.getElementById('copyBtn');
+  if(copyBtn){ copyBtn.addEventListener('click', copyIP); }
+
+  // Scroll-Reveal
   const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries, obs)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target);}});},{threshold:.15});
+  const io = new IntersectionObserver((entries, obs)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold: .15});
   revealEls.forEach(el=>io.observe(el));
 </script>
 </body>
