@@ -4,9 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MineLegends – Offizielle Website</title>
-  <meta name="description" content="MineLegends Minecraft-Server – PvP, Bedwars, Skyblock, Earth SMP, Wild SMP, Events, Discord-Community." />
+  <meta name="description" content="MineLegends Minecraft-Server – PvP, Bedwars, Skyblock, Events, Discord-Community." />
 
   <style>
+    /* ===============================
+       Theme & Base
+    =============================== */
     :root{
       --bg-top:#070e22;
       --bg-mid:#0e1835;
@@ -46,9 +49,16 @@
       overflow-x:hidden;
       transition:background .35s ease,color .35s ease;
     }
+    *, *::before, *::after{box-sizing:border-box}
     a{color:var(--accent-3); text-decoration:none}
     a:focus-visible, button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
+    img{max-width:100%; height:auto; display:block}
+
     .container{max-width:1200px; margin-inline:auto; padding:0 24px}
+
+    /* ===============================
+       Header & Nav
+    =============================== */
     header{
       position:sticky; top:0; z-index:1000;
       background:rgba(3,7,20,.65); backdrop-filter:blur(10px);
@@ -56,7 +66,7 @@
     }
     .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px}
     .logo{display:flex; align-items:center; gap:14px; min-width:0}
-    .logo img{height:56px; width:auto; display:block; border-radius:12px}
+    .logo img{height:56px; width:auto; border-radius:12px}
     .brand{display:flex; flex-direction:column; line-height:1.1}
     .brand .name{font-weight:900; letter-spacing:.4px; color:var(--accent); font-size:18px; white-space:nowrap}
     .brand .tag{color:var(--muted); font-size:12px; white-space:nowrap; opacity:.9}
@@ -66,6 +76,20 @@
     .cta-discord{background:var(--accent-2); color:#fff !important; padding:10px 14px; border-radius:12px; font-weight:900; box-shadow:0 10px 22px rgba(88,101,242,.35)}
     .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer; transition:transform .2s ease, background .2s ease}
     .mode-toggle:hover{background:rgba(255,255,255,.06); transform:translateY(-1px)}
+
+    /* Shop button in nav */
+    .btn-shop{
+      display:inline-flex;align-items:center;gap:.5ch;
+      padding:10px 14px;border-radius:12px;
+      background:linear-gradient(90deg,#00e5ff,#00d9ff);
+      color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);
+      box-shadow:0 8px 20px rgba(0,217,255,.12)
+    }
+    .btn-shop:hover{transform:translateY(-2px);filter:brightness(1.05)}
+
+    /* ===============================
+       Hero
+    =============================== */
     .hero{position:relative; isolation:isolate; padding:72px 0 120px}
     .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center}
     .hero h1{margin:0 0 14px; color:var(--accent); font-size:clamp(36px, 5vw, 66px); line-height:1.03; text-shadow:0 10px 30px rgba(255,210,0,.12)}
@@ -75,6 +99,10 @@
     .btn:hover{transform:translateY(-1px) scale(1.02); filter:brightness(1.03); box-shadow:0 10px 24px rgba(0,0,0,.30)}
     .btn-ghost{background:#10234e}
     .badge-ip{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; padding:10px 12px; border-radius:12px; background:#0e214d; border:1px dashed rgba(255,255,255,.12); letter-spacing:.2px; font-weight:700}
+
+    /* ===============================
+       Sections & Cards
+    =============================== */
     .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
     .card:hover{transform:translateY(-4px); background:#122659cc}
     .card h3{margin:6px 0 6px; color:#fff}
@@ -87,39 +115,73 @@
     .grid-4{grid-template-columns:repeat(4, minmax(0,1fr))}
     @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-4{grid-template-columns:repeat(2, 1fr)}}
     @media (max-width:720px){ .grid-3{grid-template-columns:1fr} .grid-4{grid-template-columns:1fr}}
-    .socials{display:flex; gap:14px; flex-wrap:wrap; justify-content:center}
-    .pill{display:inline-flex; gap:10px; align-items:center; padding:12px 16px; border-radius:999px; background:#0f214f; border:1px solid rgba(255,255,255,.08); transition:transform .2s ease; font-weight:800}
-    .pill:hover{transform:translateY(-2px)}
-    .pill.discord{background:var(--accent-2); color:#fff; border:none; box-shadow:0 8px 24px rgba(88,101,242,.35)}
-    .pill.tiktok{background:#111; color:#fff; border:1px solid #222}
-    .pill .hint{color:#a9b7d7; font-weight:600}
     .rules{list-style:none; margin:0; padding:0; display:grid; gap:10px}
     .rules li{padding:12px 14px; border-radius:12px; background:#0f214f; border:1px solid rgba(255,255,255,.07)}
+    .feature-ico{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px}
+
+    /* ===============================
+       Carousel & Timeline
+    =============================== */
     .carousel{display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 2px 6px 2px}
     .slide{min-width:86%; scroll-snap-align:center; background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px}
+
     .timeline{display:grid; gap:16px}
     .news{padding:18px; border-radius:14px; background:#112557; border:1px solid rgba(255,255,255,.08)}
     .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:20px; background:#0e214d; color:var(--accent-3); margin-right:8px}
     .news h4{margin:10px 0 8px; color:#fff}
     .news small{color:var(--muted)}
+
+    /* ===============================
+       Team
+    =============================== */
+    .team-grid{display:grid; gap:18px; grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    @media (max-width:620px){ .team-grid{grid-template-columns:1fr} }
+    .member{
+      display:grid; gap:8px; padding:18px; border-radius:16px;
+      background:linear-gradient(180deg,#10224c,#0b1a3e);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow)
+    }
+    .member .role{font-weight:900; color:var(--accent)}
+    .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; background:#0f214f; border:1px solid rgba(255,255,255,.07)}
+    .badge.co{background:#2a1d00; color:#ffd571; border:1px solid #8a5}
+    .badge.head{background:#0b2a34; color:#7be9ff}
+    .badge.admin{background:#2a0b14; color:#ff9aa5}
+    .badge.mod{background:#1b2a0b; color:#c8ff91}
+    .badge.builder{background:#1d1d1d; color:#bdbdbd}
+
+    /* ===============================
+       Contact & Footer
+    =============================== */
     .contact-block{display:grid; gap:16px; justify-items:center; background:linear-gradient(180deg, #0f214f, #081737); padding:26px; border-radius:18px; border:1px solid rgba(255,255,255,.08)}
     .link-cta{color:var(--accent-3); font-weight:900; text-decoration:underline}
     .link-cta:hover{filter:brightness(1.1)}
     footer{padding:40px 0; background:#060b1a; border-top:1px solid rgba(255,255,255,.06); color:#a8b5d6}
+
+    /* ===============================
+       Waves Background
+    =============================== */
     .waves{position:fixed; left:0; right:0; bottom:-1px; height:20vh; z-index:0; overflow:hidden}
     .waves svg{width:200%; height:100%; animation:waveMove 12s linear infinite}
     .w1{fill:rgba(88,101,242,.45)}
     .w2{fill:rgba(0,229,255,.18)}
     @keyframes waveMove{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+    /* ===============================
+       Reveal Animations & Mobile Join
+    =============================== */
     .reveal{opacity:0; transform:translateY(26px); transition:all .9s ease}
     .reveal.show{opacity:1; transform:none}
     .sticky-join{display:none}
     @media (max-width:768px){
       .sticky-join{display:block; position:fixed; bottom:20px; right:20px; background:var(--accent-2); color:#fff; padding:14px 20px; border-radius:50px; font-weight:bold; box-shadow:0 8px 20px rgba(0,0,0,.4); z-index:2000}
     }
+
     /* Fun progress ribbon */
     .ribbon {
       position:relative; height:12px; background:#0a1640; border:1px solid rgba(255,255,255,.08); border-radius:999px; overflow:hidden; box-shadow:inset 0 1px 3px rgba(0,0,0,.4);
+      margin-top:6px
     }
     .ribbon > i {
       position:absolute; left:0; top:0; bottom:0; width:35%; background:linear-gradient(90deg, #6ee7ff, #8ab6ff); border-radius:999px; animation:rb 18s linear infinite;
@@ -127,21 +189,20 @@
     @keyframes rb {
       0%{left:0; width:25%} 50%{left:65%; width:35%} 100%{left:0; width:25%}
     }
-  
-    /* Shop button in nav */
-    .btn-shop{display:inline-flex;align-items:center;gap:.5ch;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#00e5ff,#00d9ff);color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);box-shadow:0 8px 20px rgba(0,217,255,.12)}
-    .btn-shop:hover{transform:translateY(-2px);filter:brightness(1.05)}
-</style>
+  </style>
 </head>
 
 <body>
+  <!-- =======================
+       Header
+  ======================== -->
   <header>
     <div class="container nav">
       <div class="logo">
         <img src="minelegends-logo.png" alt="MineLegends Logo" />
         <div class="brand">
           <span class="name">MineLegends</span>
-          <span class="tag">PvP • Skyblock • SMP • Events</span>
+          <span class="tag">PvP • Skyblock • Events</span>
         </div>
       </div>
       <nav class="menu">
@@ -151,23 +212,26 @@
         <a href="#server">Server-Infos</a>
         <a href="#roadmap">News</a>
         <a href="#leaderboard">Leaderboard</a>
+        <a href="#team">Team</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Kontakt</a>
-                <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" class="btn-shop">🛒 Shop</a>
-<a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord</a>
+        <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" class="btn-shop" title="Zum Shop">🛒 Shop</a>
+        <a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord</a>
         <button id="modeToggle" class="mode-toggle" type="button" aria-label="Dark/Light Mode umschalten" title="Dark/Light Mode">🌙</button>
       </nav>
     </div>
   </header>
 
+  <!-- =======================
+       Hero
+  ======================== -->
   <section id="home" class="hero">
     <div class="container hero-grid reveal">
       <div>
         <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
         <p class="lead">
           Dein Zuhause für epische Abenteuer, faire Competition und kreative Baukunst.
-          Bei uns warten <strong>PvP-Events</strong>, <strong>Bedwars</strong>, <strong>Skyblock</strong>,
-          neue Welten wie <strong>Earth SMP</strong> und ein <strong>Wild SMP</strong> zum grenzenlosen Erkunden.
+          Bei uns warten <strong>PvP-Events</strong>, <strong>Bedwars</strong>, <strong>Skyblock</strong> und regelmäßige Community-Events.
         </p>
         <div class="actions">
           <span class="badge-ip" id="ipBadge">IP: minelegends.mc-game.xyz</span>
@@ -194,11 +258,14 @@
       <div class="carousel reveal" aria-label="Showcase">
         <div class="slide"><h3>⚔️ PvP-Turniere</h3><p>Monatliche Cups mit Preisen & Ehrenrollen.</p></div>
         <div class="slide"><h3>🏝️ Skyblock Progression</h3><p>Wirtschaft, Insel-Upgrades und Herausforderungen.</p></div>
-        <div class="slide"><h3>🌍 Earth SMP</h3><p>Diplomatie, Nationen, Handel – <em>kommt bald!</em></p></div>
+        <div class="slide"><h3>🛒 Neuer Shop</h3><p>Ränge, Items & Extras – direkt online kaufen. <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">Zum Shop</a></p></div>
       </div>
     </div>
   </section>
 
+  <!-- =======================
+       About
+  ======================== -->
   <section id="about">
     <div class="container">
       <h2 class="section-title reveal">Über uns</h2>
@@ -226,6 +293,9 @@
     </div>
   </section>
 
+  <!-- =======================
+       Features
+  ======================== -->
   <section id="features">
     <div class="container">
       <h2 class="section-title reveal">Features</h2>
@@ -234,16 +304,19 @@
       <div class="ribbon reveal" aria-hidden="true"><i></i></div>
 
       <div class="grid grid-3" style="margin-top:20px">
-        <div class="card reveal"><div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">⚔️</div><h3>PvP & Events</h3><p>Turniere, Ranglisten, Kit-Abende & Special-Modes.</p></div>
-        <div class="card reveal"><div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">🛡️</div><h3>Bedwars</h3><p>Schnelle Runden, sauberes Balancing, clevere Maps.</p></div>
-        <div class="card reveal"><div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">🏝️</div><h3>Skyblock</h3><p>Progression, Wirtschaft & Herausforderungen.</p></div>
-        <div class="card reveal"><div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">🌍</div><h3>Earth SMP</h3><p>Erde-inspirierte Map, Handel & Diplomatie – <em>kommt bald</em>.</p></div>
-        <div class="card reveal"><div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">🌲</div><h3>Wild SMP</h3><p>Größere Welten, mehr Biome, mehr Geheimnisse.</p></div>
-        <div class="card reveal"><div class="feature-ico" style="width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px">🤖</div><h3>Quality-of-Life</h3><p>Auto-Moderation, Logging & Discord-Integration.</p></div>
+        <div class="card reveal"><div class="feature-ico">⚔️</div><h3>PvP & Events</h3><p>Turniere, Ranglisten, Kit-Abende & Special-Modes.</p></div>
+        <div class="card reveal"><div class="feature-ico">🛡️</div><h3>Bedwars</h3><p>Schnelle Runden, sauberes Balancing, clevere Maps.</p></div>
+        <div class="card reveal"><div class="feature-ico">🏝️</div><h3>Skyblock</h3><p>Progression, Wirtschaft & Herausforderungen.</p></div>
+        <div class="card reveal"><div class="feature-ico">🤝</div><h3>Community-Events</h3><p>Abstimmungen, Vorschläge, Creator-Slots & Giveaways.</p></div>
+        <div class="card reveal"><div class="feature-ico">🧰</div><h3>QoL & Sicherheit</h3><p>Auto-Mod, Logging, DDoS-Schutz & Backups.</p></div>
+        <div class="card reveal"><div class="feature-ico">🛒</div><h3>Shop</h3><p>Ränge & Extras – <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">jetzt ansehen</a>.</p></div>
       </div>
     </div>
   </section>
 
+  <!-- =======================
+       Server Infos
+  ======================== -->
   <section id="server">
     <div class="container">
       <h2 class="section-title reveal">Server-Infos</h2>
@@ -254,12 +327,13 @@
           <h3>Minecraft Version</h3>
           <p>Unsere Server laufen aktuell auf der <strong>Java Edition 1.21.1</strong>.</p>
         </div>
-    
+
         <div class="card reveal">
           <h3>Adresse</h3>
           <p class="badge-ip">minelegends.mc-game.xyz</p>
           <button class="btn" onclick="copyIP()" type="button">📋 IP kopieren</button>
         </div>
+
         <div class="card reveal">
           <h3>Regeln (Kurz)</h3>
           <ul class="rules">
@@ -268,20 +342,26 @@
             <li>Werbung nur mit Erlaubnis</li>
           </ul>
         </div>
+
         <div class="card reveal">
           <h3>Performance & Extras</h3>
-          <p>Optimierte Java-Server-Konfig, regelmäßige Backups, Latenz-Checks, asynchrone AutoSaves,
+          <p>Optimierte Java-Konfig, regelmäßige Backups, Latenz-Checks, asynchrone AutoSaves,
           abgestimmte Paper/Plugin-Settings & Schutz gegen DDoS/Crash-Exploits.</p>
-          <p style="margin-top:8px">Geplant: Region-Caching, „/lowfx“-Client-Empfehlungen & Bedrock-Proxy.</p>
+          <p style="margin-top:8px">Geplant: Region-Caching & Bedrock-Proxy.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- =======================
+       Update-News & Roadmap
+       (SMP-Teaser entfernt, Shop-Update drin)
+  ======================== -->
   <section id="roadmap">
     <div class="container">
-      <h2 class="section-title reveal">Update‑News & Roadmap</h2>
+      <h2 class="section-title reveal">Update-News & Roadmap</h2>
       <p class="section-sub reveal">Was als Nächstes ansteht – kurz & ehrlich.</p>
+
       <div class="timeline">
         <article class="news reveal">
           <span class="tag">Neu</span><span class="tag">Shop</span>
@@ -291,20 +371,14 @@
           Bitte lies die FAQ &amp; öffne nach dem Kauf ein Ticket im Discord für die Freischaltung.</p>
           <small>Update • Q3</small>
         </article>
-    
-        <article class="news reveal">
-          <span class="tag">Teaser</span><span class="tag">SMP</span>
-          <h4>Earth SMP – Vorbereitung läuft</h4>
-          <p>Wir arbeiten an einer Erde-inspirierten Map mit frischer Wirtschaft & Diplomatie‑Features.
-          Nationen, Handel, Grenzen – alles im Aufbau. Starttermin folgt im Discord.</p>
-          <small>Update • Q3</small>
-        </article>
+
         <article class="news reveal">
           <span class="tag">Event</span><span class="tag">PvP</span>
           <h4>Monatliche PvP-Cups</h4>
-          <p>Wechselnde Modi (Kit‑PvP, Duos, Bedwars-Runden). Preise & Ehrenrollen winken.</p>
+          <p>Wechselnde Modi (Kit-PvP, Duos, Bedwars-Runden). Preise & Ehrenrollen winken.</p>
           <small>Nächstes Datum: siehe #events</small>
         </article>
+
         <article class="news reveal">
           <span class="tag">Community</span>
           <h4>Creator-Programm</h4>
@@ -315,16 +389,20 @@
     </div>
   </section>
 
+  <!-- =======================
+       Leaderboard (Dummy)
+  ======================== -->
   <section id="leaderboard">
     <div class="container">
       <h2 class="section-title reveal">Leaderboard</h2>
       <p class="section-sub reveal">Wer steht ganz oben?</p>
+
       <div class="grid grid-3">
         <div class="card reveal">
           <h3>Minecraft Version</h3>
           <p>Unsere Server laufen aktuell auf der <strong>Java Edition 1.21.1</strong>.</p>
         </div>
-    
+
         <div class="card reveal">
           <h3>Saisonpunkte</h3>
           <ul class="rules">
@@ -333,6 +411,7 @@
             <li>3. BuilderPro – 150</li>
           </ul>
         </div>
+
         <div class="card reveal">
           <h3>Kill-Rangliste</h3>
           <ul class="rules">
@@ -341,6 +420,7 @@
             <li>3. BowMaster – 341</li>
           </ul>
         </div>
+
         <div class="card reveal">
           <h3>Baumeister</h3>
           <ul class="rules">
@@ -353,14 +433,62 @@
     </div>
   </section>
 
+  <!-- =======================
+       Team (neue Section)
+  ======================== -->
+  <section id="team">
+    <div class="container">
+      <h2 class="section-title reveal">Unser Team</h2>
+      <p class="section-sub reveal">Freundlich, aktiv und für dich da – ohne Bilder, schlicht & sauber.</p>
+
+      <div class="team-grid">
+        <!-- 1 -->
+        <div class="member reveal">
+          <div class="role">Adminmax – <span class="badge co">Co Owner</span></div>
+          <p>Organisation, Entscheidungen & Server-Infrastruktur.</p>
+        </div>
+        <!-- 2 -->
+        <div class="member reveal">
+          <div class="role">billig7553 – <span class="badge">Teamleitung</span></div>
+          <p>Team-Management, Abläufe & Support-Koordination.</p>
+        </div>
+        <!-- 3 -->
+        <div class="member reveal">
+          <div class="role">Nyx – <span class="badge head">Head Dev</span></div>
+          <p>Entwicklung, Plugins, Performance-Optimierung.</p>
+        </div>
+        <!-- 4 -->
+        <div class="member reveal">
+          <div class="role">Leon – <span class="badge admin">Admin</span></div>
+          <p>Server-Administration, Moderation & Events.</p>
+        </div>
+        <!-- 5 -->
+        <div class="member reveal">
+          <div class="role">Oli – <span class="badge mod">Head Mod</span></div>
+          <p>Moderation, Regeln & Community-Sicherheit.</p>
+        </div>
+        <!-- 6 -->
+        <div class="member reveal">
+          <div class="role">BaumeisterRyan – <span class="badge builder">Builder</span></div>
+          <p>Map-Design, Deko & Spielwelt-Verbesserungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================
+       Community
+  ======================== -->
   <section id="community">
     <div class="container">
       <h2 class="section-title reveal">Community</h2>
       <p class="section-sub reveal">Tritt unserem Discord bei und bleib mit allen Updates verbunden.</p>
-      <div class="socials reveal">
+
+      <div class="socials reveal" style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center">
         <a class="pill discord" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord beitreten</a>
         <a class="pill tiktok" href="https://www.tiktok.com/@tomschilllounge?_t=ZN-8ysfwEWTQDm&_r=1" target="_blank" rel="noopener">▶️ TikTok <span class="hint">@tomschilllounge</span></a>
       </div>
+
       <div class="card reveal" style="margin-top:22px">
         <h3>Für Streamer & Creator</h3>
         <p>Du streamst oder erstellst Clips? Melde dich im Discord für das <strong>Creator-Programm</strong> –
@@ -369,62 +497,74 @@
     </div>
   </section>
 
+  <!-- =======================
+       FAQ (erweitert)
+  ======================== -->
   <section id="faq">
     <div class="container">
       <h2 class="section-title reveal">FAQ</h2>
       <p class="section-sub reveal">Häufige Fragen – schnell beantwortet.</p>
+
       <div class="faq">
         <details class="reveal">
           <summary>Wie trete ich bei?</summary>
           <p>Öffne Minecraft (Java Edition) → Multiplayer → Server hinzufügen → IP: <code>minelegends.mc-game.xyz</code> eingeben → Beitreten.</p>
         </details>
+
         <details class="reveal">
           <summary>Java oder Bedrock?</summary>
-          <p>Aktuell <strong>Java</strong>. Wir arbeiten an Bedrock‑Unterstützung über Geyser/Proxy.
-          <strong> Geplante ETA:</strong> 1–2 Monate – danke für euer Verständnis!</p>
+          <p>Aktuell <strong>Java</strong>. Bedrock-Proxy ist geplant.</p>
         </details>
+
         <details class="reveal">
           <summary>Wer sind die Owner?</summary>
-          <p><strong>Adminmax</strong> (Owner) & <strong>Teufel45</strong> (Owner)</p>
+          <p><strong>Adminmax</strong> (Co Owner) & <strong>Teufel45</strong> (Owner)</p>
         </details>
+
         <details class="reveal">
           <summary>Regeln im Detail?</summary>
           <p>Respektvoll bleiben, keine Cheats, Bugs melden, Events respektieren, Support über Discord nutzen.</p>
         </details>
+
+        <details class="reveal">
+          <summary>Was muss ich beim Shop beachten?</summary>
+          <div class="content">
+            <p>Bitte beachte folgende Punkte beim Kauf im Shop:</p>
+            <ul>
+              <li><strong>Richtigen Ingame-Namen</strong> angeben (inkl. Groß-/Kleinschreibung).</li>
+              <li>Nach erfolgreicher Zahlung <strong>Ticket im Discord</strong> öffnen und Zahlungsbeleg (PayPal-ID) anhängen.</li>
+              <li>Freischaltung erfolgt manuell durch das Team (meist innerhalb von Minuten).</li>
+              <li>Digitale Güter sind in der Regel <strong>nicht erstattungsfähig</strong> (außer gesetzlich geregelt).</li>
+              <li>Bei Problemen kontaktiere den Support mit Transaktions-ID und Ingame-Namen.</li>
+            </ul>
+            <div class="note">Hinweis: Zahlungen laufen über PayPal. Wir speichern keine Zahlungsdaten.</div>
+          </div>
+        </details>
       </div>
     </div>
-  
-      <details class="reveal">
-        <summary>▶ Was muss ich beim Shop beachten?</summary>
-        <div class="content">
-          <p>Bitte beachte folgende Punkte beim Kauf im Shop:</p>
-          <ul>
-            <li><strong>Richtigen Ingame‑Namen</strong> angeben (inkl. Groß-/Kleinschreibung).</li>
-            <li>Nach erfolgreicher Zahlung <strong>Ticket im Discord</strong> öffnen und Zahlungsbeleg (PayPal‑ID) anhängen.</li>
-            <li>Freischaltung erfolgt normalerweise manuell durch das Team innerhalb weniger Minuten bis zu 1 Stunde.</li>
-            <li>Digitale Güter sind in der Regel <strong>nicht erstattungsfähig</strong> (außer gesetzlich geregelt).</li>
-            <li>Bei Problemen kontaktiere den Support mit Transaktions‑ID und Ingame‑Namen.</li>
-          </ul>
-          <div class="note">Hinweis: Zahlungen laufen über PayPal. Wir speichern keine Zahlungsdaten.</div>
-        </div>
-      </details>
-</section>
+  </section>
 
+  <!-- =======================
+       Kontakt
+  ======================== -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title reveal">Kontakt</h2>
       <div class="contact-block reveal">
         <div>Server-Adresse: <span class="badge-ip">minelegends.mc-game.xyz</span></div>
-        <div>Owner: <strong>Adminmax</strong> (Owner) & <strong>Teufel45</strong> (Owner)</div>
+        <div>Owner: <strong>Adminmax</strong> (Co Owner) & <strong>Teufel45</strong> (Owner)</div>
         <div>Discord: <a class="link-cta" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">Hier beitreten</a></div>
       </div>
     </div>
   </section>
 
+  <!-- =======================
+       Footer & Waves
+  ======================== -->
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
       <div>© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div>
-      <div style="opacity:.85">Made with ❤️ von der MineLegends‑Community.</div>
+      <div style="opacity:.85">Made with ❤️ von der MineLegends-Community.</div>
     </div>
   </footer>
 
@@ -437,6 +577,9 @@
 
   <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">✨ Join</a>
 
+  <!-- =======================
+       Scripts
+  ======================== -->
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
