@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MineLegends – Offizielle Website</title>
-  <meta name="description" content="MineLegends Minecraft-Server – PvP, Bedwars, Skyblock, Events, Discord-Community." />
+  <title>MineLegends – Official Website</title>
+  <meta name="description" content="MineLegends Minecraft Server – PvP, Bedwars, Skyblock, Events, Discord Community." />
 
   <style>
-    /* ===============================
+    /* ==============
        Theme & Base
-    =============================== */
+       ============== */
     :root{
       --bg-top:#070e22;
       --bg-mid:#0e1835;
@@ -24,6 +24,7 @@
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
       --ring:0 0 0 3px rgba(0,229,255,.25);
+      --max-width:1200px;
     }
     body.light{
       --bg-top:#f2f5fb;
@@ -39,7 +40,7 @@
       --shadow:0 10px 30px rgba(0,0,0,.12);
       --ring:0 0 0 3px rgba(0,119,255,.18);
     }
-    html, body{height:100%}
+    html,body{height:100%}
     html{scroll-behavior:smooth}
     body{
       margin:0;
@@ -49,616 +50,575 @@
       overflow-x:hidden;
       transition:background .35s ease,color .35s ease;
     }
-    *, *::before, *::after{box-sizing:border-box}
+    *,*::before,*::after{box-sizing:border-box}
     a{color:var(--accent-3); text-decoration:none}
-    a:focus-visible, button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
+    a:focus-visible,button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
     img{max-width:100%; height:auto; display:block}
+    .container{max-width:var(--max-width); margin:0 auto; padding:0 24px}
 
-    .container{max-width:1200px; margin-inline:auto; padding:0 24px}
-
-    /* ===============================
-       Header & Nav
-    =============================== */
+    /* Header / Nav */
     header{
       position:sticky; top:0; z-index:1000;
       background:rgba(3,7,20,.65); backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px}
-    .logo{display:flex; align-items:center; gap:14px; min-width:0}
-    .logo img{height:56px; width:auto; border-radius:12px}
-    .brand{display:flex; flex-direction:column; line-height:1.1}
-    .brand .name{font-weight:900; letter-spacing:.4px; color:var(--accent); font-size:18px; white-space:nowrap}
-    .brand .tag{color:var(--muted); font-size:12px; white-space:nowrap; opacity:.9}
-    .menu{display:flex; gap:22px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .menu a{color:var(--accent); font-weight:800; font-size:14px; padding:10px 8px; border-radius:10px; transition:transform .2s ease, opacity .2s ease}
-    .menu a:hover{transform:translateY(-1px); opacity:.95}
-    .cta-discord{background:var(--accent-2); color:#fff !important; padding:10px 14px; border-radius:12px; font-weight:900; box-shadow:0 10px 22px rgba(88,101,242,.35)}
-    .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer; transition:transform .2s ease, background .2s ease}
-    .mode-toggle:hover{background:rgba(255,255,255,.06); transform:translateY(-1px)}
-
-    /* Shop button in nav */
+    .logo{display:flex; align-items:center; gap:14px}
+    .logo img{height:56px; width:auto; border-radius:10px}
+    .brand{display:flex; flex-direction:column; line-height:1.05}
+    .brand .name{font-weight:900; color:var(--accent); font-size:18px}
+    .brand .tag{color:var(--muted); font-size:12px}
+    .menu{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+    .menu a{color:var(--accent); font-weight:800; padding:8px 10px; border-radius:8px}
     .btn-shop{
-      display:inline-flex;align-items:center;gap:.5ch;
-      padding:10px 14px;border-radius:12px;
-      background:linear-gradient(90deg,#00e5ff,#00d9ff);
-      color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);
+      display:inline-flex;align-items:center;gap:.5ch;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(90deg,#00e5ff,#00d9ff);color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);
       box-shadow:0 8px 20px rgba(0,217,255,.12)
     }
-    .btn-shop:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .cta-discord{background:var(--accent-2); color:#fff; padding:10px 12px; border-radius:10px; font-weight:900}
 
-    /* ===============================
-       Hero
-    =============================== */
-    .hero{position:relative; isolation:isolate; padding:72px 0 120px}
-    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:center}
-    .hero h1{margin:0 0 14px; color:var(--accent); font-size:clamp(36px, 5vw, 66px); line-height:1.03; text-shadow:0 10px 30px rgba(255,210,0,.12)}
-    .lead{font-size:clamp(16px, 1.8vw, 20px); color:var(--muted); margin:0 0 20px}
-    .actions{display:flex; gap:14px; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; font-weight:900; background:#1a2b5a; color:#fff; border:1px solid rgba(255,255,255,.08); cursor:pointer; transition:transform .15s ease, filter .15s ease, box-shadow .15s ease}
-    .btn:hover{transform:translateY(-1px) scale(1.02); filter:brightness(1.03); box-shadow:0 10px 24px rgba(0,0,0,.30)}
-    .btn-ghost{background:#10234e}
-    .badge-ip{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; padding:10px 12px; border-radius:12px; background:#0e214d; border:1px dashed rgba(255,255,255,.12); letter-spacing:.2px; font-weight:700}
+    .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer}
+    .mode-toggle:hover{background:rgba(255,255,255,.04)}
 
-    /* ===============================
-       Sections & Cards
-    =============================== */
-    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
-    .card:hover{transform:translateY(-4px); background:#122659cc}
-    .card h3{margin:6px 0 6px; color:#fff}
+    /* Hero */
+    .hero{padding:72px 0 80px}
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center}
+    .hero h1{margin:0 0 12px; color:var(--accent); font-size:clamp(34px, 5vw, 64px); line-height:1.02}
+    .lead{font-size:clamp(15px,1.6vw,18px); color:var(--muted); margin:0 0 18px}
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; font-weight:900; background:#152545; color:#fff; border:1px solid rgba(255,255,255,.06); cursor:pointer}
+    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,.06)}
+    .badge-ip{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; padding:8px 10px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.12); font-weight:700}
+
+    /* Sections & Cards */
+    section{padding:80px 0; position:relative; z-index:5}
+    h2.section-title{text-align:left; font-size:28px; color:var(--accent); margin:0 0 12px}
+    .section-sub{color:var(--muted); margin-bottom:20px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 10px; color:#fff}
     .card p{margin:0; color:var(--muted)}
-    section{padding:90px 0; position:relative; z-index:5}
-    h2.section-title{text-align:center; font-size:clamp(28px, 4vw, 44px); color:var(--accent); margin:0 0 12px}
-    .section-sub{text-align:center; color:var(--muted); margin-bottom:30px}
-    .grid{display:grid; gap:22px}
-    .grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
-    .grid-4{grid-template-columns:repeat(4, minmax(0,1fr))}
-    @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-4{grid-template-columns:repeat(2, 1fr)}}
-    @media (max-width:720px){ .grid-3{grid-template-columns:1fr} .grid-4{grid-template-columns:1fr}}
-    .rules{list-style:none; margin:0; padding:0; display:grid; gap:10px}
-    .rules li{padding:12px 14px; border-radius:12px; background:#0f214f; border:1px solid rgba(255,255,255,.07)}
-    .feature-ico{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#162b5a;color:var(--accent);font-size:22px}
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:720px){ .grid-3{grid-template-columns:1fr} }
 
-    /* ===============================
-       Carousel & Timeline
-    =============================== */
-    .carousel{display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 2px 6px 2px}
-    .slide{min-width:86%; scroll-snap-align:center; background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px}
+    /* ribbon */
+    .ribbon{position:relative; height:12px; background:#0a1640; border-radius:999px; overflow:hidden}
+    .ribbon>i{position:absolute; left:0; top:0; bottom:0; width:35%; background:linear-gradient(90deg,#6ee7ff,#8ab6ff); border-radius:999px; animation:rb 18s linear infinite}
+    @keyframes rb { 0%{left:0;width:25%} 50%{left:65%;width:35%} 100%{left:0;width:25%} }
 
-    .timeline{display:grid; gap:16px}
-    .news{padding:18px; border-radius:14px; background:#112557; border:1px solid rgba(255,255,255,.08)}
-    .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:20px; background:#0e214d; color:var(--accent-3); margin-right:8px}
-    .news h4{margin:10px 0 8px; color:#fff}
-    .news small{color:var(--muted)}
+    /* Timeline / news */
+    .timeline{display:grid; gap:14px}
+    .news{padding:16px; border-radius:12px; background:#11274a; border:1px solid rgba(255,255,255,.04)}
+    .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:14px; background:#0e214d; color:var(--accent-3); margin-right:8px}
 
-    /* ===============================
-       Team
-    =============================== */
-    .team-grid{display:grid; gap:18px; grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    /* Team */
+    .team-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:620px){ .team-grid{grid-template-columns:1fr} }
-    .member{
-      display:grid; gap:8px; padding:18px; border-radius:16px;
-      background:linear-gradient(180deg,#10224c,#0b1a3e);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow)
-    }
+    .member{padding:16px; border-radius:12px; background:linear-gradient(180deg,#0f2346,#0a1632); border:1px solid rgba(255,255,255,.04)}
     .member .role{font-weight:900; color:var(--accent)}
-    .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; background:#0f214f; border:1px solid rgba(255,255,255,.07)}
-    .badge.co{background:#2a1d00; color:#ffd571; border:1px solid #8a5}
+    .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; margin-left:8px}
+    .badge.co{background:#2a1d00; color:#ffd571}
     .badge.head{background:#0b2a34; color:#7be9ff}
     .badge.admin{background:#2a0b14; color:#ff9aa5}
     .badge.mod{background:#1b2a0b; color:#c8ff91}
     .badge.builder{background:#1d1d1d; color:#bdbdbd}
+    .badge.support{background:#2b1b39; color:#fff899}
+    .badge.creator{background:#2a0055; color:#ffd6ff}
 
-    /* ===============================
-       Contact & Footer
-    =============================== */
-    .contact-block{display:grid; gap:16px; justify-items:center; background:linear-gradient(180deg, #0f214f, #081737); padding:26px; border-radius:18px; border:1px solid rgba(255,255,255,.08)}
-    .link-cta{color:var(--accent-3); font-weight:900; text-decoration:underline}
-    .link-cta:hover{filter:brightness(1.1)}
-    footer{padding:40px 0; background:#060b1a; border-top:1px solid rgba(255,255,255,.06); color:#a8b5d6}
+    /* FAQ */
+    .faq details{background:#0d2345; padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid rgba(255,255,255,.03)}
+    .faq summary{cursor:pointer; font-weight:800; color:#fff}
 
-    /* ===============================
-       Waves Background
-    =============================== */
-    .waves{position:fixed; left:0; right:0; bottom:-1px; height:20vh; z-index:0; overflow:hidden}
-    .waves svg{width:200%; height:100%; animation:waveMove 12s linear infinite}
-    .w1{fill:rgba(88,101,242,.45)}
-    .w2{fill:rgba(0,229,255,.18)}
-    @keyframes waveMove{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+    /* Contact & footer */
+    .contact-block{display:grid; gap:12px; padding:18px; border-radius:12px; background:linear-gradient(180deg,#0f214f,#071229); border:1px solid rgba(255,255,255,.04)}
+    footer{padding:28px 0; background:#050914; color:#a8b5d6}
 
-    /* ===============================
-       Reveal Animations & Mobile Join
-    =============================== */
-    .reveal{opacity:0; transform:translateY(26px); transition:all .9s ease}
+    /* reveal */
+    .reveal{opacity:0; transform:translateY(18px); transition:all .7s ease}
     .reveal.show{opacity:1; transform:none}
-    .sticky-join{display:none}
-    @media (max-width:768px){
-      .sticky-join{display:block; position:fixed; bottom:20px; right:20px; background:var(--accent-2); color:#fff; padding:14px 20px; border-radius:50px; font-weight:bold; box-shadow:0 8px 20px rgba(0,0,0,.4); z-index:2000}
-    }
-
-    /* Fun progress ribbon */
-    .ribbon {
-      position:relative; height:12px; background:#0a1640; border:1px solid rgba(255,255,255,.08); border-radius:999px; overflow:hidden; box-shadow:inset 0 1px 3px rgba(0,0,0,.4);
-      margin-top:6px
-    }
-    .ribbon > i {
-      position:absolute; left:0; top:0; bottom:0; width:35%; background:linear-gradient(90deg, #6ee7ff, #8ab6ff); border-radius:999px; animation:rb 18s linear infinite;
-    }
-    @keyframes rb {
-      0%{left:0; width:25%} 50%{left:65%; width:35%} 100%{left:0; width:25%}
-    }
   </style>
 </head>
-
 <body>
-  <!-- =======================
-       Header
-  ======================== -->
+  <!-- Header -->
   <header>
     <div class="container nav">
-      <div class="logo">
-        <img src="minelegends-logo.png" alt="MineLegends Logo" />
+      <div style="display:flex;align-items:center;gap:14px">
+        <img src="minelegends-logo.png" alt="MineLegends Logo" style="height:56px">
         <div class="brand">
-          <span class="name">MineLegends</span>
-          <span class="tag">PvP • Skyblock • Events</span>
+          <div class="name">MineLegends</div>
+          <div class="tag">PvP • Bedwars • Skyblock • Events</div>
         </div>
       </div>
-      <nav class="menu">
+
+      <nav class="menu" aria-label="Main Navigation">
         <a href="#home">Home</a>
-        <a href="#about">Über uns</a>
+        <a href="#about">About</a>
         <a href="#features">Features</a>
-        <a href="#server">Server-Infos</a>
-        <a href="#roadmap">News</a>
-        <a href="#leaderboard">Leaderboard</a>
+        <a href="#server">Server Info</a>
+        <a href="#news">News</a>
         <a href="#team">Team</a>
+        <a href="#creators">Creators</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">Kontakt</a>
-        <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" class="btn-shop" title="Zum Shop">🛒 Shop</a>
+        <a href="#contact">Contact</a>
+        <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" class="btn-shop" title="Shop">🛒 Shop</a>
         <a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord</a>
-        <button id="modeToggle" class="mode-toggle" type="button" aria-label="Dark/Light Mode umschalten" title="Dark/Light Mode">🌙</button>
+        <button id="modeToggle" class="mode-toggle" title="Toggle dark/light mode">🌙</button>
       </nav>
     </div>
   </header>
 
-  <!-- =======================
-       Hero
-  ======================== -->
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="container hero-grid reveal">
       <div>
-        <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
-        <p class="lead">
-          Dein Zuhause für epische Abenteuer, faire Competition und kreative Baukunst.
-          Bei uns warten <strong>PvP-Events</strong>, <strong>Bedwars</strong>, <strong>Skyblock</strong> und regelmäßige Community-Events.
-        </p>
+        <h1>Welcome to <span style="color:var(--accent)">MineLegends</span></h1>
+        <p class="lead">Your home for epic adventures, fair competition and creative building. Play PvP, Bedwars and Skyblock, join community events and find your place in our friendly community.</p>
+
         <div class="actions">
           <span class="badge-ip" id="ipBadge">IP: minelegends.mc-game.xyz</span>
-          <button class="btn" id="copyBtn" type="button" aria-label="IP kopieren" title="IP kopieren">📋 IP kopieren</button>
-          <a class="btn btn-ghost" href="#features">🚀 Jetzt Features entdecken</a>
-          <a class="btn" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Zum Discord</a>
+          <button class="btn" id="copyBtn" title="Copy IP">📋 Copy IP</button>
+          <a class="btn btn-ghost" href="#features">🚀 Explore Features</a>
+          <a class="btn" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Join Discord</a>
         </div>
-        <div id="serverStatus" class="status" style="margin-top:18px; font-weight:900">⏳ Lade Status…</div>
+
+        <div id="serverStatus" style="margin-top:12px; font-weight:900; color:var(--muted)">⏳ Loading server status…</div>
       </div>
 
       <div class="card">
-        <h3>Warum MineLegends?</h3>
-        <p>Wir kombinieren das Beste aus Minecraft mit eigenen Ideen: faire Moderation, regelmäßige Updates, starke Performance und Events,
-          die Spieler zusammenbringen. Ob Solo, mit Freunden oder als Creator – hier kannst du bauen, kämpfen, handeln, entdecken und Geschichten schreiben.</p>
-        <ul class="rules" style="margin-top:14px">
-          <li>✅ Respektvolle Community & aktives Team</li>
-          <li>✅ Lebendige Wirtschaft & spannende Progression</li>
-          <li>✅ Stabile Server & kurze Downtimes</li>
+        <h3>Why MineLegends?</h3>
+        <p>We combine fair moderation, regular updates, strong performance and creative events to give players a place to play, build and compete. Solo player, builder or streamer — everyone is welcome.</p>
+
+        <ul style="margin-top:12px; color:var(--muted); padding-left:18px">
+          <li>✅ Respectful community & active staff</li>
+          <li>✅ Balanced gameplay & meaningful progression</li>
+          <li>✅ Stable servers & quick support</li>
         </ul>
       </div>
     </div>
-
-    <div class="container" style="margin-top:28px">
-      <div class="carousel reveal" aria-label="Showcase">
-        <div class="slide"><h3>⚔️ PvP-Turniere</h3><p>Monatliche Cups mit Preisen & Ehrenrollen.</p></div>
-        <div class="slide"><h3>🏝️ Skyblock Progression</h3><p>Wirtschaft, Insel-Upgrades und Herausforderungen.</p></div>
-        <div class="slide"><h3>🛒 Neuer Shop</h3><p>Ränge, Items & Extras – direkt online kaufen. <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">Zum Shop</a></p></div>
-      </div>
-    </div>
   </section>
 
-  <!-- =======================
-       About
-  ======================== -->
+  <!-- ABOUT (long description >= 300 words) -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title reveal">Über uns</h2>
-      <p class="section-sub reveal">Die Vision hinter MineLegends – von Spielern für Spieler.</p>
+      <h2 class="section-title reveal">About MineLegends</h2>
+      <p class="section-sub reveal">Long description — what MineLegends stands for (detailed).</p>
 
-      <div class="card reveal" style="max-width:980px; margin-inline:auto">
-        <h3 style="margin-top:0">Von den Anfängen bis heute</h3>
-        <p>Ich bin <strong>Teufel45</strong> – und MineLegends ist mein „Warum“. Nicht, weil ich unbedingt
-        den größten Server bauen wollte, sondern weil mir ein Ort gefehlt hat, an dem Fairness, Mut zum Ausprobieren
-        und ehrliche Community mehr zählen als Paywalls und Ego. Wir haben mit wenig angefangen: ein paar Freunde, eine Welt,
-        ein paar verrückte Ideen. Daraus ist ein Projekt geworden, das uns alle zusammenwachsen lässt.</p>
-
-        <h3>Meine Motivation</h3>
-        <p>Ich mag Server, die fordern, aber nicht frustrieren; die überraschen, aber nicht überladen; die dir
-        Raum geben, deine Geschichte zu schreiben – egal ob du der stillste Builder, die lauteste PvP-Legende
-        oder der verrückteste Redstone-Tüftler bist. Genau das bauen wir – Schritt für Schritt, Update für Update.</p>
-
-        <h3>Warum MineLegends mehr ist als nur ein Server</h3>
-        <p>Wir hören zu. Ideen kommen aus der Community, nicht aus einem Elfenbeinturm. Balance-Patches entstehen,
-        weil jemand nachts um zwei einen guten Punkt hatte. Und wenn etwas schiefgeht, sagen wir das. Kein großes
-        Marketing-Blabla – einfach ehrlich, menschlich, gemeinsam. Wenn dich das anspricht, bist du hier richtig.</p>
-
-        <p><em>Danke, dass du Teil davon bist – oder es vielleicht bald wirst.</em> — Teufel45</p>
+      <div class="card reveal" style="margin-top:14px">
+        <h3>MineLegends — A Community-First Minecraft Network</h3>
+        <p style="color:var(--muted); line-height:1.6">
+          MineLegends is a player-focused Minecraft network built to bring people together through shared challenges, creative projects and memorable events. Our goal is simple: create a stable, fun and fair environment where both casual players and more competitive ones can find their home. We believe that a great server is more than just plugins and performance — it’s a community that supports creativity, healthy competition and friendly behaviour. Our team carefully curates features, events and updates so that every player can find something they enjoy: whether that’s building expansive city-scapes, mastering PvP mechanics, or working together in Skyblock economies. We place a strong emphasis on quality-of-life improvements: automatic moderation tools to keep the community safe, robust backups to prevent data loss and optimized configurations to ensure smooth gameplay even on high-population days.
+        </p>
+        <p style="color:var(--muted); line-height:1.6; margin-top:8px">
+          Our shop gives players the option to support the server and unlock cosmetic perks, ranks and small convenience items. Purchases are processed via PayPal, and our team handles rank/item delivery quickly after payment — please open a support ticket in Discord if automatic delivery is needed. We are committed to transparency and fairness: balance changes and updates are discussed with the community, and feedback is actively read and acted upon. From seasonal events and PvP cups to community build contests and collaborative projects, MineLegends aims to be a home for creators, competitors and friends. Join our Discord for announcements, support and ways to get involved — and if you stream or make videos, check our Creator program for special perks and early access opportunities. We’re excited to grow with you — see you in-game!
+        </p>
+        <p style="color:var(--muted); font-style:italic; margin-top:8px">IP: minelegends.mc-game.xyz | Version: 1.20+</p>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Features
-  ======================== -->
+  <!-- FEATURES -->
   <section id="features">
     <div class="container">
       <h2 class="section-title reveal">Features</h2>
-      <p class="section-sub reveal">Alles, was Spaß macht – und noch ein bisschen mehr.</p>
+      <p class="section-sub reveal">What you can expect on the network</p>
 
-      <div class="ribbon reveal" aria-hidden="true"><i></i></div>
+      <div class="ribbon reveal" style="margin-top:8px"><i></i></div>
 
-      <div class="grid grid-3" style="margin-top:20px">
-        <div class="card reveal"><div class="feature-ico">⚔️</div><h3>PvP & Events</h3><p>Turniere, Ranglisten, Kit-Abende & Special-Modes.</p></div>
-        <div class="card reveal"><div class="feature-ico">🛡️</div><h3>Bedwars</h3><p>Schnelle Runden, sauberes Balancing, clevere Maps.</p></div>
-        <div class="card reveal"><div class="feature-ico">🏝️</div><h3>Skyblock</h3><p>Progression, Wirtschaft & Herausforderungen.</p></div>
-        <div class="card reveal"><div class="feature-ico">🤝</div><h3>Community-Events</h3><p>Abstimmungen, Vorschläge, Creator-Slots & Giveaways.</p></div>
-        <div class="card reveal"><div class="feature-ico">🧰</div><h3>QoL & Sicherheit</h3><p>Auto-Mod, Logging, DDoS-Schutz & Backups.</p></div>
-        <div class="card reveal"><div class="feature-ico">🛒</div><h3>Shop</h3><p>Ränge & Extras – <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">jetzt ansehen</a>.</p></div>
+      <div class="grid grid-3" style="margin-top:18px">
+        <div class="card reveal"><h3>⚔ PvP & Events</h3><p style="color:var(--muted)">Tournaments, ranking seasons and special modes.</p></div>
+        <div class="card reveal"><h3>🛡 Bedwars</h3><p style="color:var(--muted)">Fast matches, custom maps and fair balancing.</p></div>
+        <div class="card reveal"><h3>🏝 Skyblock</h3><p style="color:var(--muted)">Economy, island progression and challenges.</p></div>
+        <div class="card reveal"><h3>🛠 QoL Tools</h3><p style="color:var(--muted)">Auto-moderation, backups and anti-DDoS protection.</p></div>
+        <div class="card reveal"><h3>🛒 Shop</h3><p style="color:var(--muted)">Ranks, cosmetics and small extras — <a href="https://mineladen.netlify.app/" target="_blank">visit the shop</a>.</p></div>
+        <div class="card reveal"><h3>🎉 Community</h3><p style="color:var(--muted)">Contests, giveaways and creator events.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Server Infos
-  ======================== -->
+  <!-- SERVER INFO -->
   <section id="server">
     <div class="container">
-      <h2 class="section-title reveal">Server-Infos</h2>
-      <p class="section-sub reveal">Alles, was du zum Start brauchst.</p>
+      <h2 class="section-title reveal">Server Info</h2>
+      <p class="section-sub reveal">Everything you need to connect</p>
 
-      <div class="grid grid-3">
+      <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:18px">
         <div class="card reveal">
-          <h3>Minecraft Version</h3>
-          <p>Unsere Server laufen aktuell auf der <strong>Java Edition 1.21.1</strong>.</p>
+          <h3>Connection</h3>
+          <p style="color:var(--muted)"><strong>Address:</strong> <span class="badge-ip">minelegends.mc-game.xyz</span></p>
+          <p style="color:var(--muted)"><strong>Version:</strong> Java Edition 1.21.1+</p>
+          <p style="color:var(--muted)"><button class="btn" onclick="copyIP()">Copy IP</button></p>
         </div>
 
         <div class="card reveal">
-          <h3>Adresse</h3>
-          <p class="badge-ip">minelegends.mc-game.xyz</p>
-          <button class="btn" onclick="copyIP()" type="button">📋 IP kopieren</button>
-        </div>
-
-        <div class="card reveal">
-          <h3>Regeln (Kurz)</h3>
-          <ul class="rules">
-            <li>Respektvoller Umgang · kein Griefing/Scamming</li>
-            <li>Keine Hacks, Cheats, Exploits</li>
-            <li>Werbung nur mit Erlaubnis</li>
-          </ul>
-        </div>
-
-        <div class="card reveal">
-          <h3>Performance & Extras</h3>
-          <p>Optimierte Java-Konfig, regelmäßige Backups, Latenz-Checks, asynchrone AutoSaves,
-          abgestimmte Paper/Plugin-Settings & Schutz gegen DDoS/Crash-Exploits.</p>
-          <p style="margin-top:8px">Geplant: Region-Caching & Bedrock-Proxy.</p>
+          <h3>Performance & Security</h3>
+          <p style="color:var(--muted)">Optimized server configuration, scheduled backups, latency checks, tuned Paper settings and protections against DDoS & common crash exploits.</p>
+          <p style="color:var(--muted); margin-top:8px"><strong>Planned:</strong> region caching and Bedrock proxy support.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Update-News & Roadmap
-       (SMP-Teaser entfernt, Shop-Update drin)
-  ======================== -->
-  <section id="roadmap">
+  <!-- NEWS & ROADMAP (SMP teaser removed, shop added) -->
+  <section id="news">
     <div class="container">
-      <h2 class="section-title reveal">Update-News & Roadmap</h2>
-      <p class="section-sub reveal">Was als Nächstes ansteht – kurz & ehrlich.</p>
+      <h2 class="section-title reveal">Update News & Roadmap</h2>
+      <p class="section-sub reveal">What’s coming next — short & honest.</p>
 
       <div class="timeline">
         <article class="news reveal">
-          <span class="tag">Neu</span><span class="tag">Shop</span>
-          <h4>🛒 MineLegends Shop jetzt online</h4>
-          <p>Unser offizieller Shop ist ab sofort verfügbar: <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">Zum Shop</a>.
-          Dort kannst du Ränge (VIP, VIP+, Mystery, Legendary, Mythic), Items und Extras (XP-Booster, Fly, Kit God) erwerben.
-          Bitte lies die FAQ &amp; öffne nach dem Kauf ein Ticket im Discord für die Freischaltung.</p>
-          <small>Update • Q3</small>
+          <span class="tag">New</span>
+          <h4>🛒 Official Shop is Online</h4>
+          <p style="color:var(--muted)">Our official shop is now live. Visit: <a href="https://mineladen.netlify.app/" target="_blank">Shop</a>. You can purchase ranks (VIP, VIP+, Mystery, Legendary, Mythic), items and extras such as XP boosters, Fly time and Kit God. After purchase, open a support ticket in Discord with your transaction proof for manual verification and delivery.</p>
+          <small style="color:var(--muted)">Update · Q3</small>
         </article>
 
         <article class="news reveal">
           <span class="tag">Event</span><span class="tag">PvP</span>
-          <h4>Monatliche PvP-Cups</h4>
-          <p>Wechselnde Modi (Kit-PvP, Duos, Bedwars-Runden). Preise & Ehrenrollen winken.</p>
-          <small>Nächstes Datum: siehe #events</small>
+          <h4>Monthly PvP Cups</h4>
+          <p style="color:var(--muted)">Various modes (Kit PvP, Duos, Bedwars). Prizes and titles to be won.</p>
+          <small style="color:var(--muted)">See #events in Discord for dates</small>
         </article>
 
         <article class="news reveal">
           <span class="tag">Community</span>
-          <h4>Creator-Programm</h4>
-          <p>Streamer & TikToker erhalten Early-Infos, Event-Slots und Shoutouts. Bewerbung über Discord.</p>
-          <small>Neu</small>
+          <h4>Creator Program</h4>
+          <p style="color:var(--muted)">Streamers and creators can apply for early info, event slots and shoutouts. Apply via Discord.</p>
+          <small style="color:var(--muted)">New</small>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Leaderboard (Dummy)
-  ======================== -->
+  <!-- LEADERBOARD -->
   <section id="leaderboard">
     <div class="container">
       <h2 class="section-title reveal">Leaderboard</h2>
-      <p class="section-sub reveal">Wer steht ganz oben?</p>
+      <p class="section-sub reveal">Who's on top?</p>
 
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <h3>Minecraft Version</h3>
-          <p>Unsere Server laufen aktuell auf der <strong>Java Edition 1.21.1</strong>.</p>
-        </div>
-
-        <div class="card reveal">
-          <h3>Saisonpunkte</h3>
-          <ul class="rules">
-            <li>1. Spieler123 – 250</li>
-            <li>2. CreeperKing – 180</li>
-            <li>3. BuilderPro – 150</li>
-          </ul>
-        </div>
-
-        <div class="card reveal">
-          <h3>Kill-Rangliste</h3>
-          <ul class="rules">
-            <li>1. PvPGod – 412</li>
-            <li>2. QuickStrafe – 369</li>
-            <li>3. BowMaster – 341</li>
-          </ul>
-        </div>
-
-        <div class="card reveal">
-          <h3>Baumeister</h3>
-          <ul class="rules">
-            <li>1. ArchiSteve – 95 Sterne</li>
-            <li>2. RedstonePro – 90 Sterne</li>
-            <li>3. TerraFormer – 86 Sterne</li>
-          </ul>
-        </div>
+      <div class="grid grid-3" style="margin-top:14px">
+        <div class="card reveal"><h3>Season Points</h3><p style="color:var(--muted)">1. Player123 — 250<br>2. CreeperKing — 180<br>3. BuilderPro — 150</p></div>
+        <div class="card reveal"><h3>Kill Rankings</h3><p style="color:var(--muted)">1. PvPGod — 412<br>2. QuickStrafe — 369<br>3. BowMaster — 341</p></div>
+        <div class="card reveal"><h3>Builders</h3><p style="color:var(--muted)">1. ArchiSteve — 95 stars<br>2. RedstonePro — 90 stars<br>3. TerraFormer — 86 stars</p></div>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Team (neue Section)
-  ======================== -->
+  <!-- TEAM -->
   <section id="team">
     <div class="container">
-      <h2 class="section-title reveal">Unser Team</h2>
-      <p class="section-sub reveal">Freundlich, aktiv und für dich da – ohne Bilder, schlicht & sauber.</p>
+      <h2 class="section-title reveal">Our Team</h2>
+      <p class="section-sub reveal">Friendly, active and here to help — without images, clean layout.</p>
 
-      <div class="team-grid">
-        <!-- 1 -->
+      <div class="team-grid" style="margin-top:12px">
         <div class="member reveal">
-          <div class="role">Adminmax – <span class="badge co">Co Owner</span></div>
-          <p>Organisation, Entscheidungen & Server-Infrastruktur.</p>
+          <div class="role">Adminmax — <span class="badge co">Co Owner</span></div>
+          <p style="color:var(--muted)">Organization, decisions & server infrastructure.</p>
         </div>
-        <!-- 2 -->
+
         <div class="member reveal">
-          <div class="role">billig7553 – <span class="badge">Teamleitung</span></div>
-          <p>Team-Management, Abläufe & Support-Koordination.</p>
+          <div class="role">billig7553 — <span class="badge">Team Lead</span></div>
+          <p style="color:var(--muted)">Team management and coordination of support.</p>
         </div>
-        <!-- 3 -->
+
         <div class="member reveal">
-          <div class="role">Nyx – <span class="badge head">Head Dev</span></div>
-          <p>Entwicklung, Plugins, Performance-Optimierung.</p>
+          <div class="role">Nyx — <span class="badge head">Head Dev</span></div>
+          <p style="color:var(--muted)">Development, plugins and performance optimization.</p>
         </div>
-        <!-- 4 -->
+
         <div class="member reveal">
-          <div class="role">Leon – <span class="badge admin">Admin</span></div>
-          <p>Server-Administration, Moderation & Events.</p>
+          <div class="role">Leon — <span class="badge admin">Admin</span></div>
+          <p style="color:var(--muted)">Administration, moderation & events.</p>
         </div>
-        <!-- 5 -->
+
         <div class="member reveal">
-          <div class="role">Oli – <span class="badge mod">Head Mod</span></div>
-          <p>Moderation, Regeln & Community-Sicherheit.</p>
+          <div class="role">So Oli — <span class="badge admin">Head Admin</span></div>
+          <p style="color:var(--muted)">Server administration, rules & event management.</p>
         </div>
-        <!-- 6 -->
+
         <div class="member reveal">
-          <div class="role">BaumeisterRyan – <span class="badge builder">Builder</span></div>
-          <p>Map-Design, Deko & Spielwelt-Verbesserungen.</p>
+          <div class="role">BaumeisterRyan — <span class="badge builder">Builder</span></div>
+          <p style="color:var(--muted)">Map design and decorations.</p>
+        </div>
+
+        <div class="member reveal">
+          <div class="role">Tiger — <span class="badge mod">Moderator</span></div>
+          <p style="color:var(--muted)">Community moderation and enforcement.</p>
+        </div>
+
+        <div class="member reveal">
+          <div class="role">Arthur — <span class="badge builder">Head Builder</span></div>
+          <p style="color:var(--muted)">Overseeing large-scale builds and projects.</p>
+        </div>
+
+        <div class="member reveal">
+          <div class="role">Motoxmo — <span class="badge support">Supporter</span></div>
+          <p style="color:var(--muted)">Support tickets, helping players with issues.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Community
-  ======================== -->
-  <section id="community">
+  <!-- CREATORS -->
+  <section id="creators">
     <div class="container">
-      <h2 class="section-title reveal">Community</h2>
-      <p class="section-sub reveal">Tritt unserem Discord bei und bleib mit allen Updates verbunden.</p>
+      <h2 class="section-title reveal">Content Creators</h2>
+      <p class="section-sub reveal">Our streamers and video creators supporting the server.</p>
 
-      <div class="socials reveal" style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center">
-        <a class="pill discord" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord beitreten</a>
-        <a class="pill tiktok" href="https://www.tiktok.com/@tomschilllounge?_t=ZN-8ysfwEWTQDm&_r=1" target="_blank" rel="noopener">▶️ TikTok <span class="hint">@tomschilllounge</span></a>
-      </div>
+      <div class="team-grid" style="margin-top:12px">
+        <div class="member reveal">
+          <div class="role">Tobi — <span class="badge creator">Creator</span></div>
+          <p style="color:var(--muted)">Streaming, community content, and event coverage.</p>
+        </div>
 
-      <div class="card reveal" style="margin-top:22px">
-        <h3>Für Streamer & Creator</h3>
-        <p>Du streamst oder erstellst Clips? Melde dich im Discord für das <strong>Creator-Programm</strong> –
-        Early-Access-Infos, Event-Slots, Shoutouts & spezielle Rollen.</p>
+        <div class="member reveal">
+          <div class="role">Tim — <span class="badge creator">Creator</span></div>
+          <p style="color:var(--muted)">Gameplay videos and tutorials.</p>
+        </div>
+
+        <div class="member reveal">
+          <div class="role">Jean — <span class="badge creator">Creator</span></div>
+          <p style="color:var(--muted)">Live streams and highlights.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       FAQ (erweitert)
-  ======================== -->
+  <!-- FAQ -->
   <section id="faq">
     <div class="container">
       <h2 class="section-title reveal">FAQ</h2>
-      <p class="section-sub reveal">Häufige Fragen – schnell beantwortet.</p>
+      <p class="section-sub reveal">Common questions answered quickly.</p>
 
       <div class="faq">
         <details class="reveal">
-          <summary>Wie trete ich bei?</summary>
-          <p>Öffne Minecraft (Java Edition) → Multiplayer → Server hinzufügen → IP: <code>minelegends.mc-game.xyz</code> eingeben → Beitreten.</p>
+          <summary>How do I join?</summary>
+          <p style="color:var(--muted)">Open Minecraft (Java) → Multiplayer → Add Server → IP: <code>minelegends.mc-game.xyz</code> → Join.</p>
         </details>
 
         <details class="reveal">
-          <summary>Java oder Bedrock?</summary>
-          <p>Aktuell <strong>Java</strong>. Bedrock-Proxy ist geplant.</p>
+          <summary>Is Bedrock supported?</summary>
+          <p style="color:var(--muted)">Currently Java only. Bedrock proxy is planned.</p>
         </details>
 
         <details class="reveal">
-          <summary>Wer sind die Owner?</summary>
-          <p><strong>Adminmax</strong> (Co Owner) & <strong>Teufel45</strong> (Owner)</p>
+          <summary>Who are the owners?</summary>
+          <p style="color:var(--muted)"><strong>Adminmax</strong> (Co Owner) &amp; <strong>Teufel45</strong> (Owner)</p>
         </details>
 
         <details class="reveal">
-          <summary>Regeln im Detail?</summary>
-          <p>Respektvoll bleiben, keine Cheats, Bugs melden, Events respektieren, Support über Discord nutzen.</p>
-        </details>
-
-        <details class="reveal">
-          <summary>Was muss ich beim Shop beachten?</summary>
-          <div class="content">
-            <p>Bitte beachte folgende Punkte beim Kauf im Shop:</p>
+          <summary>Shop — what to know?</summary>
+          <div style="color:var(--muted)">
             <ul>
-              <li><strong>Richtigen Ingame-Namen</strong> angeben (inkl. Groß-/Kleinschreibung).</li>
-              <li>Nach erfolgreicher Zahlung <strong>Ticket im Discord</strong> öffnen und Zahlungsbeleg (PayPal-ID) anhängen.</li>
-              <li>Freischaltung erfolgt manuell durch das Team (meist innerhalb von Minuten).</li>
-              <li>Digitale Güter sind in der Regel <strong>nicht erstattungsfähig</strong> (außer gesetzlich geregelt).</li>
-              <li>Bei Problemen kontaktiere den Support mit Transaktions-ID und Ingame-Namen.</li>
+              <li>✅ Provide your exact in-game name (case-sensitive).</li>
+              <li>✅ After payment, open a ticket in Discord and attach the payment proof (PayPal ID).</li>
+              <li>✅ Delivery is usually manual and takes a few minutes (max ~1 hour).</li>
+              <li>⚠ Digital goods are typically non-refundable except where law requires.</li>
             </ul>
-            <div class="note">Hinweis: Zahlungen laufen über PayPal. Wir speichern keine Zahlungsdaten.</div>
+            <div style="margin-top:8px; font-style:italic">Payments are processed via PayPal. We do not store payment details.</div>
           </div>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Kontakt
-  ======================== -->
+  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title reveal">Kontakt</h2>
+      <h2 class="section-title reveal">Contact</h2>
       <div class="contact-block reveal">
-        <div>Server-Adresse: <span class="badge-ip">minelegends.mc-game.xyz</span></div>
-        <div>Owner: <strong>Adminmax</strong> (Co Owner) & <strong>Teufel45</strong> (Owner)</div>
-        <div>Discord: <a class="link-cta" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">Hier beitreten</a></div>
+        <div>Server Address: <strong>minelegends.mc-game.xyz</strong></div>
+        <div>Owners: <strong>Adminmax (Co Owner)</strong> &amp; <strong>Teufel45 (Owner)</strong></div>
+        <div>Discord: <a class="link-cta" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">Join Discord</a></div>
       </div>
     </div>
   </section>
 
-  <!-- =======================
-       Footer & Waves
-  ======================== -->
+  <!-- VOTIFIER & Voting / API INFO -->
+  <section id="votifier">
+    <div class="container">
+      <h2 class="section-title reveal">Voting & Votifier</h2>
+      <p class="section-sub reveal">How voting & Votifier work — and where to put IP/Port/PublicKey.</p>
+
+      <div class="card reveal" style="margin-top:12px">
+        <h3>Votifier Settings (example)</h3>
+        <p style="color:var(--muted)"><strong>Votifier IP / Host:</strong> minelegends.mc-game.xyz</p>
+        <p style="color:var(--muted)"><strong>Votifier Port:</strong> 25020</p>
+        <p style="color:var(--muted)">You must paste the server's public key (the Votifier public key) into your voting panel so votes can be delivered. In most server list panels you will find fields labeled "Votifier IP/Host", "Votifier Port" and "Public Key". Make sure the listener on your server is reachable from the vote provider (no firewall blocking, correct port forwarded). After that the vote site will send votes to your server automatically.</p>
+
+        <h4 style="margin-top:10px">Where to find the Votifier info</h4>
+        <ol style="color:var(--muted)">
+          <li>On your server control panel (where you installed Votifier), there is a generated public/private key pair. Copy the <em>Public Key</em> (text block) and paste it into the server list "Public Key" field.</li>
+          <li>Set <em>Votifier IP/Host</em> to your server's public hostname (example: minelegends.mc-game.xyz) or to the IP where the votifier listener is bound.</li>
+          <li>Set <em>Votifier Port</em> to the port configured in the Votifier plugin (example: 25020). Ensure the port is open in firewall/host settings.</li>
+        </ol>
+        <p style="color:var(--muted)">Once saved, your voting site should display "Votifier settings saved" — then vote deliveries will work and the plugin will grant the reward when a vote arrives.</p>
+      </div>
+
+      <div class="card reveal" style="margin-top:12px">
+        <h3>API / ServerKey for votes (example)</h3>
+        <p style="color:var(--muted)">If your server list provides an API key (ServerKey) you can query votes with the API endpoints. Example endpoints:</p>
+        <pre style="background:#081731;color:#bfefff;padding:8px;border-radius:8px;overflow:auto">
+GET server details:
+https://minecraft-server.eu/api/v1/?object=servers&element=detail&key={ServerKey}
+
+GET votes list:
+https://minecraft-server.eu/api/v1/?object=servers&element=votes&key={ServerKey}
+        </pre>
+        <p style="color:var(--muted)">Replace <code>{ServerKey}</code> with your API key from the server-list panel. Usually the key is shown on your server entry page under "API Serverkey".</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP (simple purchase links using PayPal.me) -->
+  <section id="shop">
+    <div class="container">
+      <h2 class="section-title reveal">Shop (Quick Buy)</h2>
+      <p class="section-sub reveal">Direct PayPal links for quick purchases — open a ticket after purchase with proof.</p>
+
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:12px">
+        <!-- Note: these links are PayPal.Me shortcuts. Replace amounts as needed. -->
+        <div class="card reveal">
+          <h3>VIP</h3>
+          <p style="color:var(--muted)">Rank — basic perks</p>
+          <div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/15" target="_blank" rel="noopener">Buy €15 (PayPal)</a></div>
+        </div>
+
+        <div class="card reveal">
+          <h3>VIP+</h3>
+          <p style="color:var(--muted)">Better perks</p>
+          <div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/20" target="_blank" rel="noopener">Buy €20 (PayPal)</a></div>
+        </div>
+
+        <div class="card reveal">
+          <h3>Mystery</h3>
+          <p style="color:var(--muted)">Surprise item/box</p>
+          <div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/25" target="_blank" rel="noopener">Buy €25 (PayPal)</a></div>
+        </div>
+
+        <div class="card reveal">
+          <h3>Legendary</h3>
+          <p style="color:var(--muted)">Top rank</p>
+          <div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/30" target="_blank" rel="noopener">Buy €30 (PayPal)</a></div>
+        </div>
+
+        <div class="card reveal">
+          <h3>Mythic</h3>
+          <p style="color:var(--muted)">Highest rank</p>
+          <div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/35" target="_blank" rel="noopener">Buy €35 (PayPal)</a></div>
+        </div>
+      </div>
+
+      <p style="color:var(--muted); margin-top:10px">After payment, open a ticket in <a href="https://discord.gg/xZQZ9W9bjs" target="_blank">Discord</a> and attach the PayPal transaction or ID. We will verify and deliver your items/ranks.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <div>© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div>
-      <div style="opacity:.85">Made with ❤️ von der MineLegends-Community.</div>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+      <div>© <span id="year"></span> MineLegends. All rights reserved.</div>
+      <div style="opacity:.85">Made with ❤️ by the MineLegends community.</div>
     </div>
   </footer>
 
-  <div class="waves" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
-      <path class="w1" d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"></path>
-      <path class="w2" d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"></path>
+  <!-- Waves (decorative) -->
+  <div style="position:fixed;left:0;right:0;bottom:-1px;height:18vh;z-index:0;overflow:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none" style="width:200%;height:100%;transform:translateX(0);">
+      <path fill="rgba(88,101,242,.45)" d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"></path>
+      <path fill="rgba(0,229,255,.18)" d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"></path>
     </svg>
   </div>
 
-  <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">✨ Join</a>
+  <!-- Sticky Join (mobile) -->
+  <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" style="display:none">✨ Join</a>
 
-  <!-- =======================
-       Scripts
-  ======================== -->
+  <!-- SCRIPTS -->
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Copy IP
+    // Copy IP button
     function copyIP(){
       const ip = "minelegends.mc-game.xyz";
       navigator.clipboard.writeText(ip).then(()=>{
         const btn = document.getElementById('copyBtn');
-        if(btn){ btn.textContent = "✅ IP kopiert"; setTimeout(()=> btn.textContent = "📋 IP kopieren", 1600); }
-        else{ alert("IP kopiert: " + ip); }
-      });
+        if(btn){ btn.textContent = "✅ IP copied"; setTimeout(()=> btn.textContent = "📋 Copy IP", 1600); }
+        else{ alert("IP copied: " + ip); }
+      }).catch(()=>{ alert("Copy failed — please copy manually: " + ip); });
     }
     const copyBtn = document.getElementById('copyBtn');
-    if(copyBtn){ copyBtn.addEventListener('click', copyIP); }
+    if(copyBtn) copyBtn.addEventListener('click', copyIP);
 
-    // Dark/Light Mode
+    // Dark/Light mode toggle (persist)
     const modeBtn = document.getElementById('modeToggle');
     function setModeIcon(){ modeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙'; }
-    modeBtn.addEventListener('click', ()=>{
-      document.body.classList.toggle('light');
-      setModeIcon();
-      try{ localStorage.setItem("minelegends-mode", document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
-    });
-    try{ const stored = localStorage.getItem("minelegends-mode"); if(stored === 'light'){ document.body.classList.add('light'); } }catch(e){}
+    if(modeBtn){
+      modeBtn.addEventListener('click', ()=>{
+        document.body.classList.toggle('light');
+        setModeIcon();
+        try{ localStorage.setItem('minelegends-mode', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+      });
+    }
+    try{
+      const stored = localStorage.getItem('minelegends-mode');
+      if(stored === 'light'){ document.body.classList.add('light'); }
+    }catch(e){}
     setModeIcon();
 
-    // Real Server Status (primary: mcstatus.io; fallback: mcsrvstat.us)
+    // Server status (mcstatus.io primary, mcsrvstat.us fallback)
     async function fetchStatus(){
       const host = "minelegends.mc-game.xyz";
       const el = document.getElementById('serverStatus');
-      const set = (ok, players)=>{
+      function setText(ok, players){
         if(ok){
-          el.textContent = "✅ Online – " + players + " Spieler";
+          el.textContent = "✅ Online – " + players + " players";
           el.style.color = "lightgreen";
-        }else{
+        } else {
           el.textContent = "❌ Offline";
           el.style.color = "red";
         }
-      };
+      }
+
       try{
-        // mcstatus.io (Java)
-        const r = await fetch("https://api.mcstatus.io/v2/status/java/" + host, {cache:"no-store"});
+        const r = await fetch("https://api.mcstatus.io/v2/status/java/" + host, { cache: "no-store" });
         if(r.ok){
           const j = await r.json();
           if(j && j.online){
             const p = (j.players && (j.players.online ?? j.players.current)) ?? 0;
-            set(true, p);
+            setText(true, p);
             return;
           }
         }
         throw new Error("primary failed");
       }catch(e){
         try{
-          // mcsrvstat.us fallback
-          const r2 = await fetch("https://api.mcsrvstat.us/3/" + host, {cache:"no-store"});
+          const r2 = await fetch("https://api.mcsrvstat.us/3/" + host, { cache: "no-store" });
           if(r2.ok){
             const j2 = await r2.json();
             if(j2 && j2.online){
               const p2 = (j2.players && (j2.players.online ?? 0)) || 0;
-              set(true, p2);
+              setText(true, p2);
               return;
             }
           }
-          set(false, 0);
+          setText(false, 0);
         }catch(err){
-          set(false, 0);
+          setText(false, 0);
         }
       }
     }
     fetchStatus();
     setInterval(fetchStatus, 15000);
 
-    // Scroll-Reveal
+    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries, obs)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
-    }, {threshold: .18});
-    revealEls.forEach(el=> io.observe(el));
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); }
+      });
+    }, { threshold: .12 });
+    revealEls.forEach(el => io.observe(el));
   </script>
 </body>
 </html>
