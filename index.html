@@ -138,6 +138,15 @@
     /* reveal */
     .reveal{opacity:0; transform:translateY(18px); transition:all .7s ease}
     .reveal.show{opacity:1; transform:none}
+
+    /* Sticky Join (mobile) */
+    .sticky-join{
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:16px; z-index:999;
+      background:#5865F2; color:#fff; padding:12px 16px; border-radius:999px;
+      box-shadow:0 10px 26px rgba(0,0,0,.35); font-weight:900;
+    }
+    @media (min-width:800px){ .sticky-join{display:none!important} }
   </style>
 </head>
 <body>
@@ -162,7 +171,7 @@
         <a href="#creators">Creators</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" class="btn-shop" title="Shop">🛒 Shop</a>
+        <a href="#shop" class="btn-shop" title="Shop">🛒 Shop</a>
         <a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord</a>
         <button id="modeToggle" class="mode-toggle" title="Toggle dark/light mode">🌙</button>
       </nav>
@@ -199,7 +208,7 @@
     </div>
   </section>
 
-  <!-- ABOUT (long description >= 300 words) -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <h2 class="section-title reveal">About MineLegends</h2>
@@ -231,7 +240,7 @@
         <div class="card reveal"><h3>🛡 Bedwars</h3><p style="color:var(--muted)">Fast matches, custom maps and fair balancing.</p></div>
         <div class="card reveal"><h3>🏝 Skyblock</h3><p style="color:var(--muted)">Economy, island progression and challenges.</p></div>
         <div class="card reveal"><h3>🛠 QoL Tools</h3><p style="color:var(--muted)">Auto-moderation, backups and anti-DDoS protection.</p></div>
-        <div class="card reveal"><h3>🛒 Shop</h3><p style="color:var(--muted)">Ranks, cosmetics and small extras — <a href="https://mineladen.netlify.app/" target="_blank">visit the shop</a>.</p></div>
+        <div class="card reveal"><h3>🛒 Shop</h3><p style="color:var(--muted)">Ranks, cosmetics and small extras — <a href="#shop">visit the shop</a>.</p></div>
         <div class="card reveal"><h3>🎉 Community</h3><p style="color:var(--muted)">Contests, giveaways and creator events.</p></div>
       </div>
     </div>
@@ -260,7 +269,7 @@
     </div>
   </section>
 
-  <!-- NEWS & ROADMAP (SMP teaser removed, shop added) -->
+  <!-- NEWS & ROADMAP -->
   <section id="news">
     <div class="container">
       <h2 class="section-title reveal">Update News & Roadmap</h2>
@@ -270,7 +279,7 @@
         <article class="news reveal">
           <span class="tag">New</span>
           <h4>🛒 Official Shop is Online</h4>
-          <p style="color:var(--muted)">Our official shop is now live. Visit: <a href="https://mineladen.netlify.app/" target="_blank">Shop</a>. You can purchase ranks (VIP, VIP+, Mystery, Legendary, Mythic), items and extras such as XP boosters, Fly time and Kit God. After purchase, open a support ticket in Discord with your transaction proof for manual verification and delivery.</p>
+          <p style="color:var(--muted)">Our official shop is now live. See the section below. You can purchase ranks (VIP, VIP+, Mystery, Legendary, Mythic), items and extras such as XP boosters, Fly time and Kit God. After purchase, open a support ticket in Discord with your transaction proof for manual verification and delivery.</p>
           <small style="color:var(--muted)">Update · Q3</small>
         </article>
 
@@ -382,10 +391,16 @@
           <p style="color:var(--muted)">Live streams and highlights.</p>
         </div>
 
-        <!-- ADDED: Natsu -->
+        <!-- Natsu -->
         <div class="member reveal">
           <div class="role">Natsu — <span class="badge creator">Creator</span></div>
           <p style="color:var(--muted)">Streams, PvP highlights and community events.</p>
+        </div>
+
+        <!-- XxNiklasYt -->
+        <div class="member reveal">
+          <div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div>
+          <p style="color:var(--muted)">Bedwars rushes, funny clips and stream raids.</p>
         </div>
       </div>
     </div>
@@ -397,7 +412,7 @@
       <h2 class="section-title reveal">FAQ</h2>
       <p class="section-sub reveal">Common questions answered quickly.</p>
 
-    <div class="faq">
+      <div class="faq">
         <details class="reveal">
           <summary>How do I join?</summary>
           <p style="color:var(--muted)">Open Minecraft (Java) → Multiplayer → Add Server → IP: <code>minelegends.mc-game.xyz</code> → Join.</p>
@@ -477,14 +492,13 @@ https://minecraft-server.eu/api/v1/?object=servers&element=votes&key={ServerKey}
     </div>
   </section>
 
-  <!-- SHOP (simple purchase links using PayPal.me) -->
+  <!-- SHOP (quick buy via PayPal.me) -->
   <section id="shop">
     <div class="container">
       <h2 class="section-title reveal">Shop (Quick Buy)</h2>
       <p class="section-sub reveal">Direct PayPal links for quick purchases — open a ticket after purchase with proof.</p>
 
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:12px">
-        <!-- Note: these links are PayPal.Me shortcuts. Replace amounts as needed. -->
         <div class="card reveal">
           <h3>VIP</h3>
           <p style="color:var(--muted)">Rank — basic perks</p>
@@ -537,7 +551,7 @@ https://minecraft-server.eu/api/v1/?object=servers&element=votes&key={ServerKey}
   </div>
 
   <!-- Sticky Join (mobile) -->
-  <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" style="display:none">✨ Join</a>
+  <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs">✨ Join</a>
 
   <!-- SCRIPTS -->
   <script>
