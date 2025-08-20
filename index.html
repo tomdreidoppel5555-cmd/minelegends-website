@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrawlCraft – Official Website</title>
-  <meta name="description" content="BrawlCraft Minecraft Server – PvP, Bedwars, Skyblock, Events, Discord Community." />
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>BrawlCraft – Official Website</title>
+<meta content="BrawlCraft Minecraft Server – PvP, Bedwars, Skyblock, Events, Discord Community." name="description"/>
+<style>
     /* ==============
        Theme & Base
        ============== */
@@ -63,6 +62,7 @@
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px}
+    .logo{display:flex; align-items:center; gap:14px}
     .logo img{height:56px; width:auto; border-radius:10px}
     .brand{display:flex; flex-direction:column; line-height:1.05}
     .brand .name{font-weight:900; color:var(--accent); font-size:18px}
@@ -76,10 +76,45 @@
     }
     .cta-discord{background:var(--accent-2); color:#fff; padding:10px 12px; border-radius:10px; font-weight:900}
 
-    /* Sections etc. bleiben gleich */
+    .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer}
+    .mode-toggle:hover{background:rgba(255,255,255,.04)}
+
+    /* Hero */
+    .hero{padding:72px 0 80px}
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center}
+    .hero h1{margin:0 0 12px; color:var(--accent); font-size:clamp(34px, 5vw, 64px); line-height:1.02}
+    .lead{font-size:clamp(15px,1.6vw,18px); color:var(--muted); margin:0 0 18px}
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; font-weight:900; background:#152545; color:#fff; border:1px solid rgba(255,255,255,.06); cursor:pointer}
+    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,.06)}
+    .badge-ip{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; padding:8px 10px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.12); font-weight:700}
+
+    /* Sections & Cards */
     section{padding:80px 0; position:relative; z-index:5}
     h2.section-title{text-align:left; font-size:28px; color:var(--accent); margin:0 0 12px}
-    .card{background:var(--card); border-radius:14px; padding:18px; box-shadow:var(--shadow)}
+    .section-sub{color:var(--muted); margin-bottom:20px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 10px; color:#fff}
+    .card p{margin:0; color:var(--muted)}
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:720px){ .grid-3{grid-template-columns:1fr} }
+
+    /* ribbon */
+    .ribbon{position:relative; height:12px; background:#0a1640; border-radius:999px; overflow:hidden}
+    .ribbon>i{position:absolute; left:0; top:0; bottom:0; width:35%; background:linear-gradient(90deg,#6ee7ff,#8ab6ff); border-radius:999px; animation:rb 18s linear infinite}
+    @keyframes rb { 0%{left:0;width:25%} 50%{left:65%;width:35%} 100%{left:0;width:25%} }
+
+    /* Timeline / news */
+    .timeline{display:grid; gap:14px}
+    .news{padding:16px; border-radius:12px; background:#11274a; border:1px solid rgba(255,255,255,.04)}
+    .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:14px; background:#0e214d; color:var(--accent-3); margin-right:8px}
+
+    /* Team */
+    .team-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:620px){ .team-grid{grid-template-columns:1fr} }
     .member{padding:16px; border-radius:12px; background:linear-gradient(180deg,#0f2346,#0a1632); border:1px solid rgba(255,255,255,.04)}
     .member .role{font-weight:900; color:var(--accent)}
     .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; margin-left:8px}
@@ -90,131 +125,381 @@
     .badge.builder{background:#1d1d1d; color:#bdbdbd}
     .badge.support{background:#2b1b39; color:#fff899}
     .badge.creator{background:#2a0055; color:#ffd6ff}
+
+    /* FAQ */
+    .faq details{background:#0d2345; padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid rgba(255,255,255,.03)}
+    .faq summary{cursor:pointer; font-weight:800; color:#fff}
+
+    /* Contact & footer */
+    .contact-block{display:grid; gap:12px; padding:18px; border-radius:12px; background:linear-gradient(180deg,#0f214f,#071229); border:1px solid rgba(255,255,255,.04)}
+    footer{padding:28px 0; background:#050914; color:#a8b5d6}
+
+    /* reveal */
+    .reveal{opacity:0; transform:translateY(18px); transition:all .7s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Sticky Join (mobile) */
+    .sticky-join{
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:16px; z-index:999;
+      background:#5865F2; color:#fff; padding:12px 16px; border-radius:999px;
+      box-shadow:0 10px 26px rgba(0,0,0,.35); font-weight:900;
+    }
+    @media (min-width:800px){ .sticky-join{display:none!important} }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container nav">
-      <div style="display:flex;align-items:center;gap:14px">
-        <img src="brawlcraft-logo.png" alt="BrawlCraft Logo" style="height:56px">
-        <div class="brand">
-          <div class="name">BrawlCraft</div>
-          <div class="tag">PvP • Bedwars • Skyblock • Events</div>
-        </div>
-      </div>
+<!-- Header -->
+<header>
+<div class="container nav">
+<div style="display:flex;align-items:center;gap:14px">
+<img alt="BrawlCraft Logo" src="brawlcraft-logo.png" style="height:56px"/>
+<div class="brand">
+<div class="name">BrawlCraft</div>
+<div class="tag">PvP • Bedwars • Skyblock • Events</div>
+</div>
+</div>
+<nav aria-label="Main Navigation" class="menu">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#features">Features</a>
+<a href="#server">Server Info</a>
+<a href="#news">News</a>
+<a href="#team">Team</a>
+<a href="#creators">Creators</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+<a class="btn-shop" href="#shop" title="Shop">🛒 Shop</a>
+<a class="cta-discord" href="https://discord.gg/7RpcZkV7Ke" rel="noopener" target="_blank">💬 Discord</a>
+<button class="mode-toggle" id="modeToggle" title="Toggle dark/light mode">🌙</button>
+</nav>
+</div>
+</header>
 
-      <nav class="menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#server">Server Info</a>
-        <a href="#team">Team</a>
-        <a href="#creators">Creators</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-        <a class="btn-shop" href="#">🛒 Shop</a>
-        <a class="cta-discord" href="https://discord.gg/7RpcZkV7Ke" target="_blank">💬 Discord</a>
-      </nav>
-    </div>
-  </header>
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="container hero-grid reveal">
+<div>
+<h1>Welcome to <span style="color:var(--accent)">BrawlCraft</span></h1>
+<p class="lead">Your home for epic adventures, fair competition and creative building. Play PvP, Bedwars and Skyblock, join community events and find your place in our friendly community.</p>
+<div class="actions">
+<span class="badge-ip" id="ipBadge">IP: brawlcraft.de</span>
+<button class="btn" id="copyBtn" title="Copy IP">📋 Copy IP</button>
+<a class="btn btn-ghost" href="#features">🚀 Explore Features</a>
+<a class="btn" href="https://discord.gg/7RpcZkV7Ke" rel="noopener" target="_blank">💬 Join Discord</a>
+</div>
+<div id="serverStatus" style="margin-top:12px; font-weight:900; color:var(--muted)">⏳ Loading server status…</div>
+</div>
+<div class="card">
+<h3>Why BrawlCraft?</h3>
+<p>We combine fair moderation, regular updates, strong performance and creative events to give players a place to play, build and compete. Solo player, builder or streamer — everyone is welcome.</p>
+<ul style="margin-top:12px; color:var(--muted); padding-left:18px">
+<li>✅ Respectful community &amp; active staff</li>
+<li>✅ Balanced gameplay &amp; meaningful progression</li>
+<li>✅ Stable servers &amp; quick support</li>
+</ul>
+</div>
+</div>
+</section>
 
-  <!-- HERO -->
-  <section id="home">
-    <div class="container">
-      <h1>Welcome to <span style="color:var(--accent)">BrawlCraft</span></h1>
-      <div class="actions">
-        <span class="badge-ip" id="ipBadge">IP: brawlcraft.de</span>
-        <button class="btn" id="copyBtn">📋 Copy IP</button>
-      </div>
-      <div id="serverStatus">⏳ Loading server status…</div>
-    </div>
-  </section>
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<h2 class="section-title reveal">About BrawlCraft</h2>
+<p class="section-sub reveal">Long description — what BrawlCraft stands for (detailed).</p>
+<div class="card reveal" style="margin-top:14px">
+<h3>BrawlCraft — A Community-First Minecraft Network</h3>
+<p style="color:var(--muted); line-height:1.6">
+          BrawlCraft is a player-focused Minecraft network built to bring people together through shared challenges, creative projects and memorable events. Our goal is simple: create a stable, fun and fair environment where both casual players and more competitive ones can find their home. We believe that a great server is more than just plugins and performance — it’s a community that supports creativity, healthy competition and friendly behaviour. Our team carefully curates features, events and updates so that every player can find something they enjoy: whether that’s building expansive city-scapes, mastering PvP mechanics, or working together in Skyblock economies. We place a strong emphasis on quality-of-life improvements: automatic moderation tools to keep the community safe, robust backups to prevent data loss and optimized configurations to ensure smooth gameplay even on high-population days.
+        </p>
+<p style="color:var(--muted); line-height:1.6; margin-top:8px">
+          Our shop gives players the option to support the server and unlock cosmetic perks, ranks and small convenience items. Purchases are processed via PayPal, and our team handles rank/item delivery quickly after payment — please open a support ticket in Discord if automatic delivery is needed. We are committed to transparency and fairness: balance changes and updates are discussed with the community, and feedback is actively read and acted upon. From seasonal events and PvP cups to community build contests and collaborative projects, BrawlCraft aims to be a home for creators, competitors and friends. Join our Discord for announcements, support and ways to get involved — and if you stream or make videos, check our Creator program for special perks and early access opportunities. We’re excited to grow with you — see you in-game!
+        </p>
+<p style="color:var(--muted); font-style:italic; margin-top:8px">IP: brawlcraft.de | Versions: Java Edition 1.21.1+ &amp; Bedrock (default port 19132)</p>
+</div>
+</div>
+</section>
 
-  <!-- TEAM -->
-  <section id="team">
-    <div class="container">
-      <h2 class="section-title">Our Team</h2>
-      <div class="team-grid">
-        <div class="member"><div class="role">Teufel45 — <span class="badge co">Owner</span></div></div>
-        <div class="member"><div class="role">Tobsi — <span class="badge co">Owner</span></div></div>
-        <div class="member"><div class="role">biiig7553 — <span class="badge co">Owner</span></div></div>
-        <div class="member"><div class="role">AdminMax — <span class="badge co">Co-Owner</span></div></div>
-        <div class="member"><div class="role">Xx_Rim3… — <span class="badge head">Team Lead</span></div></div>
-        <div class="member"><div class="role">Nyx — <span class="badge head">Head Dev</span></div></div>
-        <div class="member"><div class="role">Leon — <span class="badge admin">Admin</span></div></div>
-        <div class="member"><div class="role">Gianluzca_05 — <span class="badge admin">Admin</span></div></div>
-        <div class="member"><div class="role">OliGHG — <span class="badge admin">Deputy Admin</span></div></div>
-        <div class="member"><div class="role">Pascal — <span class="badge admin">Test Admin</span></div></div>
-        <div class="member"><div class="role">Finnefitty2010 — <span class="badge mod">Head Mod</span></div></div>
-        <div class="member"><div class="role">Motoxmo — <span class="badge support">Test Supporter</span></div></div>
-        <div class="member"><div class="role">Leve — <span class="badge support">Test Supporter</span></div></div>
-        <div class="member"><div class="role">Zewo — <span class="badge support">Test Supporter</span></div></div>
-        <div class="member"><div class="role">Manu — <span class="badge mod">Discord Mod</span></div></div>
-        <div class="member"><div class="role">FunLynx134 — <span class="badge support">Supporter</span></div></div>
-        <div class="member"><div class="role">ƬIGΞR — <span class="badge support">Supporter</span></div></div>
-        <div class="member"><div class="role">PhantomJCA — <span class="badge builder">Builder</span></div></div>
-        <div class="member"><div class="role">fxschk0pf — <span class="badge builder">Builder</span></div></div>
-        <div class="member"><div class="role">KingArthurW — <span class="badge builder">Builder</span></div></div>
-      </div>
-    </div>
-  </section>
+<!-- FEATURES -->
+<section id="features">
+<div class="container">
+<h2 class="section-title reveal">Features</h2>
+<p class="section-sub reveal">What you can expect on the network</p>
+<div class="ribbon reveal" style="margin-top:8px"><i></i></div>
+<div class="grid grid-3" style="margin-top:18px">
+<div class="card reveal"><h3>⚔ PvP &amp; Events</h3><p style="color:var(--muted)">Tournaments, ranking seasons and special modes.</p></div>
+<div class="card reveal"><h3>🛡 Bedwars</h3><p style="color:var(--muted)">Fast matches, custom maps and fair balancing.</p></div>
+<div class="card reveal"><h3>🏝 Skyblock</h3><p style="color:var(--muted)">Economy, island progression and challenges.</p></div>
+<div class="card reveal"><h3>🛠 QoL Tools</h3><p style="color:var(--muted)">Auto-moderation, backups and anti-DDoS protection.</p></div>
+<div class="card reveal"><h3>🛒 Shop</h3><p style="color:var(--muted)">Ranks, cosmetics and small extras — <a href="#shop">visit the shop</a>.</p></div>
+<div class="card reveal"><h3>🎉 Community</h3><p style="color:var(--muted)">Contests, giveaways and creator events.</p></div>
+</div>
+</div>
+</section>
 
-  <!-- CREATORS -->
-  <section id="creators">
-    <div class="container">
-      <h2 class="section-title">Creators</h2>
-      <div class="team-grid">
-        <div class="member"><div class="role">Tobi — <span class="badge creator">Creator</span></div></div>
-        <div class="member"><div class="role">Tim — <span class="badge creator">Creator</span></div></div>
-        <div class="member"><div class="role">Jean — <span class="badge creator">Creator</span></div></div>
-        <div class="member"><div class="role">Natsu — <span class="badge creator">Creator</span></div></div>
-        <div class="member"><div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div></div>
-      </div>
-    </div>
-  </section>
+<!-- SERVER INFO -->
+<section id="server">
+<div class="container">
+<h2 class="section-title reveal">Server Info</h2>
+<p class="section-sub reveal">Everything you need to connect</p>
+<div class="grid" style="grid-template-columns:repeat(2,1fr); gap:18px">
+<div class="card reveal">
+<h3>Connection</h3>
+<p style="color:var(--muted)"><strong>Address (Java &amp; Bedrock):</strong> <span class="badge-ip">brawlcraft.de</span></p>
+<p style="color:var(--muted)"><strong>Versions:</strong> Java Edition 1.21.1+ &amp; Bedrock (default port <code>19132</code>)</p>
+<p style="color:var(--muted)"><button class="btn" onclick="copyIP()">Copy IP</button></p>
+</div>
+<div class="card reveal">
+<h3>Performance &amp; Security</h3>
+<p style="color:var(--muted)">Optimized server configuration, scheduled backups, latency checks, tuned Paper settings and protections against DDoS &amp; common crash exploits.</p>
+<p style="color:var(--muted); margin-top:8px"><strong>Planned:</strong> region caching and additional Bedrock optimizations.</p>
+</div>
+</div>
+</div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact</h2>
-      <p>IP: <strong>brawlcraft.de</strong></p>
-      <p>Discord: <a href="https://discord.gg/7RpcZkV7Ke" target="_blank">Join Discord</a></p>
-    </div>
-  </section>
+<!-- NEWS & ROADMAP -->
+<section id="news">
+<div class="container">
+<h2 class="section-title reveal">Update News &amp; Roadmap</h2>
+<p class="section-sub reveal">What’s coming next — short &amp; honest.</p>
+<div class="timeline">
+<article class="news reveal">
+<span class="tag">New</span>
+<h4>🛒 Official Shop is Online</h4>
+<p style="color:var(--muted)">Our official shop is now live. You can purchase ranks (VIP, VIP+, Mystery, Legendary, Mythic), items and extras such as XP boosters, Fly time and Kit God. After purchase, open a support ticket in Discord with your transaction proof for manual verification and delivery.</p>
+<small style="color:var(--muted)">Update · Q3</small>
+</article>
+<article class="news reveal">
+<span class="tag">Event</span><span class="tag">PvP</span>
+<h4>Monthly PvP Cups</h4>
+<p style="color:var(--muted)">Various modes (Kit PvP, Duos, Bedwars). Prizes and titles to be won.</p>
+<small style="color:var(--muted)">See #events in Discord for dates</small>
+</article>
+<article class="news reveal">
+<span class="tag">Community</span>
+<h4>Creator Program</h4>
+<p style="color:var(--muted)">Streamers and creators can apply for early info, event slots and shoutouts. Apply via Discord.</p>
+<small style="color:var(--muted)">New</small>
+</article>
+</div>
+</div>
+</section>
 
-  <!-- SCRIPT -->
-  <script>
-    // Copy IP
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+<div class="container">
+<h2 class="section-title reveal">Leaderboard</h2>
+<p class="section-sub reveal">Who's on top?</p>
+<div class="grid grid-3" style="margin-top:14px">
+<div class="card reveal"><h3>Season Points</h3><p style="color:var(--muted)">1. Player123 — 250<br/>2. CreeperKing — 180<br/>3. BuilderPro — 150</p></div>
+<div class="card reveal"><h3>Kill Rankings</h3><p style="color:var(--muted)">1. PvPGod — 412<br/>2. QuickStrafe — 369<br/>3. BowMaster — 341</p></div>
+<div class="card reveal"><h3>Builders</h3><p style="color:var(--muted)">1. ArchiSteve — 95 stars<br/>2. RedstonePro — 90 stars<br/>3. TerraFormer — 86 stars</p></div>
+</div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+<div class="container">
+<h2 class="section-title reveal">Our Team</h2>
+<p class="section-sub reveal">Friendly, active and here to help — without images, clean layout.</p>
+<div class="team-grid" style="margin-top:12px">
+<div class="member reveal"><div class="role">Teufel45 — <span class="badge co">Owner</span></div><p style="color:var(--muted)"></p></div>
+<div class="member reveal"><div class="role">Tobsi — <span class="badge co">Owner</span></div><p style="color:var(--muted)"></p></div>
+<div class="member reveal"><div class="role">biiig7553 — <span class="badge co">Owner</span></div><p style="color:var(--muted)"></p></div>
+<div class="member reveal"><div class="role">AdminMax — <span class="badge co">Co-Owner</span></div><p style="color:var(--muted)"></p></div>
+
+<div class="member reveal"><div class="role">Xx_Rim3… — <span class="badge head">Team Lead</span></div><p style="color:var(--muted)"></p></div>
+<div class="member reveal"><div class="role">Nyx — <span class="badge head">Head Dev</span></div><p style="color:var(--muted)">Development, plugins and performance optimization.</p></div>
+
+<div class="member reveal"><div class="role">Leon — <span class="badge admin">Admin</span></div></div>
+<div class="member reveal"><div class="role">Gianluzca_05 — <span class="badge admin">Admin</span></div></div>
+<div class="member reveal"><div class="role">OliGHG — <span class="badge admin">Deputy Admin</span></div></div>
+<div class="member reveal"><div class="role">Pascal — <span class="badge admin">Test Admin</span></div></div>
+
+<div class="member reveal"><div class="role">Finnefitty2010 — <span class="badge mod">Head Mod</span></div></div>
+<div class="member reveal"><div class="role">Manu — <span class="badge mod">Discord Mod</span></div></div>
+
+<div class="member reveal"><div class="role">Motoxmo — <span class="badge support">Test Supporter</span></div></div>
+<div class="member reveal"><div class="role">Leve — <span class="badge support">Test Supporter</span></div></div>
+<div class="member reveal"><div class="role">Zewo — <span class="badge support">Test Supporter</span></div></div>
+<div class="member reveal"><div class="role">FunLynx134 — <span class="badge support">Supporter</span></div></div>
+<div class="member reveal"><div class="role">ƬIGΞR — <span class="badge support">Supporter</span></div></div>
+
+<div class="member reveal"><div class="role">PhantomJCA — <span class="badge builder">Builder</span></div></div>
+<div class="member reveal"><div class="role">fxschk0pf — <span class="badge builder">Builder</span></div></div>
+<div class="member reveal"><div class="role">KingArthurW — <span class="badge builder">Builder</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- CREATORS -->
+<section id="creators">
+<div class="container">
+<h2 class="section-title reveal">Content Creators</h2>
+<p class="section-sub reveal">Our streamers and video creators supporting the server.</p>
+<div class="team-grid" style="margin-top:12px">
+<div class="member reveal"><div class="role">Tobi — <span class="badge creator">Creator</span></div></div>
+<div class="member reveal"><div class="role">Tim — <span class="badge creator">Creator</span></div></div>
+<div class="member reveal"><div class="role">Jean — <span class="badge creator">Creator</span></div></div>
+<div class="member reveal"><div class="role">Natsu — <span class="badge creator">Creator</span></div></div>
+<div class="member reveal"><div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="container">
+<h2 class="section-title reveal">FAQ</h2>
+<p class="section-sub reveal">Common questions answered quickly.</p>
+<div class="faq">
+<details class="reveal">
+<summary>How do I join?</summary>
+<p style="color:var(--muted)">Open Minecraft → Multiplayer → Add Server → IP: <code>brawlcraft.de</code> → Join. For Bedrock, add server with IP <code>brawlcraft.de</code> and default port <code>19132</code>.</p>
+</details>
+<details class="reveal">
+<summary>Is Bedrock supported?</summary>
+<p style="color:var(--muted)">Yes — Java &amp; Bedrock are supported (Bedrock connects via default port <code>19132</code>).</p>
+</details>
+<details class="reveal">
+<summary>Who are the owners?</summary>
+<p style="color:var(--muted)"><strong>Teufel45</strong>, <strong>Tobsi</strong> &amp; <strong>biiig7553</strong> (Owners) &nbsp;|&nbsp; <strong>AdminMax</strong> (Co-Owner)</p>
+</details>
+<details class="reveal">
+<summary>Shop — what to know?</summary>
+<div style="color:var(--muted)">
+<ul>
+<li>✅ Provide your exact in-game name (case-sensitive).</li>
+<li>✅ After payment, open a ticket in Discord and attach the payment proof (PayPal ID).</li>
+<li>✅ Delivery is usually manual and takes a few minutes (max ~1 hour).</li>
+<li>⚠ Digital goods are typically non-refundable except where law requires.</li>
+</ul>
+<div style="margin-top:8px; font-style:italic">Payments are processed via PayPal. We do not store payment details.</div>
+</div>
+</details>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<h2 class="section-title reveal">Contact</h2>
+<div class="contact-block reveal">
+<div>Server Address: <strong>brawlcraft.de</strong></div>
+<div>Owners: <strong>Teufel45</strong>, <strong>Tobsi</strong>, <strong>biiig7553</strong> &amp; <strong>AdminMax (Co-Owner)</strong></div>
+<div>Discord: <a class="link-cta" href="https://discord.gg/7RpcZkV7Ke" rel="noopener" target="_blank">Join Discord</a></div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+<div>© <span id="year"></span> BrawlCraft. All rights reserved.</div>
+<div style="opacity:.85">Made with ❤️ by the BrawlCraft community.</div>
+</div>
+</footer>
+
+<!-- Waves (decorative) -->
+<div style="position:fixed;left:0;right:0;bottom:-1px;height:18vh;z-index:0;overflow:hidden">
+<svg preserveaspectratio="none" style="width:200%;height:100%;transform:translateX(0);" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z" fill="rgba(88,101,242,.45)"></path>
+<path d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z" fill="rgba(0,229,255,.18)"></path>
+</svg>
+</div>
+
+<!-- Sticky Join (mobile) -->
+<a class="sticky-join" href="https://discord.gg/7RpcZkV7Ke">✨ Join</a>
+
+<!-- SCRIPTS -->
+<script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copy IP button
     function copyIP(){
-      navigator.clipboard.writeText("brawlcraft.de");
-      document.getElementById("copyBtn").textContent = "✅ Copied!";
-      setTimeout(()=>document.getElementById("copyBtn").textContent="📋 Copy IP",1500);
+      const ip = "brawlcraft.de";
+      navigator.clipboard.writeText(ip).then(()=>{
+        const btn = document.getElementById('copyBtn');
+        if(btn){ btn.textContent = "✅ IP copied"; setTimeout(()=> btn.textContent = "📋 Copy IP", 1600); }
+        else{ alert("IP copied: " + ip); }
+      }).catch(()=>{ alert("Copy failed — please copy manually: " + ip); });
     }
-    document.getElementById("copyBtn").onclick = copyIP;
+    const copyBtn = document.getElementById('copyBtn');
+    if(copyBtn) copyBtn.addEventListener('click', copyIP);
 
-    // Server status
+    // Dark/Light mode toggle (persist)
+    const modeBtn = document.getElementById('modeToggle');
+    function setModeIcon(){ modeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙'; }
+    if(modeBtn){
+      modeBtn.addEventListener('click', ()=>{
+        document.body.classList.toggle('light');
+        setModeIcon();
+        try{ localStorage.setItem('brawlcraft-mode', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+      });
+    }
+    try{
+      const stored = localStorage.getItem('brawlcraft-mode');
+      if(stored === 'light'){ document.body.classList.add('light'); }
+    }catch(e){}
+    setModeIcon();
+
+    // Server status (mcstatus.io primary, mcsrvstat.us fallback)
     async function fetchStatus(){
       const host = "brawlcraft.de";
-      const el = document.getElementById("serverStatus");
+      const el = document.getElementById('serverStatus');
+      function setText(ok, players){
+        if(ok){
+          el.textContent = "✅ Online – " + players + " players";
+          el.style.color = "lightgreen";
+        } else {
+          el.textContent = "❌ Offline";
+          el.style.color = "red";
+        }
+      }
+
       try{
-        const r = await fetch("https://api.mcstatus.io/v2/status/java/"+host);
+        const r = await fetch("https://api.mcstatus.io/v2/status/java/" + host, { cache: "no-store" });
         if(r.ok){
           const j = await r.json();
           if(j && j.online){
-            el.textContent = "✅ Online – "+(j.players?.online||0)+" players";
-            el.style.color = "lightgreen";
+            const p = (j.players && (j.players.online ?? j.players.current)) ?? 0;
+            setText(true, p);
             return;
           }
         }
-        throw new Error("fail");
+        throw new Error("primary failed");
       }catch(e){
-        el.textContent = "❌ Offline";
-        el.style.color = "red";
+        try{
+          const r2 = await fetch("https://api.mcsrvstat.us/3/" + host, { cache: "no-store" });
+          if(r2.ok){
+            const j2 = await r2.json();
+            if(j2 && j2.online){
+              const p2 = (j2.players && (j2.players.online ?? 0)) || 0;
+              setText(true, p2);
+              return;
+            }
+          }
+          setText(false, 0);
+        }catch(err){
+          setText(false, 0);
+        }
       }
     }
     fetchStatus();
-    setInterval(fetchStatus,15000);
+    setInterval(fetchStatus, 15000);
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries, obs)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); }
+      });
+    }, { threshold: .12 });
+    revealEls.forEach(el => io.observe(el));
   </script>
 </body>
 </html>
