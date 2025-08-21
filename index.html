@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -57,7 +58,7 @@
     }
     a{color:var(--accent-3); text-decoration:none}
     a:hover{text-decoration:underline}
-    a:focus-visible,button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
+    a:focus-visible,button:focus-visible,select:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
     img{max-width:100%; height:auto; display:block}
     .container{max-width:var(--max-width); margin:0 auto; padding:0 24px}
 
@@ -86,6 +87,21 @@
     .cta-discord{background:var(--accent-2); color:#fff; padding:10px 12px; border-radius:10px; font-weight:900}
     .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer}
     .mode-toggle:hover{background:rgba(255,255,255,.06)}
+
+    /* ========= Language Select ========= */
+    .lang-wrap{display:flex; align-items:center; gap:10px}
+    .lang-select{
+      appearance:none;
+      background:#0e214d;
+      color:#e8eef9;
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .lang-select option{color:#131726}
+    .lang-flag{font-size:18px}
 
     /* ========= Hero ========= */
     .hero{padding:92px 0 104px; text-align:left; position:relative; z-index:5}
@@ -192,25 +208,76 @@
           <img src="Mine_Legends_Logo_Design.png" alt="MineLegends Logo" />
         </div>
         <div class="brand">
-          <div class="name">MineLegends</div>
-          <div class="tag">PvP • Bedwars • Skyblock • Events</div>
+          <div class="name" data-i18n="brand_name">MineLegends</div>
+          <div class="tag" data-i18n="brand_tag">PvP • Bedwars • Skyblock • Events</div>
         </div>
       </div>
 
       <nav class="menu" aria-label="Hauptnavigation">
-        <a href="#home">Start</a>
-        <a href="#about">Über uns</a>
-        <a href="#features">Features</a>
-        <a href="#server">Server</a>
-        <a href="#news">News</a>
-        <a href="#leaderboard">Leaderboard</a>
-        <a href="#team">Team</a>
-        <a href="#creators">Creator</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Kontakt</a>
-        <a class="btn-shop" href="https://mineladen.netlify.app/" target="_blank" rel="noopener" title="Shop">🛒 Shop</a>
-        <a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" rel="noopener" target="_blank">💬 Discord</a>
+        <a href="#home" data-i18n="nav_home">Start</a>
+        <a href="#about" data-i18n="nav_about">Über uns</a>
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#server" data-i18n="nav_server">Server</a>
+        <a href="#news" data-i18n="nav_news">News</a>
+        <a href="#leaderboard" data-i18n="nav_leaderboard">Leaderboard</a>
+        <a href="#team" data-i18n="nav_team">Team</a>
+        <a href="#creators" data-i18n="nav_creators">Creator</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#contact" data-i18n="nav_contact">Kontakt</a>
+        <a class="btn-shop" href="https://mineladen.netlify.app/" target="_blank" rel="noopener" title="Shop" data-i18n="nav_shop">🛒 Shop</a>
+        <a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" rel="noopener" target="_blank" data-i18n="nav_discord">💬 Discord</a>
         <button id="modeToggle" class="mode-toggle" title="Dark/Light umschalten">🌙</button>
+
+        <!-- ===== Language Selector (supports internal i18n + Google Translate fallback) ===== -->
+        <div class="lang-wrap" title="Sprache">
+          <span class="lang-flag" aria-hidden="true">🌐</span>
+          <select id="langSelect" class="lang-select" aria-label="Sprache wählen">
+            <!-- A curated list; you can add more. If a language isn't internally translated, Google Translate will handle it. -->
+            <option value="de" selected>Deutsch</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="nl">Nederlands</option>
+            <option value="pl">Polski</option>
+            <option value="sv">Svenska</option>
+            <option value="da">Dansk</option>
+            <option value="fi">Suomi</option>
+            <option value="no">Norsk</option>
+            <option value="tr">Türkçe</option>
+            <option value="cs">Čeština</option>
+            <option value="sk">Slovenčina</option>
+            <option value="ro">Română</option>
+            <option value="hu">Magyar</option>
+            <option value="el">Ελληνικά</option>
+            <option value="ru">Русский</option>
+            <option value="uk">Українська</option>
+            <option value="bg">Български</option>
+            <option value="sr">Српски</option>
+            <option value="hr">Hrvatski</option>
+            <option value="sl">Slovenščina</option>
+            <option value="ar">العربية</option>
+            <option value="he">עברית</option>
+            <option value="fa">فارسی</option>
+            <option value="hi">हिन्दी</option>
+            <option value="bn">বাংলা</option>
+            <option value="ur">اردو</option>
+            <option value="id">Indonesia</option>
+            <option value="ms">Melayu</option>
+            <option value="th">ไทย</option>
+            <option value="vi">Tiếng Việt</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="zh-TW">繁體中文</option>
+            <option value="ja">日本語</option>
+            <option value="ko">한국어</option>
+            <option value="af">Afrikaans</option>
+            <option value="sw">Kiswahili</option>
+            <option value="et">Eesti</option>
+            <option value="lv">Latviešu</option>
+            <option value="lt">Lietuvių</option>
+          </select>
+        </div>
       </nav>
     </div>
   </header>
@@ -219,33 +286,33 @@
   <section id="home" class="hero">
     <div class="container hero-grid reveal">
       <div>
-        <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
-        <p class="lead">Dein Zuhause für faire Competition, kreative Builds und Events. Spiele PvP, Bedwars & Skyblock. Tritt direkt über unsere IP bei und werde Teil der Community.</p>
+        <h1 data-i18n="hero_title">Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
+        <p class="lead" data-i18n="hero_lead">Dein Zuhause für faire Competition, kreative Builds und Events. Spiele PvP, Bedwars & Skyblock. Tritt direkt über unsere IP bei und werde Teil der Community.</p>
         <div class="actions">
-          <span class="badge-ip" id="ipBadge">IP: brawlcraft.de</span>
-          <button class="btn" id="copyBtn" title="IP kopieren">📋 IP kopieren</button>
-          <a class="btn btn-ghost" href="#features">🚀 Features entdecken</a>
-          <a class="btn" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">💬 Discord beitreten</a>
+          <span class="badge-ip" id="ipBadge" data-i18n="ip_label">IP: brawlcraft.de</span>
+          <button class="btn" id="copyBtn" title="IP kopieren" data-i18n="btn_copy_ip">📋 IP kopieren</button>
+          <a class="btn btn-ghost" href="#features" data-i18n="btn_features">🚀 Features entdecken</a>
+          <a class="btn" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener" data-i18n="btn_discord">💬 Discord beitreten</a>
         </div>
-        <div id="serverStatus" style="margin-top:12px; font-weight:900; color:var(--muted)">⏳ Serverstatus wird geladen…</div>
+        <div id="serverStatus" style="margin-top:12px; font-weight:900; color:var(--muted)" data-i18n="server_loading">⏳ Serverstatus wird geladen…</div>
       </div>
 
       <div class="card">
-        <h3>Warum MineLegends?</h3>
-        <p>Wir kombinieren faire Moderation, regelmäßige Updates, starke Performance und kreative Events, damit alle – Solo-Spieler, Builder oder Streamer – ein Zuhause finden.</p>
+        <h3 data-i18n="why_title">Warum MineLegends?</h3>
+        <p data-i18n="why_text">Wir kombinieren faire Moderation, regelmäßige Updates, starke Performance und kreative Events, damit alle – Solo-Spieler, Builder oder Streamer – ein Zuhause finden.</p>
         <ul style="margin-top:12px; color:var(--muted); padding-left:18px">
-          <li>✅ Respektvolle Community & aktives Team</li>
-          <li>✅ Balanciertes Gameplay & sinnvoller Fortschritt</li>
-          <li>✅ Stabile Server & schneller Support</li>
+          <li data-i18n="why_point1">✅ Respektvolle Community & aktives Team</li>
+          <li data-i18n="why_point2">✅ Balanciertes Gameplay & sinnvoller Fortschritt</li>
+          <li data-i18n="why_point3">✅ Stabile Server & schneller Support</li>
         </ul>
       </div>
     </div>
 
     <div class="container">
       <div class="info">
-        <div class="infocard reveal"><h3>IP-Adresse</h3><p><strong>brawlcraft.de</strong></p></div>
-        <div class="infocard reveal"><h3>Shop</h3><p><a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">Hier klicken</a></p></div>
-        <div class="infocard reveal"><h3>Echtzeit API</h3><p>Status & Spielerzahlen via mcstatus.io & mcsrvstat.us</p></div>
+        <div class="infocard reveal"><h3 data-i18n="card_ip">IP-Adresse</h3><p><strong>brawlcraft.de</strong></p></div>
+        <div class="infocard reveal"><h3 data-i18n="card_shop">Shop</h3><p><a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" data-i18n="card_shop_link">Hier klicken</a></p></div>
+        <div class="infocard reveal"><h3 data-i18n="card_api">Echtzeit API</h3><p data-i18n="card_api_text">Status & Spielerzahlen via mcstatus.io & mcsrvstat.us</p></div>
       </div>
     </div>
 
@@ -263,13 +330,13 @@
   <!-- ===== About ===== -->
   <section id="about">
     <div class="container">
-      <h2 class="section-title reveal">Über MineLegends</h2>
-      <p class="section-sub reveal">Wofür wir stehen – Community-first, fair & performant.</p>
+      <h2 class="section-title reveal" data-i18n="about_title">Über MineLegends</h2>
+      <p class="section-sub reveal" data-i18n="about_sub">Wofür wir stehen – Community-first, fair & performant.</p>
       <div class="card reveal" style="margin-top:14px">
-        <h3>MineLegends — Ein Community-First Minecraft Netzwerk</h3>
-        <p style="color:var(--muted); line-height:1.6">MineLegends ist ein spielerfokussiertes Netzwerk, das Menschen durch Challenges, kreative Projekte und Events zusammenbringt. Unser Ziel: Eine stabile, spaßige und faire Umgebung – für Casuals und Competitives.</p>
-        <p style="color:var(--muted); line-height:1.6; margin-top:8px">Im Shop kannst du kosmetische Vorteile, Ränge und kleine QoL-Extras erwerben (PayPal). Nach dem Kauf bitte ein Support-Ticket im Discord öffnen. Von saisonalen Events und PvP-Cups bis zu Build-Contests – MineLegends will ein Zuhause für Creator, Competitors und Freunde sein.</p>
-        <p style="color:var(--muted); font-style:italic; margin-top:8px">IP: brawlcraft.de &nbsp;|&nbsp; Version: 1.20+</p>
+        <h3 data-i18n="about_h3">MineLegends — Ein Community-First Minecraft Netzwerk</h3>
+        <p style="color:var(--muted); line-height:1.6" data-i18n="about_p1">MineLegends ist ein spielerfokussiertes Netzwerk, das Menschen durch Challenges, kreative Projekte und Events zusammenbringt. Unser Ziel: Eine stabile, spaßige und faire Umgebung – für Casuals und Competitives.</p>
+        <p style="color:var(--muted); line-height:1.6; margin-top:8px" data-i18n="about_p2">Im Shop kannst du kosmetische Vorteile, Ränge und kleine QoL-Extras erwerben (PayPal). Nach dem Kauf bitte ein Support-Ticket im Discord öffnen. Von saisonalen Events und PvP-Cups bis zu Build-Contests – MineLegends will ein Zuhause für Creator, Competitors und Freunde sein.</p>
+        <p style="color:var(--muted); font-style:italic; margin-top:8px" data-i18n="about_p3">IP: brawlcraft.de &nbsp;|&nbsp; Version: 1.20+</p>
       </div>
     </div>
   </section>
@@ -277,16 +344,16 @@
   <!-- ===== Features ===== -->
   <section id="features">
     <div class="container">
-      <h2 class="section-title reveal">Features</h2>
-      <p class="section-sub reveal">Das erwartet dich im Netzwerk</p>
+      <h2 class="section-title reveal" data-i18n="features_title">Features</h2>
+      <p class="section-sub reveal" data-i18n="features_sub">Das erwartet dich im Netzwerk</p>
       <div class="ribbon reveal" style="margin-top:8px"><i></i></div>
       <div class="grid grid-3" style="margin-top:18px">
-        <div class="card reveal"><h3>⚔ PvP & Events</h3><p style="color:var(--muted)">Turniere, Seasons & Spezial-Modi.</p></div>
-        <div class="card reveal"><h3>🛡 Bedwars</h3><p style="color:var(--muted)">Schnelle Matches, Custom-Maps & faires Balancing.</p></div>
-        <div class="card reveal"><h3>🏝 Skyblock</h3><p style="color:var(--muted)">Wirtschaft, Insel-Progression & Challenges.</p></div>
-        <div class="card reveal"><h3>🛠 QoL Tools</h3><p style="color:var(--muted)">Auto-Moderation, Backups & DDoS-Schutz.</p></div>
-        <div class="card reveal"><h3>🛒 Shop</h3><p style="color:var(--muted)">Ränge & Kosmetik — <a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">zum Shop</a>.</p></div>
-        <div class="card reveal"><h3>🎉 Community</h3><p style="color:var(--muted)">Contests, Giveaways & Creator-Events.</p></div>
+        <div class="card reveal"><h3 data-i18n="feat_pvp">⚔ PvP & Events</h3><p style="color:var(--muted)" data-i18n="feat_pvp_text">Turniere, Seasons & Spezial-Modi.</p></div>
+        <div class="card reveal"><h3 data-i18n="feat_bedwars">🛡 Bedwars</h3><p style="color:var(--muted)" data-i18n="feat_bedwars_text">Schnelle Matches, Custom-Maps & faires Balancing.</p></div>
+        <div class="card reveal"><h3 data-i18n="feat_skyblock">🏝 Skyblock</h3><p style="color:var(--muted)" data-i18n="feat_skyblock_text">Wirtschaft, Insel-Progression & Challenges.</p></div>
+        <div class="card reveal"><h3 data-i18n="feat_qol">🛠 QoL Tools</h3><p style="color:var(--muted)" data-i18n="feat_qol_text">Auto-Moderation, Backups & DDoS-Schutz.</p></div>
+        <div class="card reveal"><h3 data-i18n="feat_shop">🛒 Shop</h3><p style="color:var(--muted)"><span data-i18n="feat_shop_text">Ränge & Kosmetik — </span><a href="https://mineladen.netlify.app/" target="_blank" rel="noopener" data-i18n="feat_shop_link">zum Shop</a>.</p></div>
+        <div class="card reveal"><h3 data-i18n="feat_comm">🎉 Community</h3><p style="color:var(--muted)" data-i18n="feat_comm_text">Contests, Giveaways & Creator-Events.</p></div>
       </div>
     </div>
   </section>
@@ -294,19 +361,19 @@
   <!-- ===== Server Info ===== -->
   <section id="server">
     <div class="container">
-      <h2 class="section-title reveal">Server Info</h2>
-      <p class="section-sub reveal">Alles, was du zum Verbinden brauchst</p>
+      <h2 class="section-title reveal" data-i18n="server_title">Server Info</h2>
+      <p class="section-sub reveal" data-i18n="server_sub">Alles, was du zum Verbinden brauchst</p>
       <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:18px">
         <div class="card reveal">
-          <h3>Verbindung</h3>
-          <p style="color:var(--muted)"><strong>Adresse:</strong> <span class="badge-ip">brawlcraft.de</span></p>
-          <p style="color:var(--muted)"><strong>Version:</strong> Java Edition 1.21.1+</p>
-          <p style="color:var(--muted)"><button class="btn" onclick="copyIP()">IP kopieren</button></p>
+          <h3 data-i18n="server_conn">Verbindung</h3>
+          <p style="color:var(--muted)"><strong data-i18n="server_addr_label">Adresse:</strong> <span class="badge-ip">brawlcraft.de</span></p>
+          <p style="color:var(--muted)"><strong data-i18n="server_ver_label">Version:</strong> <span data-i18n="server_ver_value">Java 1.21.1+ & Bedrock (Port 19132)</span></p>
+          <p style="color:var(--muted)"><button class="btn" onclick="copyIP()" data-i18n="btn_copy_ip_2">IP kopieren</button></p>
         </div>
         <div class="card reveal">
-          <h3>Performance & Sicherheit</h3>
-          <p style="color:var(--muted)">Optimierte Konfiguration, Backups, Latenz-Checks, Paper-Tuning & Schutz gegen DDoS/Crash-Exploits.</p>
-          <p style="color:var(--muted); margin-top:8px"><strong>Geplant:</strong> Region-Caching & Bedrock-Proxy.</p>
+          <h3 data-i18n="server_perf">Performance & Sicherheit</h3>
+          <p style="color:var(--muted)" data-i18n="server_perf_p1">Optimierte Konfiguration, Backups, Latenz-Checks, Paper-Tuning & Schutz gegen DDoS/Crash-Exploits.</p>
+          <p style="color:var(--muted); margin-top:8px"><strong data-i18n="server_planned">Geplant:</strong> <span data-i18n="server_planned_text">Region-Caching & Bedrock-Proxy.</span></p>
         </div>
       </div>
     </div>
@@ -315,26 +382,26 @@
   <!-- ===== News ===== -->
   <section id="news">
     <div class="container">
-      <h2 class="section-title reveal">Updates & Roadmap</h2>
-      <p class="section-sub reveal">Kurz & ehrlich – was als Nächstes kommt</p>
+      <h2 class="section-title reveal" data-i18n="news_title">Updates & Roadmap</h2>
+      <p class="section-sub reveal" data-i18n="news_sub">Kurz & ehrlich – was als Nächstes kommt</p>
       <div class="timeline">
         <article class="news reveal">
-          <span class="tag">Neu</span>
-          <h4>🛒 Offizieller Shop ist online</h4>
-          <p style="color:var(--muted)">Ränge (VIP, VIP+, Mystery, Legendary, Mythic), Items & Extras (XP-Booster, Fly-Time, Kit God). Nach dem Kauf bitte Ticket im Discord mit Zahlungsnachweis eröffnen.</p>
-          <small style="color:var(--muted)">Update · Q3</small>
+          <span class="tag" data-i18n="news_tag_new">Neu</span>
+          <h4 data-i18n="news_shop_title">🛒 Offizieller Shop ist online</h4>
+          <p style="color:var(--muted)" data-i18n="news_shop_text">Ränge (VIP, VIP+, Mystery, Legendary, Mythic), Items & Extras (XP-Booster, Fly-Time, Kit God). Nach dem Kauf bitte Ticket im Discord mit Zahlungsnachweis eröffnen.</p>
+          <small style="color:var(--muted)" data-i18n="news_shop_small">Update · Q3</small>
         </article>
         <article class="news reveal">
-          <span class="tag">Event</span><span class="tag">PvP</span>
-          <h4>Monatliche PvP-Cups</h4>
-          <p style="color:var(--muted)">Verschiedene Modi (Kit PvP, Duos, Bedwars). Gewinne Preise & Titel.</p>
-          <small style="color:var(--muted)">Termine im Discord (#events)</small>
+          <span class="tag" data-i18n="news_tag_event">Event</span><span class="tag" data-i18n="news_tag_pvp">PvP</span>
+          <h4 data-i18n="news_pvp_title">Monatliche PvP-Cups</h4>
+          <p style="color:var(--muted)" data-i18n="news_pvp_text">Verschiedene Modi (Kit PvP, Duos, Bedwars). Gewinne Preise & Titel.</p>
+          <small style="color:var(--muted)" data-i18n="news_pvp_small">Termine im Discord (#events)</small>
         </article>
         <article class="news reveal">
-          <span class="tag">Community</span>
-          <h4>Creator-Programm</h4>
-          <p style="color:var(--muted)">Streamer & Creator erhalten Early-Infos, Event-Slots & Shoutouts. Bewerbung via Discord.</p>
-          <small style="color:var(--muted)">Neu</small>
+          <span class="tag" data-i18n="news_tag_comm">Community</span>
+          <h4 data-i18n="news_creator_title">Creator-Programm</h4>
+          <p style="color:var(--muted)" data-i18n="news_creator_text">Streamer & Creator erhalten Early-Infos, Event-Slots & Shoutouts. Bewerbung via Discord.</p>
+          <small style="color:var(--muted)" data-i18n="news_creator_small">Neu</small>
         </article>
       </div>
     </div>
@@ -343,12 +410,12 @@
   <!-- ===== Leaderboard ===== -->
   <section id="leaderboard">
     <div class="container">
-      <h2 class="section-title reveal">Leaderboard</h2>
-      <p class="section-sub reveal">Wer führt die Rangliste an?</p>
+      <h2 class="section-title reveal" data-i18n="lb_title">Leaderboard</h2>
+      <p class="section-sub reveal" data-i18n="lb_sub">Wer führt die Rangliste an?</p>
       <div class="grid grid-3" style="margin-top:14px">
-        <div class="card reveal"><h3>Season-Punkte</h3><p style="color:var(--muted)">1. Player123 — 250<br/>2. CreeperKing — 180<br/>3. BuilderPro — 150</p></div>
-        <div class="card reveal"><h3>Kill-Ranking</h3><p style="color:var(--muted)">1. PvPGod — 412<br/>2. QuickStrafe — 369<br/>3. BowMaster — 341</p></div>
-        <div class="card reveal"><h3>Builder</h3><p style="color:var(--muted)">1. ArchiSteve — 95★<br/>2. RedstonePro — 90★<br/>3. TerraFormer — 86★</p></div>
+        <div class="card reveal"><h3 data-i18n="lb_season">Season-Punkte</h3><p style="color:var(--muted)">1. Player123 — 250<br/>2. CreeperKing — 180<br/>3. BuilderPro — 150</p></div>
+        <div class="card reveal"><h3 data-i18n="lb_kills">Kill-Ranking</h3><p style="color:var(--muted)">1. PvPGod — 412<br/>2. QuickStrafe — 369<br/>3. BowMaster — 341</p></div>
+        <div class="card reveal"><h3 data-i18n="lb_builder">Builder</h3><p style="color:var(--muted)">1. ArchiSteve — 95★<br/>2. RedstonePro — 90★<br/>3. TerraFormer — 86★</p></div>
       </div>
     </div>
   </section>
@@ -356,41 +423,41 @@
   <!-- ===== Team ===== -->
   <section id="team">
     <div class="container">
-      <h2 class="section-title reveal">Unser Team</h2>
-      <p class="section-sub reveal">Freundlich, aktiv & hilfsbereit – sauberes Layout ohne Bilder</p>
+      <h2 class="section-title reveal" data-i18n="team_title">Unser Team</h2>
+      <p class="section-sub reveal" data-i18n="team_sub">Freundlich, aktiv & hilfsbereit – sauberes Layout ohne Bilder</p>
 
       <div class="team-grid" style="margin-top:12px">
         <!-- Owner -->
-        <div class="member reveal"><div class="role">[Owner] — <span class="badge admin">Owner</span></div><p style="color:var(--muted)">Teufel45</p></div>
-        <div class="member reveal"><div class="role">Owner — <span class="badge admin">Owner</span></div><p style="color:var(--muted)">biiig7553</p></div>
-        <div class="member reveal"><div class="role">Owner — <span class="badge admin">Owner</span></div><p style="color:var(--muted)">Tobsi</p></div>
+        <div class="member reveal"><div class="role">[Owner] — <span class="badge admin" data-i18n="badge_owner">Owner</span></div><p style="color:var(--muted)">Teufel45</p></div>
+        <div class="member reveal"><div class="role" data-i18n="role_owner">Owner</div><p style="color:var(--muted)">biiig7553</p></div>
+        <div class="member reveal"><div class="role" data-i18n="role_owner2">Owner</div><p style="color:var(--muted)">Tobsi</p></div>
 
         <!-- Co Owner -->
-        <div class="member reveal"><div class="role">AdminMax — <span class="badge co">Co Owner</span></div><p style="color:var(--muted)">Organisation, Entscheidungen & Infrastruktur.</p></div>
+        <div class="member reveal"><div class="role">AdminMax — <span class="badge co" data-i18n="badge_co">Co Owner</span></div><p style="color:var(--muted)" data-i18n="co_desc">Organisation, Entscheidungen & Infrastruktur.</p></div>
 
         <!-- Head Dev -->
-        <div class="member reveal"><div class="role">Nyx — <span class="badge head">Head Dev</span></div><p style="color:var(--muted)">Entwicklung, Plugins & Performance-Optimierung.</p></div>
+        <div class="member reveal"><div class="role">Nyx — <span class="badge head" data-i18n="badge_head">Head Dev</span></div><p style="color:var(--muted)" data-i18n="head_desc">Entwicklung, Plugins & Performance-Optimierung.</p></div>
 
         <!-- Admin -->
-        <div class="member reveal"><div class="role">Gianluzca_05 — <span class="badge admin">Admin</span></div><p style="color:var(--muted)">Administration & Moderation.</p></div>
-        <div class="member reveal"><div class="role">Leon — <span class="badge admin">Admin</span></div><p style="color:var(--muted)">Verwaltung, Moderation & Events.</p></div>
+        <div class="member reveal"><div class="role">Gianluzca_05 — <span class="badge admin" data-i18n="badge_admin">Admin</span></div><p style="color:var(--muted)" data-i18n="admin_desc1">Administration & Moderation.</p></div>
+        <div class="member reveal"><div class="role">Leon — <span class="badge admin" data-i18n="badge_admin2">Admin</span></div><p style="color:var(--muted)" data-i18n="admin_desc2">Verwaltung, Moderation & Events.</p></div>
 
         <!-- Builder / Mods / Support etc. -->
-        <div class="member reveal"><div class="role">W0LF — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Map-Design & Deko.</p></div>
-        <div class="member reveal"><div class="role">Manuelzockt5804 — <span class="badge mod">DC Moderator</span></div><p style="color:var(--muted)">Discord-Moderation.</p></div>
-        <div class="member reveal"><div class="role">fxschk0pf — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Bau-Projekte.</p></div>
-        <div class="member reveal"><div class="role">KingArthurW — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Großprojekte & Planung.</p></div>
-        <div class="member reveal"><div class="role">Hyragon — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Terrain & Technik.</p></div>
-        <div class="member reveal"><div class="role">Finnefitty2010 — <span class="badge mod">Head Mod</span></div><p style="color:var(--muted)">Moderation & Teamkoordination.</p></div>
-        <div class="member reveal"><div class="role">Motoxmo — <span class="badge support">Test Supporter</span></div><p style="color:var(--muted)">Tickets & Spielersupport.</p></div>
-        <div class="member reveal"><div class="role">OliGHG — <span class="badge admin">Deputy Admin</span></div><p style="color:var(--muted)">Admin-Vertretung.</p></div>
-        <div class="member reveal"><div class="role">PhantomJCA — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Kreative Builds.</p></div>
-        <div class="member reveal"><div class="role">FunLynx134 — <span class="badge support">Supporter</span></div><p style="color:var(--muted)">Ersthilfe bei Problemen.</p></div>
-        <div class="member reveal"><div class="role">ƬIGΞR — <span class="badge support">Supporter</span></div><p style="color:var(--muted)">Community-Support.</p></div>
-        <div class="member reveal"><div class="role">Pascal — <span class="badge admin">T-Admin</span></div><p style="color:var(--muted)">Technische Administration.</p></div>
-        <div class="member reveal"><div class="role">Xx_Rim3_Xx — <span class="badge">Team Lead</span></div><p style="color:var(--muted)">Teamleitung.</p></div>
-        <div class="member reveal"><div class="role">Poyo_Smash — <span class="badge support">Test Support</span></div><p style="color:var(--muted)">Support in Ausbildung.</p></div>
-        <div class="member reveal"><div class="role">Zewo — <span class="badge support">Test Supporter</span></div><p style="color:var(--muted)">Support in Ausbildung.</p></div>
+        <div class="member reveal"><div class="role">W0LF — <span class="badge builder" data-i18n="badge_builder">Builder</span></div><p style="color:var(--muted)" data-i18n="builder_desc1">Map-Design & Deko.</p></div>
+        <div class="member reveal"><div class="role">Manuelzockt5804 — <span class="badge mod" data-i18n="badge_mod">DC Moderator</span></div><p style="color:var(--muted)" data-i18n="mod_desc1">Discord-Moderation.</p></div>
+        <div class="member reveal"><div class="role">fxschk0pf — <span class="badge builder" data-i18n="badge_builder2">Builder</span></div><p style="color:var(--muted)" data-i18n="builder_desc2">Bau-Projekte.</p></div>
+        <div class="member reveal"><div class="role">KingArthurW — <span class="badge builder" data-i18n="badge_builder3">Builder</span></div><p style="color:var(--muted)" data-i18n="builder_desc3">Großprojekte & Planung.</p></div>
+        <div class="member reveal"><div class="role">Hyragon — <span class="badge builder" data-i18n="badge_builder4">Builder</span></div><p style="color:var(--muted)" data-i18n="builder_desc4">Terrain & Technik.</p></div>
+        <div class="member reveal"><div class="role">Finnefitty2010 — <span class="badge mod" data-i18n="badge_headmod">Head Mod</span></div><p style="color:var(--muted)" data-i18n="mod_desc2">Moderation & Teamkoordination.</p></div>
+        <div class="member reveal"><div class="role">Motoxmo — <span class="badge support" data-i18n="badge_testsupport">Test Supporter</span></div><p style="color:var(--muted)" data-i18n="support_desc1">Tickets & Spielersupport.</p></div>
+        <div class="member reveal"><div class="role">OliGHG — <span class="badge admin" data-i18n="badge_deputy">Deputy Admin</span></div><p style="color:var(--muted)" data-i18n="admin_desc3">Admin-Vertretung.</p></div>
+        <div class="member reveal"><div class="role">PhantomJCA — <span class="badge builder" data-i18n="badge_builder5">Builder</span></div><p style="color:var(--muted)" data-i18n="builder_desc5">Kreative Builds.</p></div>
+        <div class="member reveal"><div class="role">FunLynx134 — <span class="badge support" data-i18n="badge_support">Supporter</span></div><p style="color:var(--muted)" data-i18n="support_desc2">Ersthilfe bei Problemen.</p></div>
+        <div class="member reveal"><div class="role">ƬIGΞR — <span class="badge support" data-i18n="badge_support2">Supporter</span></div><p style="color:var(--muted)" data-i18n="support_desc3">Community-Support.</p></div>
+        <div class="member reveal"><div class="role">Pascal — <span class="badge admin" data-i18n="badge_tadmin">T-Admin</span></div><p style="color:var(--muted)" data-i18n="tadmin_desc">Technische Administration.</p></div>
+        <div class="member reveal"><div class="role">Xx_Rim3_Xx — <span class="badge" data-i18n="badge_lead">Team Lead</span></div><p style="color:var(--muted)" data-i18n="lead_desc">Teamleitung.</p></div>
+        <div class="member reveal"><div class="role">Poyo_Smash — <span class="badge support" data-i18n="badge_testsupport2">Test Support</span></div><p style="color:var(--muted)" data-i18n="support_desc4">Support in Ausbildung.</p></div>
+        <div class="member reveal"><div class="role">Zewo — <span class="badge support" data-i18n="badge_testsupport3">Test Supporter</span></div><p style="color:var(--muted)" data-i18n="support_desc5">Support in Ausbildung.</p></div>
       </div>
     </div>
   </section>
@@ -398,14 +465,14 @@
   <!-- ===== Creators ===== -->
   <section id="creators">
     <div class="container">
-      <h2 class="section-title reveal">Content Creator</h2>
-      <p class="section-sub reveal">Streamer & Video-Creator, die den Server supporten</p>
+      <h2 class="section-title reveal" data-i18n="creator_title">Content Creator</h2>
+      <p class="section-sub reveal" data-i18n="creator_sub">Streamer & Video-Creator, die den Server supporten</p>
       <div class="team-grid" style="margin-top:12px">
-        <div class="member reveal"><div class="role">Tobi — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Streams, Community-Content & Event-Coverage.</p></div>
-        <div class="member reveal"><div class="role">Tim — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Gameplay-Videos & Tutorials.</p></div>
-        <div class="member reveal"><div class="role">Jean — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Livestreams & Highlights.</p></div>
-        <div class="member reveal"><div class="role">Natsu — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">PvP-Highlights & Community-Events.</p></div>
-        <div class="member reveal"><div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Bedwars-Rushes, Clips & Raids.</p></div>
+        <div class="member reveal"><div class="role">Tobi — <span class="badge creator" data-i18n="badge_creator">Creator</span></div><p style="color:var(--muted)" data-i18n="creator_desc1">Streams, Community-Content & Event-Coverage.</p></div>
+        <div class="member reveal"><div class="role">Tim — <span class="badge creator" data-i18n="badge_creator2">Creator</span></div><p style="color:var(--muted)" data-i18n="creator_desc2">Gameplay-Videos & Tutorials.</p></div>
+        <div class="member reveal"><div class="role">Jean — <span class="badge creator" data-i18n="badge_creator3">Creator</span></div><p style="color:var(--muted)" data-i18n="creator_desc3">Livestreams & Highlights.</p></div>
+        <div class="member reveal"><div class="role">Natsu — <span class="badge creator" data-i18n="badge_creator4">Creator</span></div><p style="color:var(--muted)" data-i18n="creator_desc4">PvP-Highlights & Community-Events.</p></div>
+        <div class="member reveal"><div class="role">XxNiklasYt — <span class="badge creator" data-i18n="badge_creator5">Creator</span></div><p style="color:var(--muted)" data-i18n="creator_desc5">Bedwars-Rushes, Clips & Raids.</p></div>
       </div>
     </div>
   </section>
@@ -413,31 +480,31 @@
   <!-- ===== FAQ ===== -->
   <section id="faq">
     <div class="container">
-      <h2 class="section-title reveal">FAQ</h2>
-      <p class="section-sub reveal">Häufige Fragen – kurz beantwortet</p>
+      <h2 class="section-title reveal" data-i18n="faq_title">FAQ</h2>
+      <p class="section-sub reveal" data-i18n="faq_sub">Häufige Fragen – kurz beantwortet</p>
       <div class="faq">
         <details class="reveal">
-          <summary>Wie trete ich bei?</summary>
-          <p style="color:var(--muted)">Minecraft (Java) öffnen → Multiplayer → Server hinzufügen → IP: <code>brawlcraft.de</code> → Beitreten.</p>
+          <summary data-i18n="faq_join_q">Wie trete ich bei?</summary>
+          <p style="color:var(--muted)" data-i18n="faq_join_a">Minecraft (Java) öffnen → Multiplayer → Server hinzufügen → IP: <code>brawlcraft.de</code> → Beitreten.</p>
         </details>
         <details class="reveal">
-          <summary>Wird Bedrock unterstützt?</summary>
-          <p style="color:var(--muted)">Aktuell Java Only. Bedrock-Proxy ist geplant.</p>
+          <summary data-i18n="faq_bedrock_q">Wird Bedrock unterstützt?</summary>
+          <p style="color:var(--muted)" data-i18n="faq_bedrock_a">Ja. Java 1.21.1+ & Bedrock (Standard-Port 19132).</p>
         </details>
         <details class="reveal">
-          <summary>Wer sind die Inhaber?</summary>
-          <p style="color:var(--muted)"><strong>AdminMax</strong> (Co Owner) & <strong>Teufel45</strong> (Owner)</p>
+          <summary data-i18n="faq_owner_q">Wer sind die Inhaber?</summary>
+          <p style="color:var(--muted)"><strong>AdminMax</strong> (<span data-i18n="badge_co">Co Owner</span>) & <strong>Teufel45</strong> (<span data-i18n="badge_owner">Owner</span>)</p>
         </details>
         <details class="reveal">
-          <summary>Shop – was muss ich wissen?</summary>
+          <summary data-i18n="faq_shop_q">Shop – was muss ich wissen?</summary>
           <div style="color:var(--muted)">
             <ul>
-              <li>✅ Exakten In-Game-Namen (Groß-/Kleinschreibung) angeben.</li>
-              <li>✅ Nach Zahlung Ticket im Discord eröffnen & Zahlungsnachweis (PayPal-ID) anfügen.</li>
-              <li>✅ Lieferung i. d. R. manuell innerhalb kurzer Zeit.</li>
-              <li>⚠ Digitale Güter sind in der Regel vom Widerruf ausgeschlossen (gesetzliche Ausnahmen vorbehalten).</li>
+              <li data-i18n="faq_shop_li1">✅ Exakten In-Game-Namen (Groß-/Kleinschreibung) angeben.</li>
+              <li data-i18n="faq_shop_li2">✅ Nach Zahlung Ticket im Discord eröffnen & Zahlungsnachweis (PayPal-ID) anfügen.</li>
+              <li data-i18n="faq_shop_li3">✅ Lieferung i. d. R. manuell innerhalb kurzer Zeit.</li>
+              <li data-i18n="faq_shop_li4">⚠ Digitale Güter sind in der Regel vom Widerruf ausgeschlossen (gesetzliche Ausnahmen vorbehalten).</li>
             </ul>
-            <div style="margin-top:8px; font-style:italic">Zahlungen via PayPal. Wir speichern keine Zahlungsdaten.</div>
+            <div style="margin-top:8px; font-style:italic" data-i18n="faq_shop_note">Zahlungen via PayPal. Wir speichern keine Zahlungsdaten.</div>
           </div>
         </details>
       </div>
@@ -447,11 +514,11 @@
   <!-- ===== Kontakt ===== -->
   <section id="contact">
     <div class="container">
-      <h2 class="section-title reveal">Kontakt</h2>
+      <h2 class="section-title reveal" data-i18n="contact_title">Kontakt</h2>
       <div class="contact-block reveal">
-        <div>Server-Adresse: <strong>brawlcraft.de</strong></div>
-        <div>Owner: <strong>Teufel45</strong> &nbsp;|&nbsp; Co Owner: <strong>AdminMax</strong></div>
-        <div>Discord: <a class="link-cta" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">Discord beitreten</a></div>
+        <div data-i18n="contact_addr">Server-Adresse: <strong>brawlcraft.de</strong></div>
+        <div>Owner: <strong>Teufel45</strong> &nbsp;|&nbsp; <span data-i18n="contact_coowner_label">Co Owner</span>: <strong>AdminMax</strong></div>
+        <div>Discord: <a class="link-cta" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener" data-i18n="contact_discord_link">Discord beitreten</a></div>
       </div>
     </div>
   </section>
@@ -459,8 +526,8 @@
   <!-- ===== Footer ===== -->
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
-      <div>© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div>
-      <div style="opacity:.85">Made with ❤️ von der MineLegends Community.</div>
+      <div>© <span id="year"></span> <span data-i18n="brand_name">MineLegends</span>. <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></div>
+      <div style="opacity:.85" data-i18n="footer_made">Made with ❤️ von der MineLegends Community.</div>
     </div>
   </footer>
 
@@ -475,7 +542,7 @@
   </div>
 
   <!-- ===== Sticky Join (mobile) ===== -->
-  <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">✨ Join</a>
+  <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener" data-i18n="sticky_join">✨ Join</a>
 
   <!-- ===== Scripts ===== -->
   <script>
@@ -498,14 +565,227 @@
       setModeIcon();
     }
 
+    // ===== i18n translations (internal) =====
+    const i18n = {
+      de: {
+        brand_name:"MineLegends",
+        brand_tag:"PvP • Bedwars • Skyblock • Events",
+        nav_home:"Start",nav_about:"Über uns",nav_features:"Features",nav_server:"Server",nav_news:"News",nav_leaderboard:"Leaderboard",nav_team:"Team",nav_creators:"Creator",nav_faq:"FAQ",nav_contact:"Kontakt",nav_shop:"🛒 Shop",nav_discord:"💬 Discord",
+        hero_title:"Willkommen bei <span style='color:var(--accent)'>MineLegends</span>",
+        hero_lead:"Dein Zuhause für faire Competition, kreative Builds und Events. Spiele PvP, Bedwars & Skyblock. Tritt direkt über unsere IP bei und werde Teil der Community.",
+        ip_label:"IP: brawlcraft.de", btn_copy_ip:"📋 IP kopieren", btn_features:"🚀 Features entdecken", btn_discord:"💬 Discord beitreten",
+        server_loading:"⏳ Serverstatus wird geladen…",
+        why_title:"Warum MineLegends?", why_text:"Wir kombinieren faire Moderation, regelmäßige Updates, starke Performance und kreative Events, damit alle – Solo-Spieler, Builder oder Streamer – ein Zuhause finden.",
+        why_point1:"✅ Respektvolle Community & aktives Team",why_point2:"✅ Balanciertes Gameplay & sinnvoller Fortschritt",why_point3:"✅ Stabile Server & schneller Support",
+        card_ip:"IP-Adresse", card_shop:"Shop", card_shop_link:"Hier klicken", card_api:"Echtzeit API", card_api_text:"Status & Spielerzahlen via mcstatus.io & mcsrvstat.us",
+        about_title:"Über MineLegends", about_sub:"Wofür wir stehen – Community-first, fair & performant.",
+        about_h3:"MineLegends — Ein Community-First Minecraft Netzwerk",
+        about_p1:"MineLegends ist ein spielerfokussiertes Netzwerk, das Menschen durch Challenges, kreative Projekte und Events zusammenbringt. Unser Ziel: Eine stabile, spaßige und faire Umgebung – für Casuals und Competitives.",
+        about_p2:"Im Shop kannst du kosmetische Vorteile, Ränge und kleine QoL-Extras erwerben (PayPal). Nach dem Kauf bitte ein Support-Ticket im Discord öffnen. Von saisonalen Events und PvP-Cups bis zu Build-Contests – MineLegends will ein Zuhause für Creator, Competitors und Freunde sein.",
+        about_p3:"IP: brawlcraft.de | Version: 1.20+",
+        features_title:"Features", features_sub:"Das erwartet dich im Netzwerk",
+        feat_pvp:"⚔ PvP & Events", feat_pvp_text:"Turniere, Seasons & Spezial-Modi.",
+        feat_bedwars:"🛡 Bedwars", feat_bedwars_text:"Schnelle Matches, Custom-Maps & faires Balancing.",
+        feat_skyblock:"🏝 Skyblock", feat_skyblock_text:"Wirtschaft, Insel-Progression & Challenges.",
+        feat_qol:"🛠 QoL Tools", feat_qol_text:"Auto-Moderation, Backups & DDoS-Schutz.",
+        feat_shop:"🛒 Shop", feat_shop_text:"Ränge & Kosmetik — ", feat_shop_link:"zum Shop",
+        feat_comm:"🎉 Community", feat_comm_text:"Contests, Giveaways & Creator-Events.",
+        server_title:"Server Info", server_sub:"Alles, was du zum Verbinden brauchst",
+        server_conn:"Verbindung", server_addr_label:"Adresse:", server_ver_label:"Version:", server_ver_value:"Java 1.21.1+ & Bedrock (Port 19132)", btn_copy_ip_2:"IP kopieren",
+        server_perf:"Performance & Sicherheit", server_perf_p1:"Optimierte Konfiguration, Backups, Latenz-Checks, Paper-Tuning & Schutz gegen DDoS/Crash-Exploits.",
+        server_planned:"Geplant:", server_planned_text:"Region-Caching & Bedrock-Proxy.",
+        news_title:"Updates & Roadmap", news_sub:"Kurz & ehrlich – was als Nächstes kommt",
+        news_tag_new:"Neu", news_shop_title:"🛒 Offizieller Shop ist online", news_shop_text:"Ränge (VIP, VIP+, Mystery, Legendary, Mythic), Items & Extras (XP-Booster, Fly-Time, Kit God). Nach dem Kauf bitte Ticket im Discord mit Zahlungsnachweis eröffnen.", news_shop_small:"Update · Q3",
+        news_tag_event:"Event", news_tag_pvp:"PvP", news_pvp_title:"Monatliche PvP-Cups", news_pvp_text:"Verschiedene Modi (Kit PvP, Duos, Bedwars). Gewinne Preise & Titel.", news_pvp_small:"Termine im Discord (#events)",
+        news_tag_comm:"Community", news_creator_title:"Creator-Programm", news_creator_text:"Streamer & Creator erhalten Early-Infos, Event-Slots & Shoutouts. Bewerbung via Discord.", news_creator_small:"Neu",
+        lb_title:"Leaderboard", lb_sub:"Wer führt die Rangliste an?", lb_season:"Season-Punkte", lb_kills:"Kill-Ranking", lb_builder:"Builder",
+        team_title:"Unser Team", team_sub:"Freundlich, aktiv & hilfsbereit – sauberes Layout ohne Bilder",
+        badge_owner:"Owner", role_owner:"Owner", role_owner2:"Owner", badge_co:"Co Owner", co_desc:"Organisation, Entscheidungen & Infrastruktur.", badge_head:"Head Dev", head_desc:"Entwicklung, Plugins & Performance-Optimierung.",
+        badge_admin:"Admin", admin_desc1:"Administration & Moderation.", admin_desc2:"Verwaltung, Moderation & Events.", badge_builder:"Builder",
+        builder_desc1:"Map-Design & Deko.", badge_mod:"DC Moderator", mod_desc1:"Discord-Moderation.", builder_desc2:"Bau-Projekte.", builder_desc3:"Großprojekte & Planung.", builder_desc4:"Terrain & Technik.",
+        badge_headmod:"Head Mod", mod_desc2:"Moderation & Teamkoordination.", badge_testsupport:"Test Supporter", support_desc1:"Tickets & Spielersupport.",
+        badge_deputy:"Deputy Admin", admin_desc3:"Admin-Vertretung.", builder_desc5:"Kreative Builds.", badge_support:"Supporter", support_desc2:"Ersthilfe bei Problemen.", support_desc3:"Community-Support.",
+        badge_tadmin:"T-Admin", tadmin_desc:"Technische Administration.", badge_lead:"Team Lead", lead_desc:"Teamleitung.", badge_testsupport2:"Test Support", support_desc4:"Support in Ausbildung.", badge_testsupport3:"Test Supporter", support_desc5:"Support in Ausbildung.",
+        creator_title:"Content Creator", creator_sub:"Streamer & Video-Creator, die den Server supporten",
+        creator_desc1:"Streams, Community-Content & Event-Coverage.", creator_desc2:"Gameplay-Videos & Tutorials.", creator_desc3:"Livestreams & Highlights.", creator_desc4:"PvP-Highlights & Community-Events.", creator_desc5:"Bedwars-Rushes, Clips & Raids.",
+        faq_title:"FAQ", faq_sub:"Häufige Fragen – kurz beantwortet",
+        faq_join_q:"Wie trete ich bei?", faq_join_a:"Minecraft (Java) öffnen → Multiplayer → Server hinzufügen → IP: <code>brawlcraft.de</code> → Beitreten.",
+        faq_bedrock_q:"Wird Bedrock unterstützt?", faq_bedrock_a:"Ja. Java 1.21.1+ & Bedrock (Standard-Port 19132).",
+        faq_owner_q:"Wer sind die Inhaber?",
+        faq_shop_q:"Shop – was muss ich wissen?",
+        faq_shop_li1:"✅ Exakten In-Game-Namen (Groß-/Kleinschreibung) angeben.",
+        faq_shop_li2:"✅ Nach Zahlung Ticket im Discord eröffnen & Zahlungsnachweis (PayPal-ID) anfügen.",
+        faq_shop_li3:"✅ Lieferung i. d. R. manuell innerhalb kurzer Zeit.",
+        faq_shop_li4:"⚠ Digitale Güter sind in der Regel vom Widerruf ausgeschlossen (gesetzliche Ausnahmen vorbehalten).",
+        faq_shop_note:"Zahlungen via PayPal. Wir speichern keine Zahlungsdaten.",
+        contact_title:"Kontakt", contact_addr:"Server-Adresse: <strong>brawlcraft.de</strong>", contact_coowner_label:"Co Owner", contact_discord_link:"Discord beitreten",
+        footer_rights:"Alle Rechte vorbehalten.", footer_made:"Made with ❤️ von der MineLegends Community.", sticky_join:"✨ Join"
+      },
+      en: {
+        brand_name:"MineLegends",
+        brand_tag:"PvP • Bedwars • Skyblock • Events",
+        nav_home:"Home",nav_about:"About",nav_features:"Features",nav_server:"Server",nav_news:"News",nav_leaderboard:"Leaderboard",nav_team:"Team",nav_creators:"Creators",nav_faq:"FAQ",nav_contact:"Contact",nav_shop:"🛒 Shop",nav_discord:"💬 Discord",
+        hero_title:"Welcome to <span style='color:var(--accent)'>MineLegends</span>",
+        hero_lead:"Your home for fair competition, creative builds and events. Play PvP, Bedwars & Skyblock. Join via our IP and become part of the community.",
+        ip_label:"IP: brawlcraft.de", btn_copy_ip:"📋 Copy IP", btn_features:"🚀 Explore features", btn_discord:"💬 Join Discord",
+        server_loading:"⏳ Loading server status…",
+        why_title:"Why MineLegends?", why_text:"We combine fair moderation, regular updates, strong performance and creative events so everyone—solo players, builders or streamers—finds a home.",
+        why_point1:"✅ Respectful community & active staff",why_point2:"✅ Balanced gameplay & meaningful progression",why_point3:"✅ Stable servers & fast support",
+        card_ip:"IP Address", card_shop:"Shop", card_shop_link:"Click here", card_api:"Realtime API", card_api_text:"Status & player counts via mcstatus.io & mcsrvstat.us",
+        about_title:"About MineLegends", about_sub:"What we stand for — community-first, fair & performant.",
+        about_h3:"MineLegends — A Community-First Minecraft Network",
+        about_p1:"MineLegends is a player-focused network that brings people together through challenges, creative projects and events. Our goal: a stable, fun and fair environment—for casuals and competitors.",
+        about_p2:"In the shop you can purchase cosmetic perks, ranks and QoL extras (PayPal). After purchase, open a support ticket in Discord. From seasonal events and PvP cups to build contests—MineLegends aims to be a home for creators, competitors and friends.",
+        about_p3:"IP: brawlcraft.de | Version: 1.20+",
+        features_title:"Features", features_sub:"What awaits you on the network",
+        feat_pvp:"⚔ PvP & Events", feat_pvp_text:"Tournaments, seasons & special modes.",
+        feat_bedwars:"🛡 Bedwars", feat_bedwars_text:"Fast matches, custom maps & fair balance.",
+        feat_skyblock:"🏝 Skyblock", feat_skyblock_text:"Economy, island progression & challenges.",
+        feat_qol:"🛠 QoL Tools", feat_qol_text:"Auto moderation, backups & DDoS protection.",
+        feat_shop:"🛒 Shop", feat_shop_text:"Ranks & cosmetics — ", feat_shop_link:"to the shop",
+        feat_comm:"🎉 Community", feat_comm_text:"Contests, giveaways & creator events.",
+        server_title:"Server Info", server_sub:"Everything you need to connect",
+        server_conn:"Connection", server_addr_label:"Address:", server_ver_label:"Version:", server_ver_value:"Java 1.21.1+ & Bedrock (Port 19132)", btn_copy_ip_2:"Copy IP",
+        server_perf:"Performance & Security", server_perf_p1:"Optimized configuration, backups, latency checks, Paper tuning & protection against DDoS/crash exploits.",
+        server_planned:"Planned:", server_planned_text:"Region caching & Bedrock proxy.",
+        news_title:"Updates & Roadmap", news_sub:"Short & honest — what's next",
+        news_tag_new:"New", news_shop_title:"🛒 Official shop is live", news_shop_text:"Ranks (VIP, VIP+, Mystery, Legendary, Mythic), items & extras (XP booster, fly time, Kit God). After purchase, open a Discord ticket with proof of payment.", news_shop_small:"Update · Q3",
+        news_tag_event:"Event", news_tag_pvp:"PvP", news_pvp_title:"Monthly PvP cups", news_pvp_text:"Various modes (Kit PvP, Duos, Bedwars). Win prizes & titles.", news_pvp_small:"Dates in Discord (#events)",
+        news_tag_comm:"Community", news_creator_title:"Creator program", news_creator_text:"Streamers & creators get early info, event slots & shoutouts. Apply via Discord.", news_creator_small:"New",
+        lb_title:"Leaderboard", lb_sub:"Who tops the charts?", lb_season:"Season points", lb_kills:"Kill ranking", lb_builder:"Builder",
+        team_title:"Our Team", team_sub:"Friendly, active & helpful — clean layout without images",
+        badge_owner:"Owner", role_owner:"Owner", role_owner2:"Owner", badge_co:"Co Owner", co_desc:"Organisation, decisions & infrastructure.", badge_head:"Head Dev", head_desc:"Development, plugins & performance optimization.",
+        badge_admin:"Admin", admin_desc1:"Administration & moderation.", admin_desc2:"Management, moderation & events.", badge_builder:"Builder",
+        builder_desc1:"Map design & decor.", badge_mod:"DC Moderator", mod_desc1:"Discord moderation.", builder_desc2:"Build projects.", builder_desc3:"Large projects & planning.", builder_desc4:"Terrain & tech.",
+        badge_headmod:"Head Mod", mod_desc2:"Moderation & team coordination.", badge_testsupport:"Test Supporter", support_desc1:"Tickets & player support.",
+        badge_deputy:"Deputy Admin", admin_desc3:"Admin deputy.", builder_desc5:"Creative builds.", badge_support:"Supporter", support_desc2:"First help for issues.", support_desc3:"Community support.",
+        badge_tadmin:"T-Admin", tadmin_desc:"Technical administration.", badge_lead:"Team Lead", lead_desc:"Team leadership.", badge_testsupport2:"Test Support", support_desc4:"Support in training.", badge_testsupport3:"Test Supporter", support_desc5:"Support in training.",
+        creator_title:"Content Creators", creator_sub:"Streamers & video creators supporting the server",
+        creator_desc1:"Streams, community content & event coverage.", creator_desc2:"Gameplay videos & tutorials.", creator_desc3:"Livestreams & highlights.", creator_desc4:"PvP highlights & community events.", creator_desc5:"Bedwars rushes, clips & raids.",
+        faq_title:"FAQ", faq_sub:"Frequently asked questions — short answers",
+        faq_join_q:"How do I join?", faq_join_a:"Open Minecraft (Java) → Multiplayer → Add Server → IP: <code>brawlcraft.de</code> → Join.",
+        faq_bedrock_q:"Is Bedrock supported?", faq_bedrock_a:"Yes. Java 1.21.1+ & Bedrock (default port 19132).",
+        faq_owner_q:"Who are the owners?",
+        faq_shop_q:"Shop — what should I know?",
+        faq_shop_li1:"✅ Enter the exact in-game name (case sensitive).",
+        faq_shop_li2:"✅ After payment, open a Discord ticket & attach payment proof (PayPal ID).",
+        faq_shop_li3:"✅ Delivery is usually manual within a short time.",
+        faq_shop_li4:"⚠ Digital goods are generally excluded from withdrawal (subject to legal exceptions).",
+        faq_shop_note:"Payments via PayPal. We do not store payment data.",
+        contact_title:"Contact", contact_addr:"Server address: <strong>brawlcraft.de</strong>", contact_coowner_label:"Co Owner", contact_discord_link:"Join Discord",
+        footer_rights:"All rights reserved.", footer_made:"Made with ❤️ by the MineLegends community.", sticky_join:"✨ Join"
+      }
+      // You can add more languages here using the same keys.
+    };
+
+    // apply translations
+    function applyLang(lang){
+      const dict = i18n[lang];
+      document.documentElement.setAttribute('lang', lang);
+      if(dict){
+        document.querySelectorAll('[data-i18n]').forEach(el=>{
+          const key = el.getAttribute('data-i18n');
+          if(!key) return;
+          if(dict[key] !== undefined){
+            // If original contains HTML (like hero_title), set innerHTML
+            const text = dict[key];
+            if(String(text).includes('<') || String(text).includes('&')){
+              el.innerHTML = text;
+            } else {
+              el.textContent = text;
+            }
+          }
+        });
+        // disable Google auto translate UI if active
+        if(window._googleTranslateMutex){ window._googleTranslateMutex.desired = ''; triggerGoogleTranslate(''); }
+        try{ localStorage.setItem('minelegends-lang', lang); }catch(e){}
+      } else {
+        // Not internally translated -> use Google Translate fallback
+        triggerGoogleTranslate(lang);
+        try{ localStorage.setItem('minelegends-lang', lang); }catch(e){}
+      }
+    }
+
+    // ===== Google Translate fallback (covers many more languages) =====
+    // Adds the Google Translate widget hidden, and lets us programmatically select a language
+    window._googleTranslateMutex = {loaded:false, desired:''};
+
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'de',
+        includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-CN,zh-TW,co,hr,cs,da,nl,en,eo,et,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,or,ps,fa,pl,pt,pa,ro,ru,sm,gd,sr,st,si,sk,sl,so,es,su,sw,sv,tg,ta,te,th,tr,uk,ur,uz,vi,cy,xh,yi,yo,zu',
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'gt-placeholder');
+      window._googleTranslateMutex.loaded = true;
+      if(window._googleTranslateMutex.desired){
+        triggerGoogleTranslate(window._googleTranslateMutex.desired);
+        window._googleTranslateMutex.desired='';
+      }
+    }
+
+    function triggerGoogleTranslate(lang){
+      // Map some codes to Google's expected codes if needed
+      const map = {'he':'iw','jw':'jv','zh':'zh-CN'};
+      let target = map[lang] || lang;
+      if(!window.google || !window.google.translate){
+        window._googleTranslateMutex.desired = target;
+        return;
+      }
+      const sel = document.querySelector('.goog-te-combo');
+      if(sel){
+        sel.value = target;
+        sel.dispatchEvent(new Event('change'));
+      }
+    }
+
+    // Invisible container for Google Translate
+    const gtDiv = document.createElement('div');
+    gtDiv.id = 'gt-placeholder';
+    gtDiv.style.cssText = 'position:absolute;left:-99999px;top:-99999px;opacity:0;pointer-events:none;height:0;width:0;';
+    document.body.appendChild(gtDiv);
+
+    // Load Google Translate script
+    (function(){
+      const s = document.createElement('script');
+      s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.head.appendChild(s);
+    })();
+
+    // Init language from storage or browser
+    (function initLang(){
+      let lang = 'de';
+      try{
+        lang = localStorage.getItem('minelegends-lang') || (navigator.language || 'de').split('-')[0];
+      }catch(e){}
+      const select = document.getElementById('langSelect');
+      if(select){
+        if([...select.options].some(o=>o.value===lang)){
+          select.value = lang;
+        } else {
+          // if not in dropdown, keep de but still apply fallback
+          select.value = 'de';
+        }
+        applyLang(select.value);
+        select.addEventListener('change', e=>{
+          applyLang(e.target.value);
+        });
+      } else {
+        applyLang(lang);
+      }
+    })();
+
     // IP kopieren
     function copyIP(){
       const ip = "brawlcraft.de";
       navigator.clipboard.writeText(ip).then(()=>{
         const btn = document.getElementById('copyBtn');
         if(btn){
-          btn.textContent = "✅ IP kopiert";
-          setTimeout(()=> btn.textContent = "📋 IP kopieren", 1600);
+          const lang = (localStorage.getItem('minelegends-lang')||'de').split('-')[0];
+          btn.textContent = lang==='en' ? "✅ IP copied" : "✅ IP kopiert";
+          setTimeout(()=> {
+            btn.textContent = (i18n[lang] && i18n[lang].btn_copy_ip) ? i18n[lang].btn_copy_ip : (lang==='en' ? "📋 Copy IP" : "📋 IP kopieren");
+          }, 1600);
         }else{
           alert("IP kopiert: " + ip);
         }
@@ -521,12 +801,15 @@
 
       function setText(ok, players, motd){
         if(!el) return;
+        const lang = (localStorage.getItem('minelegends-lang')||'de').split('-')[0];
         if(ok){
           const ptxt = typeof players === 'number' ? players : 0;
-          el.textContent = "✅ Online – " + ptxt + " Spieler" + (motd ? " · " + motd : "");
+          const okTxt = lang==='en' ? "✅ Online – " : "✅ Online – ";
+          const playersTxt = lang==='en' ? " players" : " Spieler";
+          el.textContent = okTxt + ptxt + playersTxt + (motd ? " · " + motd : "");
           el.style.color = "lightgreen";
         } else {
-          el.textContent = "❌ Offline";
+          el.textContent = lang==='en' ? "❌ Offline" : "❌ Offline";
           el.style.color = "red";
         }
       }
@@ -614,3 +897,4 @@
   </script>
 </body>
 </html>
+```
