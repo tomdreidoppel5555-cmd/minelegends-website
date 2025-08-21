@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MineLegends</title>
-  <meta name="description" content="MineLegends /  Minecraft Server – PvP, Bedwars, Skyblock, Events & Discord Community. Tritt jetzt bei: brawlcraft.de" />
+  <meta name="description" content="MineLegends / Minecraft Server – PvP, Bedwars, Skyblock, Events & Discord Community. Tritt jetzt bei: brawlcraft.de" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
 
   <style>
-    /* =========================================================
-       Reset & Base
-       ========================================================= */
+    /* ========= Reset & Base ========= */
     *{margin:0;padding:0;box-sizing:border-box}
     html,body{height:100%}
     html{scroll-behavior:smooth}
@@ -49,25 +48,20 @@
 
     body{
       margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
+      font-family:'Poppins',system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial;
       color:var(--text);
-      background:
-        linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 50%,var(--bg-deep) 100%),
-        url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+      background:linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 50%,var(--bg-deep) 100%);
       overflow-x:hidden;
       transition:background .35s ease,color .35s ease;
       line-height:1.6;
     }
-
     a{color:var(--accent-3); text-decoration:none}
     a:hover{text-decoration:underline}
     a:focus-visible,button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
     img{max-width:100%; height:auto; display:block}
     .container{max-width:var(--max-width); margin:0 auto; padding:0 24px}
 
-    /* =========================================================
-       Header / Navigation (aus Code 2, mit Logo-Verbesserung aus Code 1)
-       ========================================================= */
+    /* ========= Header ========= */
     header{
       position:sticky; top:0; z-index:1000;
       background:rgba(3,7,20,.65); backdrop-filter:blur(10px);
@@ -75,17 +69,15 @@
     }
     .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px}
     .brandwrap{display:flex;align-items:center;gap:14px}
-    .logo{display:flex; align-items:center; gap:14px}
-    .logo img{
-      height:56px; width:auto; border-radius:10px;
-      transition:transform .3s ease;
-    }
+    .logo img{height:56px; width:auto; border-radius:10px; transition:transform .3s ease; box-shadow:0 6px 18px rgba(0,0,0,.35)}
     .logo img:hover{transform: rotate(-4deg) scale(1.05)}
     .brand{display:flex; flex-direction:column; line-height:1.05}
-    .brand .name{font-weight:900; color:var(--accent); font-size:18px}
+    .brand .name{font-weight:900; color:var(--accent); font-size:20px; font-family:'Orbitron',sans-serif}
     .brand .tag{color:var(--muted); font-size:12px}
     .menu{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
-    .menu a{color:var(--accent); font-weight:800; padding:8px 10px; border-radius:8px}
+    .menu a{color:var(--accent); font-weight:800; padding:8px 10px; border-radius:8px; position:relative}
+    .menu a::after{content:""; position:absolute; left:50%; bottom:0; width:0; height:2px; background:var(--accent); transform:translateX(-50%); transition:width .3s ease}
+    .menu a:hover::after{width:80%}
     .btn-shop{
       display:inline-flex;align-items:center;gap:.5ch;padding:10px 14px;border-radius:12px;
       background:linear-gradient(90deg,#00e5ff,#00d9ff);color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);
@@ -93,12 +85,10 @@
     }
     .cta-discord{background:var(--accent-2); color:#fff; padding:10px 12px; border-radius:10px; font-weight:900}
     .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer}
-    .mode-toggle:hover{background:rgba(255,255,255,.04)}
+    .mode-toggle:hover{background:rgba(255,255,255,.06)}
 
-    /* =========================================================
-       Hero (aus Code 2, mit Glow-/Fade-Animation aus Code 1)
-       ========================================================= */
-    .hero{padding:72px 0 80px; text-align:left}
+    /* ========= Hero ========= */
+    .hero{padding:92px 0 104px; text-align:left; position:relative; z-index:5}
     .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center}
     .hero h1{
       margin:0 0 12px; color:var(--accent);
@@ -108,30 +98,19 @@
     }
     .lead{font-size:clamp(15px,1.6vw,18px); color:var(--muted); margin:0 0 18px; animation:fadeIn .9s .15s both}
     .actions{display:flex; gap:12px; flex-wrap:wrap; animation:fadeIn 1s .25s both}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; font-weight:900; background:#152545; color:#fff; border:1px solid rgba(255,255,255,.06); cursor:point[...]
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; font-weight:900; background:#152545; color:#fff; border:1px solid rgba(255,255,255,.06); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease}
     .btn:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(0,0,0,.25)}
-    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,.06)}
-    .badge-ip{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; padding:8px 10px; border-radius:10px; background:#0e214d; border:1px dashed rgba([...]
-    @keyframes glow{
-      from{ text-shadow:0 0 6px var(--glow), 0 0 2px var(--glow) }
-      to{   text-shadow:0 0 26px var(--glow), 0 0 10px #ff6600 }
-    }
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(30px)}
-      to{opacity:1; transform:translateY(0)}
-    }
+    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,.12)}
+    .badge-ip{font-family:ui-monospace,Menlo,Consolas,monospace; padding:8px 10px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.22); color:#a9d9ff; font-weight:800}
 
-    /* =========================================================
-       Sections & Cards (Code 2)
-       ========================================================= */
+    @keyframes glow{from{text-shadow:0 0 6px var(--glow),0 0 2px var(--glow)} to{text-shadow:0 0 26px var(--glow),0 0 10px #ff6600}}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)}}
+
+    /* ========= Sections & Cards ========= */
     section{padding:80px 0; position:relative; z-index:5}
-    h2.section-title{text-align:left; font-size:28px; color:var(--accent); margin:0 0 12px}
+    h2.section-title{text-align:left; font-size:28px; color:var(--accent); margin:0 0 12px; font-family:'Orbitron',sans-serif}
     .section-sub{color:var(--muted); margin-bottom:20px}
-    .card{
-      background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px; box-shadow:var(--shadow);
-      transition:transform .3s ease, box-shadow .3s ease;
-      opacity:0; transform:translateY(18px);
-    }
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px; box-shadow:var(--shadow); transition:transform .3s ease, box-shadow .3s ease; opacity:0; transform:translateY(18px)}
     .card:hover{transform:translateY(-6px) scale(1.02); box-shadow:0 0 25px rgba(255,204,0,.15)}
     .card h3{margin:6px 0 10px; color:#fff}
     .card p{margin:0; color:var(--muted)}
@@ -140,43 +119,27 @@
     @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:720px){ .grid-3{grid-template-columns:1fr} }
 
-    /* =========================================================
-       Ribbon (Code 2)
-       ========================================================= */
+    /* ========= Ribbon ========= */
     .ribbon{position:relative; height:12px; background:#0a1640; border-radius:999px; overflow:hidden}
     .ribbon>i{position:absolute; left:0; top:0; bottom:0; width:35%; background:linear-gradient(90deg,#6ee7ff,#8ab6ff); border-radius:999px; animation:rb 18s linear infinite}
     @keyframes rb{0%{left:0;width:25%}50%{left:65%;width:35%}100%{left:0;width:25%}}
 
-    /* =========================================================
-       Timeline / News (Code 2)
-       ========================================================= */
+    /* ========= Timeline / News ========= */
     .timeline{display:grid; gap:14px}
     .news{padding:16px; border-radius:12px; background:#11274a; border:1px solid rgba(255,255,255,.04)}
     .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:14px; background:#0e214d; color:var(--accent-3); margin-right:8px}
 
-    /* =========================================================
-       Info Cards Block (aus Code 1, adaptiert)
-       ========================================================= */
+    /* ========= Info Cards (Hero) ========= */
     .info{display:flex; flex-wrap:wrap; justify-content:center; padding:20px 0 0; gap:20px}
-    .info .infocard{
-      background:#222a; padding:24px; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,.35);
-      flex:1 1 260px; max-width:320px; transition:transform .3s ease, box-shadow .3s ease; opacity:0; transform:translateY(40px)
-    }
+    .info .infocard{background:#222a; padding:24px; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,.35); flex:1 1 260px; max-width:320px; transition:transform .3s ease, box-shadow .3s ease; opacity:0; transform:translateY(40px)}
     .info .infocard h3{color:var(--accent); margin-bottom:10px}
     .info .infocard:hover{transform:translateY(-10px) scale(1.04); box-shadow:0 0 25px rgba(255,204,0,.25)}
 
-    /* =========================================================
-       Team (Code 2 Struktur + Float-Animation aus Code 1)
-       ========================================================= */
+    /* ========= Team ========= */
     .team-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
     @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:620px){ .team-grid{grid-template-columns:1fr} }
-    .member{
-      padding:16px; border-radius:12px;
-      background:linear-gradient(180deg,#0f2346,#0a1632); border:1px solid rgba(255,255,255,.04);
-      animation:float 4s ease-in-out infinite;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
+    .member{padding:16px; border-radius:12px; background:linear-gradient(180deg,#0f2346,#0a1632); border:1px solid rgba(255,255,255,.04); animation:float 4s ease-in-out infinite; transition:transform .25s ease, box-shadow .25s ease}
     .member:hover{transform:translateY(-4px) scale(1.02); box-shadow:0 0 20px rgba(255,204,0,.2)}
     .member .role{font-weight:900; color:var(--accent)}
     .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; margin-left:8px}
@@ -187,52 +150,44 @@
     .badge.builder{background:#1d1d1d; color:#bdbdbd}
     .badge.support{background:#2b1b39; color:#fff899}
     .badge.creator{background:#2a0055; color:#ffd6ff}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
 
-    @keyframes float{
-      0%{transform:translateY(0)}
-      50%{transform:translateY(-8px)}
-      100%{transform:translateY(0)}
-    }
-
-    /* =========================================================
-       FAQ (Code 2)
-       ========================================================= */
+    /* ========= FAQ / Kontakt / Footer ========= */
     .faq details{background:#0d2345; padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid rgba(255,255,255,.03)}
     .faq summary{cursor:pointer; font-weight:800; color:#fff}
-
-    /* =========================================================
-       Contact & Footer (Code 2)
-       ========================================================= */
     .contact-block{display:grid; gap:12px; padding:18px; border-radius:12px; background:linear-gradient(180deg,#0f214f,#071229); border:1px solid rgba(255,255,255,.04)}
-    footer{padding:28px 0; background:#050914; color:#a8b5d6}
+    footer{padding:28px 0; background:#050914; color:#a8b5d6; position:relative; z-index:5}
 
-    /* =========================================================
-       Reveal on scroll (Code 2 + für Info/ Cards)
-       ========================================================= */
+    /* ========= Reveal on scroll ========= */
     .reveal{opacity:0; transform:translateY(18px); transition:all .7s ease}
     .reveal.show{opacity:1; transform:none}
     .card.show,.info .infocard.show{opacity:1; transform:none}
 
-    /* =========================================================
-       Sticky Join (Code 2)
-       ========================================================= */
-    .sticky-join{
-      position:fixed; left:50%; transform:translateX(-50%);
-      bottom:16px; z-index:999;
-      background:#5865F2; color:#fff; padding:12px 16px; border-radius:999px;
-      box-shadow:0 10px 26px rgba(0,0,0,.35); font-weight:900;
-    }
+    /* ========= Sticky Join ========= */
+    .sticky-join{position:fixed; left:50%; transform:translateX(-50%); bottom:16px; z-index:999; background:#5865F2; color:#fff; padding:12px 16px; border-radius:999px; box-shadow:0 10px 26px rgba(0,0,0,.35); font-weight:900}
     @media (min-width:800px){ .sticky-join{display:none!important} }
+
+    /* ========= Name Marquee ========= */
+    .name-marquee{position:absolute; left:0; right:0; bottom:-10px; overflow:hidden; white-space:nowrap; pointer-events:none}
+    .name-marquee .line{display:inline-block; padding:8px 0; color:var(--accent-3); font-weight:900; font-family:'Orbitron',sans-serif; text-shadow:0 0 10px rgba(0,229,255,.5); animation:marquee 28s linear infinite}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+    /* ========= Stars & Waves ========= */
+    #starfield{position:fixed; inset:0; z-index:1; pointer-events:none}
+    .waves{position:fixed; left:0; right:0; bottom:-1px; height:22vh; z-index:2; overflow:hidden; pointer-events:none}
+    .waves svg{width:200%; height:100%; animation:waveMove 16s linear infinite}
+    .waves svg:nth-child(2){animation-duration:22s; opacity:.8}
+    @keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   </style>
 </head>
 <body>
-  <!-- =======================================================
-       Header
-       ======================================================= -->
+  <!-- ===== Starfield Canvas ===== -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- ===== Header ===== -->
   <header>
     <div class="container nav">
       <div class="brandwrap">
-        <!-- Logo-Datei aus Code 1 übernommen -->
         <div class="logo">
           <img src="Mine_Legends_Logo_Design.png" alt="MineLegends Logo" />
         </div>
@@ -248,6 +203,7 @@
         <a href="#features">Features</a>
         <a href="#server">Server</a>
         <a href="#news">News</a>
+        <a href="#leaderboard">Leaderboard</a>
         <a href="#team">Team</a>
         <a href="#creators">Creator</a>
         <a href="#faq">FAQ</a>
@@ -259,19 +215,13 @@
     </div>
   </header>
 
-  <!-- =======================================================
-       Hero
-       ======================================================= -->
+  <!-- ===== Hero ===== -->
   <section id="home" class="hero">
     <div class="container hero-grid reveal">
       <div>
         <h1>Willkommen bei <span style="color:var(--accent)">MineLegends</span></h1>
-        <p class="lead">
-          Dein Zuhause für faire Competition, kreative Builds und Events. Spiele PvP, Bedwars & Skyblock.
-          Tritt direkt über unsere IP bei und werde Teil der Community.
-        </p>
+        <p class="lead">Dein Zuhause für faire Competition, kreative Builds und Events. Spiele PvP, Bedwars & Skyblock. Tritt direkt über unsere IP bei und werde Teil der Community.</p>
         <div class="actions">
-          <!-- IP an Brawlcraft angepasst (aus Code 1) -->
           <span class="badge-ip" id="ipBadge">IP: brawlcraft.de</span>
           <button class="btn" id="copyBtn" title="IP kopieren">📋 IP kopieren</button>
           <a class="btn btn-ghost" href="#features">🚀 Features entdecken</a>
@@ -291,54 +241,40 @@
       </div>
     </div>
 
-    <!-- Info Cards Block aus Code 1 integriert -->
     <div class="container">
       <div class="info">
-        <div class="infocard reveal">
-          <h3>IP-Adresse</h3>
-          <p><strong>brawlcraft.de</strong></p>
-        </div>
-        <div class="infocard reveal">
-          <h3>Shop</h3>
-          <p><a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">Hier klicken</a></p>
-        </div>
-        <div class="infocard reveal">
-          <h3>Echtzeit API</h3>
-          <p>Status & Spielerzahlen direkt von <strong>brawlcraft.de</strong></p>
-        </div>
+        <div class="infocard reveal"><h3>IP-Adresse</h3><p><strong>brawlcraft.de</strong></p></div>
+        <div class="infocard reveal"><h3>Shop</h3><p><a href="https://mineladen.netlify.app/" target="_blank" rel="noopener">Hier klicken</a></p></div>
+        <div class="infocard reveal"><h3>Echtzeit API</h3><p>Status & Spielerzahlen via mcstatus.io & mcsrvstat.us</p></div>
+      </div>
+    </div>
+
+    <!-- animierte Namen -->
+    <div class="name-marquee" aria-hidden="true">
+      <div class="line">
+        ⚡ Teufel45 • biiig7553 • Tobsi • AdminMax • Nyx • Gianluzca_05 • Leon • W0LF • Manuelzockt5804 • fxschk0pf • KingArthurW • Hyragon • Finnefitty2010 • Motoxmo • OliGHG • PhantomJCA • FunLynx134 • ƬIGΞR • Pascal • Xx_Rim3_Xx • Poyo_Smash • Zewo ⚡&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="line" aria-hidden="true">
+        ⚡ Teufel45 • biiig7553 • Tobsi • AdminMax • Nyx • Gianluzca_05 • Leon • W0LF • Manuelzockt5804 • fxschk0pf • KingArthurW • Hyragon • Finnefitty2010 • Motoxmo • OliGHG • PhantomJCA • FunLynx134 • ƬIGΞR • Pascal • Xx_Rim3_Xx • Poyo_Smash • Zewo ⚡&nbsp;&nbsp;&nbsp;
       </div>
     </div>
   </section>
 
-  <!-- =======================================================
-       About
-       ======================================================= -->
+  <!-- ===== About ===== -->
   <section id="about">
     <div class="container">
       <h2 class="section-title reveal">Über MineLegends</h2>
       <p class="section-sub reveal">Wofür wir stehen – Community-first, fair & performant.</p>
       <div class="card reveal" style="margin-top:14px">
         <h3>MineLegends — Ein Community-First Minecraft Netzwerk</h3>
-        <p style="color:var(--muted); line-height:1.6">
-          MineLegends ist ein spielerfokussiertes Netzwerk, das Menschen durch Challenges, kreative Projekte und Events zusammenbringt.
-          Unser Ziel: Eine stabile, spaßige und faire Umgebung – für Casuals und Competitives. Ein großartiger Server ist mehr als
-          Plugins: Es ist eine Community, die Kreativität, gesunde Competition und faires Verhalten fördert.
-        </p>
-        <p style="color:var(--muted); line-height:1.6; margin-top:8px">
-          Im Shop kannst du kosmetische Vorteile, Ränge und kleine QoL-Extras erwerben (PayPal). Nach dem Kauf bitte ein Support-Ticket im
-          Discord öffnen. Änderungen & Balancing werden transparent kommuniziert, Feedback wird ernst genommen. Von saisonalen Events und
-          PvP-Cups bis zu Build-Contests – MineLegends will ein Zuhause für Creator, Competitors und Freunde sein.
-        </p>
-        <p style="color:var(--muted); font-style:italic; margin-top:8px">
-          IP: brawlcraft.de &nbsp;|&nbsp; Version: 1.20+
-        </p>
+        <p style="color:var(--muted); line-height:1.6">MineLegends ist ein spielerfokussiertes Netzwerk, das Menschen durch Challenges, kreative Projekte und Events zusammenbringt. Unser Ziel: Eine stabile, spaßige und faire Umgebung – für Casuals und Competitives.</p>
+        <p style="color:var(--muted); line-height:1.6; margin-top:8px">Im Shop kannst du kosmetische Vorteile, Ränge und kleine QoL-Extras erwerben (PayPal). Nach dem Kauf bitte ein Support-Ticket im Discord öffnen. Von saisonalen Events und PvP-Cups bis zu Build-Contests – MineLegends will ein Zuhause für Creator, Competitors und Freunde sein.</p>
+        <p style="color:var(--muted); font-style:italic; margin-top:8px">IP: brawlcraft.de &nbsp;|&nbsp; Version: 1.20+</p>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================
-       Features
-       ======================================================= -->
+  <!-- ===== Features ===== -->
   <section id="features">
     <div class="container">
       <h2 class="section-title reveal">Features</h2>
@@ -355,9 +291,7 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       Server Info
-       ======================================================= -->
+  <!-- ===== Server Info ===== -->
   <section id="server">
     <div class="container">
       <h2 class="section-title reveal">Server Info</h2>
@@ -378,9 +312,7 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       News & Roadmap
-       ======================================================= -->
+  <!-- ===== News ===== -->
   <section id="news">
     <div class="container">
       <h2 class="section-title reveal">Updates & Roadmap</h2>
@@ -408,9 +340,7 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       Leaderboard
-       ======================================================= -->
+  <!-- ===== Leaderboard ===== -->
   <section id="leaderboard">
     <div class="container">
       <h2 class="section-title reveal">Leaderboard</h2>
@@ -423,9 +353,7 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       Team (aus Code 2, aber Mitgliederliste aus Code 1 übernommen)
-       ======================================================= -->
+  <!-- ===== Team ===== -->
   <section id="team">
     <div class="container">
       <h2 class="section-title reveal">Unser Team</h2>
@@ -433,141 +361,56 @@
 
       <div class="team-grid" style="margin-top:12px">
         <!-- Owner -->
-        <div class="member reveal">
-          <div class="role">[Owner] — <span class="badge admin">Owner</span></div>
-          <p style="color:var(--muted)">Teufel45</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Owner — <span class="badge admin">Owner</span></div>
-          <p style="color:var(--muted)">biiig7553</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Owner — <span class="badge admin">Owner</span></div>
-          <p style="color:var(--muted)">Tobsi</p>
-        </div>
+        <div class="member reveal"><div class="role">[Owner] — <span class="badge admin">Owner</span></div><p style="color:var(--muted)">Teufel45</p></div>
+        <div class="member reveal"><div class="role">Owner — <span class="badge admin">Owner</span></div><p style="color:var(--muted)">biiig7553</p></div>
+        <div class="member reveal"><div class="role">Owner — <span class="badge admin">Owner</span></div><p style="color:var(--muted)">Tobsi</p></div>
 
         <!-- Co Owner -->
-        <div class="member reveal">
-          <div class="role">AdminMax — <span class="badge co">Co Owner</span></div>
-          <p style="color:var(--muted)">Organisation, Entscheidungen & Infrastruktur.</p>
-        </div>
+        <div class="member reveal"><div class="role">AdminMax — <span class="badge co">Co Owner</span></div><p style="color:var(--muted)">Organisation, Entscheidungen & Infrastruktur.</p></div>
 
         <!-- Head Dev -->
-        <div class="member reveal">
-          <div class="role">Nyx — <span class="badge head">Head Dev</span></div>
-          <p style="color:var(--muted)">Entwicklung, Plugins & Performance-Optimierung.</p>
-        </div>
+        <div class="member reveal"><div class="role">Nyx — <span class="badge head">Head Dev</span></div><p style="color:var(--muted)">Entwicklung, Plugins & Performance-Optimierung.</p></div>
 
         <!-- Admin -->
-        <div class="member reveal">
-          <div class="role">Gianluzca_05 — <span class="badge admin">Admin</span></div>
-          <p style="color:var(--muted)">Administration & Moderation.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Leon — <span class="badge admin">Admin</span></div>
-          <p style="color:var(--muted)">Verwaltung, Moderation & Events.</p>
-        </div>
+        <div class="member reveal"><div class="role">Gianluzca_05 — <span class="badge admin">Admin</span></div><p style="color:var(--muted)">Administration & Moderation.</p></div>
+        <div class="member reveal"><div class="role">Leon — <span class="badge admin">Admin</span></div><p style="color:var(--muted)">Verwaltung, Moderation & Events.</p></div>
 
         <!-- Builder / Mods / Support etc. -->
-        <div class="member reveal">
-          <div class="role">W0LF — <span class="badge builder">Builder</span></div>
-          <p style="color:var(--muted)">Map-Design & Deko.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Manuelzockt5804 — <span class="badge mod">DC Moderator</span></div>
-          <p style="color:var(--muted)">Discord-Moderation.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">fxschk0pf — <span class="badge builder">Builder</span></div>
-          <p style="color:var(--muted)">Bau-Projekte.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">KingArthurW — <span class="badge builder">Builder</span></div>
-          <p style="color:var(--muted)">Großprojekte & Planung.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Hyragon — <span class="badge builder">Builder</span></div>
-          <p style="color:var(--muted)">Terrain & Technik.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Finnefitty2010 — <span class="badge mod">Head Mod</span></div>
-          <p style="color:var(--muted)">Moderation & Teamkoordination.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Motoxmo — <span class="badge support">Test Supporter</span></div>
-          <p style="color:var(--muted)">Tickets & Spielersupport.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">OliGHG — <span class="badge admin">Deputy Admin</span></div>
-          <p style="color:var(--muted)">Admin-Vertretung.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">PhantomJCA — <span class="badge builder">Builder</span></div>
-          <p style="color:var(--muted)">Kreative Builds.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">FunLynx134 — <span class="badge support">Supporter</span></div>
-          <p style="color:var(--muted)">Ersthilfe bei Problemen.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">ƬIGΞR — <span class="badge support">Supporter</span></div>
-          <p style="color:var(--muted)">Community-Support.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Pascal — <span class="badge admin">T-Admin</span></div>
-          <p style="color:var(--muted)">Technische Administration.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Xx_Rim3_Xx — <span class="badge">Team Lead</span></div>
-          <p style="color:var(--muted)">Teamleitung.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Poyo_Smash — <span class="badge support">Test Support</span></div>
-          <p style="color:var(--muted)">Support in Ausbildung.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Zewo — <span class="badge support">Test Supporter</span></div>
-          <p style="color:var(--muted)">Support in Ausbildung.</p>
-        </div>
+        <div class="member reveal"><div class="role">W0LF — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Map-Design & Deko.</p></div>
+        <div class="member reveal"><div class="role">Manuelzockt5804 — <span class="badge mod">DC Moderator</span></div><p style="color:var(--muted)">Discord-Moderation.</p></div>
+        <div class="member reveal"><div class="role">fxschk0pf — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Bau-Projekte.</p></div>
+        <div class="member reveal"><div class="role">KingArthurW — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Großprojekte & Planung.</p></div>
+        <div class="member reveal"><div class="role">Hyragon — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Terrain & Technik.</p></div>
+        <div class="member reveal"><div class="role">Finnefitty2010 — <span class="badge mod">Head Mod</span></div><p style="color:var(--muted)">Moderation & Teamkoordination.</p></div>
+        <div class="member reveal"><div class="role">Motoxmo — <span class="badge support">Test Supporter</span></div><p style="color:var(--muted)">Tickets & Spielersupport.</p></div>
+        <div class="member reveal"><div class="role">OliGHG — <span class="badge admin">Deputy Admin</span></div><p style="color:var(--muted)">Admin-Vertretung.</p></div>
+        <div class="member reveal"><div class="role">PhantomJCA — <span class="badge builder">Builder</span></div><p style="color:var(--muted)">Kreative Builds.</p></div>
+        <div class="member reveal"><div class="role">FunLynx134 — <span class="badge support">Supporter</span></div><p style="color:var(--muted)">Ersthilfe bei Problemen.</p></div>
+        <div class="member reveal"><div class="role">ƬIGΞR — <span class="badge support">Supporter</span></div><p style="color:var(--muted)">Community-Support.</p></div>
+        <div class="member reveal"><div class="role">Pascal — <span class="badge admin">T-Admin</span></div><p style="color:var(--muted)">Technische Administration.</p></div>
+        <div class="member reveal"><div class="role">Xx_Rim3_Xx — <span class="badge">Team Lead</span></div><p style="color:var(--muted)">Teamleitung.</p></div>
+        <div class="member reveal"><div class="role">Poyo_Smash — <span class="badge support">Test Support</span></div><p style="color:var(--muted)">Support in Ausbildung.</p></div>
+        <div class="member reveal"><div class="role">Zewo — <span class="badge support">Test Supporter</span></div><p style="color:var(--muted)">Support in Ausbildung.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================
-       Creators
-       ======================================================= -->
+  <!-- ===== Creators ===== -->
   <section id="creators">
     <div class="container">
       <h2 class="section-title reveal">Content Creator</h2>
       <p class="section-sub reveal">Streamer & Video-Creator, die den Server supporten</p>
       <div class="team-grid" style="margin-top:12px">
-        <div class="member reveal">
-          <div class="role">Tobi — <span class="badge creator">Creator</span></div>
-          <p style="color:var(--muted)">Streams, Community-Content & Event-Coverage.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Tim — <span class="badge creator">Creator</span></div>
-          <p style="color:var(--muted)">Gameplay-Videos & Tutorials.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Jean — <span class="badge creator">Creator</span></div>
-          <p style="color:var(--muted)">Livestreams & Highlights.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Natsu — <span class="badge creator">Creator</span></div>
-          <p style="color:var(--muted)">PvP-Highlights & Community-Events.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div>
-          <p style="color:var(--muted)">Bedwars-Rushes, Clips & Raids.</p>
-        </div>
+        <div class="member reveal"><div class="role">Tobi — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Streams, Community-Content & Event-Coverage.</p></div>
+        <div class="member reveal"><div class="role">Tim — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Gameplay-Videos & Tutorials.</p></div>
+        <div class="member reveal"><div class="role">Jean — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Livestreams & Highlights.</p></div>
+        <div class="member reveal"><div class="role">Natsu — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">PvP-Highlights & Community-Events.</p></div>
+        <div class="member reveal"><div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div><p style="color:var(--muted)">Bedwars-Rushes, Clips & Raids.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- =======================================================
-       FAQ (auf Deutsch)
-       ======================================================= -->
+  <!-- ===== FAQ ===== -->
   <section id="faq">
     <div class="container">
       <h2 class="section-title reveal">FAQ</h2>
@@ -591,8 +434,8 @@
             <ul>
               <li>✅ Exakten In-Game-Namen (Groß-/Kleinschreibung) angeben.</li>
               <li>✅ Nach Zahlung Ticket im Discord eröffnen & Zahlungsnachweis (PayPal-ID) anfügen.</li>
-              <li>✅ Lieferung i. d. R. manuell innerhalb kurzer Zeit (max. ~1 Stunde).</li>
-              <li>⚠ Digitale Güter sind i. d. R. vom Widerruf ausgeschlossen (gesetzliche Ausnahmen vorbehalten).</li>
+              <li>✅ Lieferung i. d. R. manuell innerhalb kurzer Zeit.</li>
+              <li>⚠ Digitale Güter sind in der Regel vom Widerruf ausgeschlossen (gesetzliche Ausnahmen vorbehalten).</li>
             </ul>
             <div style="margin-top:8px; font-style:italic">Zahlungen via PayPal. Wir speichern keine Zahlungsdaten.</div>
           </div>
@@ -601,9 +444,7 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       Kontakt
-       ======================================================= -->
+  <!-- ===== Kontakt ===== -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title reveal">Kontakt</h2>
@@ -615,9 +456,7 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       Footer
-       ======================================================= -->
+  <!-- ===== Footer ===== -->
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
       <div>© <span id="year"></span> MineLegends. Alle Rechte vorbehalten.</div>
@@ -625,33 +464,41 @@
     </div>
   </footer>
 
-  <!-- =======================================================
-       Decorative Waves
-       ======================================================= -->
-  <div style="position:fixed;left:0;right:0;bottom:-1px;height:18vh;z-index:0;overflow:hidden">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none" style="width:200%;height:100%;transform:translateX(0);">
+  <!-- ===== Decorative Waves (bottom) ===== -->
+  <div class="waves" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
       <path d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z" fill="rgba(88,101,242,.45)"></path>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
       <path d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z" fill="rgba(0,229,255,.18)"></path>
     </svg>
   </div>
 
-  <!-- =======================================================
-       Sticky Join (mobile)
-       ======================================================= -->
+  <!-- ===== Sticky Join (mobile) ===== -->
   <a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs" target="_blank" rel="noopener">✨ Join</a>
 
-  <!-- =======================================================
-       Scripts
-       ======================================================= -->
+  <!-- ===== Scripts ===== -->
   <script>
-    // ============================================
     // Jahr im Footer
-    // ============================================
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ============================================
-    // IP kopieren (auf brawlcraft.de angepasst)
-    // ============================================
+    // Dark/Light Mode (persist)
+    const modeBtn = document.getElementById('modeToggle');
+    function setModeIcon(){ modeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙'; }
+    if(modeBtn){
+      modeBtn.addEventListener('click', ()=>{
+        document.body.classList.toggle('light');
+        setModeIcon();
+        try{ localStorage.setItem('minelegends-mode', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+      });
+      try{
+        const stored = localStorage.getItem('minelegends-mode');
+        if(stored === 'light'){ document.body.classList.add('light'); }
+      }catch(e){}
+      setModeIcon();
+    }
+
+    // IP kopieren
     function copyIP(){
       const ip = "brawlcraft.de";
       navigator.clipboard.writeText(ip).then(()=>{
@@ -667,34 +514,16 @@
     const copyBtn = document.getElementById('copyBtn');
     if(copyBtn) copyBtn.addEventListener('click', copyIP);
 
-    // ============================================
-    // Dark/Light Mode (persist)
-    // ============================================
-    const modeBtn = document.getElementById('modeToggle');
-    function setModeIcon(){ modeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙'; }
-    if(modeBtn){
-      modeBtn.addEventListener('click', ()=>{
-        document.body.classList.toggle('light');
-        setModeIcon();
-        try{ localStorage.setItem('minelegends-mode', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
-      });
-    }
-    try{
-      const stored = localStorage.getItem('minelegends-mode');
-      if(stored === 'light'){ document.body.classList.add('light'); }
-    }catch(e){}
-    setModeIcon();
-
-    // ============================================
-    // Serverstatus (brawlcraft.de) – mcstatus.io primär, mcsrvstat.us Fallback
-    // ============================================
+    // Echtzeit Serverstatus – mcstatus.io (primär), mcsrvstat.us (fallback)
     async function fetchStatus(){
       const host = "brawlcraft.de";
       const el = document.getElementById('serverStatus');
-      function setText(ok, players){
+
+      function setText(ok, players, motd){
         if(!el) return;
         if(ok){
-          el.textContent = "✅ Online – " + players + " Spieler";
+          const ptxt = typeof players === 'number' ? players : 0;
+          el.textContent = "✅ Online – " + ptxt + " Spieler" + (motd ? " · " + motd : "");
           el.style.color = "lightgreen";
         } else {
           el.textContent = "❌ Offline";
@@ -702,25 +531,29 @@
         }
       }
 
+      // Primäre Quelle: mcstatus.io
       try{
         const r = await fetch("https://api.mcstatus.io/v2/status/java/" + host, { cache: "no-store" });
         if(r.ok){
           const j = await r.json();
           if(j && j.online){
             const p = (j.players && (j.players.online ?? j.players.current)) ?? 0;
-            setText(true, p);
+            const motd = (j.motd && (j.motd.clean ?? j.motd.html ?? "")).toString().replace(/<[^>]+>/g,"");
+            setText(true, p, motd);
             return;
           }
         }
         throw new Error("primary failed");
       }catch(e){
+        // Fallback: mcsrvstat.us
         try{
           const r2 = await fetch("https://api.mcsrvstat.us/3/" + host, { cache: "no-store" });
           if(r2.ok){
             const j2 = await r2.json();
             if(j2 && j2.online){
               const p2 = (j2.players && (j2.players.online ?? 0)) || 0;
-              setText(true, p2);
+              const motd2 = (j2.motd && (Array.isArray(j2.motd.clean)? j2.motd.clean.join(" ") : j2.motd.clean)) || "";
+              setText(true, p2, motd2);
               return;
             }
           }
@@ -733,9 +566,7 @@
     fetchStatus();
     setInterval(fetchStatus, 15000);
 
-    // ============================================
     // Scroll Reveal (IntersectionObserver)
-    // ============================================
     const revealEls = document.querySelectorAll('.reveal, .card, .info .infocard');
     const io = new IntersectionObserver((entries, obs)=>{
       entries.forEach(e=>{
@@ -746,6 +577,40 @@
       });
     }, { threshold: .12 });
     revealEls.forEach(el => io.observe(el));
+
+    // Sternenhimmel (Canvas)
+    (function starfield(){
+      const c = document.getElementById('starfield');
+      const ctx = c.getContext('2d');
+      let w, h, stars;
+      function resize(){
+        w = c.width = window.innerWidth;
+        h = c.height = window.innerHeight;
+        stars = Array.from({length: Math.min(600, Math.floor(w*h/3500))}).map(()=>({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          z: Math.random()*1.2 + 0.2,
+          r: Math.random()*1.6 + 0.2,
+          tw: Math.random()*2*Math.PI
+        }));
+      }
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        for(const s of stars){
+          s.tw += 0.05;
+          const alpha = 0.6 + Math.sin(s.tw)*0.35;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+          ctx.fill();
+          s.x -= s.z*0.2; // leichte Parallaxe
+          if(s.x < -5){ s.x = w+5; s.y = Math.random()*h; }
+        }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', resize);
+      resize(); draw();
+    })();
   </script>
 </body>
 </html>
