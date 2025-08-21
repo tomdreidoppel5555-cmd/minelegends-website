@@ -1,64 +1,45 @@
 <!DOCTYPE html>
-<html lang="de">
+
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>BrawlCraft – PvP • Bedwars • Skyblock • Events</title>
-  <meta name="description" content="BrawlCraft Minecraft Server – PvP, Bedwars, Skyblock, Events, Discord Community. IP: brawlcraft.de" />
-
-  <!-- ===================================================================
-       THEME & BASE STYLES
-       =================================================================== -->
-  <style>
-    /* ------------------------------
-       Design Tokens (CSS Variables)
-       ------------------------------ */
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>MineLegends – Official Website</title>
+<meta content="MineLegends Minecraft Server – PvP, Bedwars, Skyblock, Events, Discord Community." name="description"/>
+<style>
+    /* ==============
+       Theme & Base
+       ============== */
     :root{
       --bg-top:#070e22;
       --bg-mid:#0e1835;
       --bg-deep:#0a1230;
-
-      --accent:#ffd200;         /* gelb für wichtige Akzente */
-      --accent-2:#5865F2;       /* Discord-Blau */
-      --accent-3:#00e5ff;       /* Cyan-Glanz */
-
-      --text:#e8eef9;           /* Primärtext */
-      --muted:#9fb0d4;          /* Sekundärtext */
-
-      --card:#0f1c3caa;         /* halbtransparente Karte */
-      --card-solid:#121f43;     /* solide Karte */
-
+      --accent:#ffd200;
+      --accent-2:#5865F2;
+      --accent-3:#00e5ff;
+      --text:#e8eef9;
+      --muted:#9fb0d4;
+      --card:#0f1c3caa;
+      --card-solid:#121f43;
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --ring:0 0 0 3px rgba(0,229,255,.25);
-
       --radius:18px;
+      --ring:0 0 0 3px rgba(0,229,255,.25);
       --max-width:1200px;
     }
-
-    /* optionaler Light-Mode */
     body.light{
       --bg-top:#f2f5fb;
       --bg-mid:#ffffff;
       --bg-deep:#f7f7fb;
-
       --accent:#ff9800;
       --accent-2:#5865F2;
       --accent-3:#0077ff;
-
       --text:#131726;
       --muted:#4c556f;
-
       --card:#ffffffee;
       --card-solid:#ffffff;
-
       --shadow:0 10px 30px rgba(0,0,0,.12);
       --ring:0 0 0 3px rgba(0,119,255,.18);
     }
-
-    /* ------------------------------
-       Global Defaults
-       ------------------------------ */
     html,body{height:100%}
     html{scroll-behavior:smooth}
     body{
@@ -70,127 +51,68 @@
       transition:background .35s ease,color .35s ease;
     }
     *,*::before,*::after{box-sizing:border-box}
-    img{max-width:100%; height:auto; display:block}
     a{color:var(--accent-3); text-decoration:none}
     a:focus-visible,button:focus-visible{outline:none; box-shadow:var(--ring); border-radius:12px}
+    img{max-width:100%; height:auto; display:block}
     .container{max-width:var(--max-width); margin:0 auto; padding:0 24px}
 
-    /* ===================================================================
-       HEADER / NAVIGATION
-       =================================================================== */
+    /* Header / Nav */
     header{
       position:sticky; top:0; z-index:1000;
-      background:rgba(3,7,20,.65);
-      backdrop-filter:blur(10px);
+      background:rgba(3,7,20,.65); backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:16px 0; gap:18px
-    }
-    .logo-wrap{display:flex; align-items:center; gap:14px}
-    .logo-wrap img{
-      height:56px; width:auto; border-radius:10px;
-      box-shadow:0 4px 18px rgba(0,0,0,.35)
-    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:18px}
+    .logo{display:flex; align-items:center; gap:14px}
+    .logo img{height:56px; width:auto; border-radius:10px}
     .brand{display:flex; flex-direction:column; line-height:1.05}
-    .brand .name{
-      font-weight:900; color:var(--accent);
-      font-size:18px; letter-spacing:.4px
-    }
+    .brand .name{font-weight:900; color:var(--accent); font-size:18px}
     .brand .tag{color:var(--muted); font-size:12px}
-
     .menu{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
     .menu a{color:var(--accent); font-weight:800; padding:8px 10px; border-radius:8px}
-    .menu a:hover{background:rgba(255,255,255,.05)}
     .btn-shop{
-      display:inline-flex;align-items:center;gap:.5ch;
-      padding:10px 14px;border-radius:12px;
-      background:linear-gradient(90deg,#00e5ff,#00d9ff);
-      color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);
+      display:inline-flex;align-items:center;gap:.5ch;padding:10px 14px;border-radius:12px;
+      background:linear-gradient(90deg,#00e5ff,#00d9ff);color:#02121a;font-weight:900;border:1px solid rgba(255,255,255,.06);
       box-shadow:0 8px 20px rgba(0,217,255,.12)
     }
-    .cta-discord{
-      background:var(--accent-2); color:#fff; padding:10px 12px;
-      border-radius:10px; font-weight:900
-    }
-    .mode-toggle{
-      border:1px solid rgba(255,255,255,.12);
-      background:transparent; color:var(--text);
-      padding:10px 12px; border-radius:12px; cursor:pointer
-    }
+    .cta-discord{background:var(--accent-2); color:#fff; padding:10px 12px; border-radius:10px; font-weight:900}
+
+    .mode-toggle{border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer}
     .mode-toggle:hover{background:rgba(255,255,255,.04)}
 
-    /* ===================================================================
-       HERO
-       =================================================================== */
+    /* Hero */
     .hero{padding:72px 0 80px}
-    .hero-grid{
-      display:grid; grid-template-columns:1.15fr .85fr;
-      gap:36px; align-items:center
-    }
-    h1.hero-title{
-      margin:0 0 12px; color:var(--accent);
-      font-size:clamp(34px, 5vw, 64px); line-height:1.02
-    }
+    .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:36px; align-items:center}
+    .hero h1{margin:0 0 12px; color:var(--accent); font-size:clamp(34px, 5vw, 64px); line-height:1.02}
     .lead{font-size:clamp(15px,1.6vw,18px); color:var(--muted); margin:0 0 18px}
     .actions{display:flex; gap:12px; flex-wrap:wrap}
     .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius:12px; font-weight:900; background:#152545; color:#fff; border:1px solid rgba(255,255,255,.06); cursor:pointer}
     .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,.06)}
-    .badge-ip{
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      padding:8px 10px; border-radius:10px; background:#0e214d;
-      border:1px dashed rgba(255,255,255,.12); font-weight:700
-    }
+    .badge-ip{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; padding:8px 10px; border-radius:10px; background:#0e214d; border:1px dashed rgba(255,255,255,.12); font-weight:700}
 
-    /* ===================================================================
-       SECTIONS & CARDS
-       =================================================================== */
+    /* Sections & Cards */
     section{padding:80px 0; position:relative; z-index:5}
     h2.section-title{text-align:left; font-size:28px; color:var(--accent); margin:0 0 12px}
     .section-sub{color:var(--muted); margin-bottom:20px}
-
-    .card{
-      background:var(--card); border:1px solid rgba(255,255,255,.06);
-      border-radius:14px; padding:18px; box-shadow:var(--shadow)
-    }
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:18px; box-shadow:var(--shadow)}
     .card h3{margin:6px 0 10px; color:#fff}
     .card p{margin:0; color:var(--muted)}
-
     .grid{display:grid; gap:18px}
     .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-auto{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    @media (max-width:1000px){
-      .hero-grid{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:repeat(2,1fr)}
-      .grid-2{grid-template-columns:1fr}
-    }
-    @media (max-width:720px){
-      .grid-3{grid-template-columns:1fr}
-    }
+    @media (max-width:1000px){ .hero-grid{grid-template-columns:1fr} .grid-3{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:720px){ .grid-3{grid-template-columns:1fr} }
 
-    /* ===================================================================
-       RIBBON (kleine animierte Zierleiste)
-       =================================================================== */
+    /* ribbon */
     .ribbon{position:relative; height:12px; background:#0a1640; border-radius:999px; overflow:hidden}
-    .ribbon>i{
-      position:absolute; left:0; top:0; bottom:0; width:35%;
-      background:linear-gradient(90deg,#6ee7ff,#8ab6ff);
-      border-radius:999px; animation:rb 18s linear infinite
-    }
+    .ribbon>i{position:absolute; left:0; top:0; bottom:0; width:35%; background:linear-gradient(90deg,#6ee7ff,#8ab6ff); border-radius:999px; animation:rb 18s linear infinite}
     @keyframes rb { 0%{left:0;width:25%} 50%{left:65%;width:35%} 100%{left:0;width:25%} }
 
-    /* ===================================================================
-       TIMELINE / NEWS
-       =================================================================== */
+    /* Timeline / news */
     .timeline{display:grid; gap:14px}
     .news{padding:16px; border-radius:12px; background:#11274a; border:1px solid rgba(255,255,255,.04)}
     .news .tag{display:inline-block; font-size:12px; padding:4px 8px; border-radius:14px; background:#0e214d; color:var(--accent-3); margin-right:8px}
 
-    /* ===================================================================
-       TEAM / CREATOR GRIDS
-       =================================================================== */
+    /* Team */
     .team-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
     @media (max-width:900px){ .team-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:620px){ .team-grid{grid-template-columns:1fr} }
@@ -198,650 +120,358 @@
     .member .role{font-weight:900; color:var(--accent)}
     .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; margin-left:8px}
     .badge.co{background:#2a1d00; color:#ffd571}
-    .badge.owner{background:#2a1d00; color:#ffd571}
     .badge.head{background:#0b2a34; color:#7be9ff}
     .badge.admin{background:#2a0b14; color:#ff9aa5}
-    .badge.deputy{background:#2a153a; color:#e6b6ff}
     .badge.mod{background:#1b2a0b; color:#c8ff91}
     .badge.builder{background:#1d1d1d; color:#bdbdbd}
     .badge.support{background:#2b1b39; color:#fff899}
     .badge.creator{background:#2a0055; color:#ffd6ff}
-    .badge.test{background:#22324b; color:#b2c7ff}
 
-    /* ===================================================================
-       FAQ
-       =================================================================== */
+    /* FAQ */
     .faq details{background:#0d2345; padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid rgba(255,255,255,.03)}
     .faq summary{cursor:pointer; font-weight:800; color:#fff}
 
-    /* ===================================================================
-       CONTACT & FOOTER
-       =================================================================== */
+    /* Contact & footer */
     .contact-block{display:grid; gap:12px; padding:18px; border-radius:12px; background:linear-gradient(180deg,#0f214f,#071229); border:1px solid rgba(255,255,255,.04)}
     footer{padding:28px 0; background:#050914; color:#a8b5d6}
 
-    /* ===================================================================
-       SCROLL REVEAL
-       =================================================================== */
+    /* reveal */
     .reveal{opacity:0; transform:translateY(18px); transition:all .7s ease}
     .reveal.show{opacity:1; transform:none}
 
-    /* ===================================================================
-       Sticky Join (Mobile)
-       =================================================================== */
+    /* Sticky Join (mobile) */
     .sticky-join{
-      position:fixed; left:12px; right:12px; bottom:12px;
-      display:flex; align-items:center; justify-content:center;
-      padding:12px 14px; border-radius:14px; font-weight:900;
-      background:linear-gradient(90deg,#00e5ff,#00d9ff); color:#001018;
-      box-shadow:0 10px 24px rgba(0,0,0,.35); z-index:999;
-      text-decoration:none
+      position:fixed; left:50%; transform:translateX(-50%);
+      bottom:16px; z-index:999;
+      background:#5865F2; color:#fff; padding:12px 16px; border-radius:999px;
+      box-shadow:0 10px 26px rgba(0,0,0,.35); font-weight:900;
     }
-    @media (min-width:760px){ .sticky-join{display:none !important} }
-
-    /* ===================================================================
-       Demo-Table (Leaderboards)
-       =================================================================== */
-    .table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:12px; border:1px solid rgba(255,255,255,.06)}
-    .table th,.table td{padding:10px 12px; text-align:left}
-    .table thead th{background:#0f2147; color:#cfe5ff; font-weight:800}
-    .table tbody tr:nth-child(odd){background:#0c1b3b}
-    .table tbody tr:nth-child(even){background:#0a1732}
+    @media (min-width:800px){ .sticky-join{display:none!important} }
   </style>
 </head>
-
 <body>
-  <!-- =====================================================================
-       HEADER
-       ===================================================================== -->
-  <header>
-    <div class="container nav">
-      <!-- Logo + Brand (wie früher) -->
-      <div class="logo-wrap">
-        <!-- WICHTIG: Bilddatei in denselben Ordner legen -->
-        <img src="Mine_Legends_Logo_Design.png" alt="BrawlCraft Logo" />
-        <div class="brand">
-          <div class="name">BrawlCraft</div>
-          <div class="tag">PvP • Bedwars • Skyblock • Events</div>
-        </div>
-      </div>
-
-      <!-- Navigation -->
-      <nav class="menu" aria-label="Hauptnavigation">
-        <a href="#home">Heim</a>
-        <a href="#about">Über uns</a>
-        <a href="#features">Funktionen</a>
-        <a href="#server">Server‑Info</a>
-        <a href="#news">News</a>
-        <a href="#team">Team</a>
-        <a href="#creators">Creators</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Kontakt</a>
-        <a href="#shop" class="btn-shop" title="Laden">🛒 Laden</a>
-        <a class="cta-discord" href="https://discord.gg/7RpcZkV7Ke" target="_blank" rel="noopener">💬 Discord</a>
-        <button id="modeToggle" class="mode-toggle" title="Dark/Light umschalten">🌙</button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- =====================================================================
-       HERO
-       ===================================================================== -->
-  <section id="home" class="hero">
-    <div class="container hero-grid reveal">
-      <!-- Text-Spalte -->
-      <div>
-        <h1 class="hero-title">Willkommen bei <span style="color:var(--accent)">BrawlCraft</span></h1>
-        <p class="lead">
-          Dein Zuhause für epische Abenteuer, fairen Wettkampf und kreatives Bauen.
-          Spiele PvP, Bedwars und Skyblock, nimm an Community‑Events teil und finde
-          deinen Platz in unserer freundlichen Community.
+<!-- Header -->
+<header>
+<div class="container nav">
+<div style="display:flex;align-items:center;gap:14px">
+<img alt="MineLegends Logo" src="minelegends-logo.png" style="height:56px"/>
+<div class="brand">
+<div class="name">MineLegends</div>
+<div class="tag">PvP • Bedwars • Skyblock • Events</div>
+</div>
+</div>
+<nav aria-label="Main Navigation" class="menu">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#features">Features</a>
+<a href="#server">Server Info</a>
+<a href="#news">News</a>
+<a href="#team">Team</a>
+<a href="#creators">Creators</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+<a class="btn-shop" href="#shop" title="Shop">🛒 Shop</a>
+<a class="cta-discord" href="https://discord.gg/xZQZ9W9bjs" rel="noopener" target="_blank">💬 Discord</a>
+<button class="mode-toggle" id="modeToggle" title="Toggle dark/light mode">🌙</button>
+</nav>
+</div>
+</header>
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="container hero-grid reveal">
+<div>
+<h1>Welcome to <span style="color:var(--accent)">MineLegends</span></h1>
+<p class="lead">Your home for epic adventures, fair competition and creative building. Play PvP, Bedwars and Skyblock, join community events and find your place in our friendly community.</p>
+<div class="actions">
+<span class="badge-ip" id="ipBadge">IP: minelegends.mc-game.xyz</span>
+<button class="btn" id="copyBtn" title="Copy IP">📋 Copy IP</button>
+<a class="btn btn-ghost" href="#features">🚀 Explore Features</a>
+<a class="btn" href="https://discord.gg/xZQZ9W9bjs" rel="noopener" target="_blank">💬 Join Discord</a>
+</div>
+<div id="serverStatus" style="margin-top:12px; font-weight:900; color:var(--muted)">⏳ Loading server status…</div>
+</div>
+<div class="card">
+<h3>Why MineLegends?</h3>
+<p>We combine fair moderation, regular updates, strong performance and creative events to give players a place to play, build and compete. Solo player, builder or streamer — everyone is welcome.</p>
+<ul style="margin-top:12px; color:var(--muted); padding-left:18px">
+<li>✅ Respectful community &amp; active staff</li>
+<li>✅ Balanced gameplay &amp; meaningful progression</li>
+<li>✅ Stable servers &amp; quick support</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<h2 class="section-title reveal">About MineLegends</h2>
+<p class="section-sub reveal">Long description — what MineLegends stands for (detailed).</p>
+<div class="card reveal" style="margin-top:14px">
+<h3>MineLegends — A Community-First Minecraft Network</h3>
+<p style="color:var(--muted); line-height:1.6">
+          MineLegends is a player-focused Minecraft network built to bring people together through shared challenges, creative projects and memorable events. Our goal is simple: create a stable, fun and fair environment where both casual players and more competitive ones can find their home. We believe that a great server is more than just plugins and performance — it’s a community that supports creativity, healthy competition and friendly behaviour. Our team carefully curates features, events and updates so that every player can find something they enjoy: whether that’s building expansive city-scapes, mastering PvP mechanics, or working together in Skyblock economies. We place a strong emphasis on quality-of-life improvements: automatic moderation tools to keep the community safe, robust backups to prevent data loss and optimized configurations to ensure smooth gameplay even on high-population days.
         </p>
-
-        <div class="actions">
-          <span class="badge-ip" id="ipBadge">IP‑Adresse: brawlcraft.de</span>
-          <button class="btn" id="copyBtn" title="IP kopieren">📋 IP kopieren</button>
-          <a class="btn btn-ghost" href="#features">🚀 Funktionen erkunden</a>
-          <a class="btn" href="https://discord.gg/7RpcZkV7Ke" target="_blank" rel="noopener">💬 Discord beitreten</a>
-        </div>
-
-        <div id="serverStatus" style="margin-top:12px; font-weight:900; color:var(--muted)">
-          ⏳ Lade Serverstatus …
-        </div>
-      </div>
-
-      <!-- Warum BrawlCraft? -->
-      <div class="card">
-        <h3>Warum BrawlCraft?</h3>
-        <p>
-          Wir kombinieren faire Moderation, regelmäßige Updates, starke Performance
-          und kreative Events, um Spieler:innen einen Ort zum Spielen, Bauen und
-          Wettkämpfen zu geben. Solo‑Spieler, Builder oder Streamer — hier bist du richtig.
+<p style="color:var(--muted); line-height:1.6; margin-top:8px">
+          Our shop gives players the option to support the server and unlock cosmetic perks, ranks and small convenience items. Purchases are processed via PayPal, and our team handles rank/item delivery quickly after payment — please open a support ticket in Discord if automatic delivery is needed. We are committed to transparency and fairness: balance changes and updates are discussed with the community, and feedback is actively read and acted upon. From seasonal events and PvP cups to community build contests and collaborative projects, MineLegends aims to be a home for creators, competitors and friends. Join our Discord for announcements, support and ways to get involved — and if you stream or make videos, check our Creator program for special perks and early access opportunities. We’re excited to grow with you — see you in-game!
         </p>
-        <ul style="margin-top:12px; color:var(--muted); padding-left:18px">
-          <li>✅ Respektvolle Community & aktives Team</li>
-          <li>✅ Ausbalanciertes Gameplay & sinnvoller Progress</li>
-          <li>✅ Stabile Server & schneller Support</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<p style="color:var(--muted); font-style:italic; margin-top:8px">IP: minelegends.mc-game.xyz | Version: 1.20+</p>
+</div>
+</div>
+</section>
+<!-- FEATURES -->
+<section id="features">
+<div class="container">
+<h2 class="section-title reveal">Features</h2>
+<p class="section-sub reveal">What you can expect on the network</p>
+<div class="ribbon reveal" style="margin-top:8px"><i></i></div>
+<div class="grid grid-3" style="margin-top:18px">
+<div class="card reveal"><h3>⚔ PvP &amp; Events</h3><p style="color:var(--muted)">Tournaments, ranking seasons and special modes.</p></div>
+<div class="card reveal"><h3>🛡 Bedwars</h3><p style="color:var(--muted)">Fast matches, custom maps and fair balancing.</p></div>
+<div class="card reveal"><h3>🏝 Skyblock</h3><p style="color:var(--muted)">Economy, island progression and challenges.</p></div>
+<div class="card reveal"><h3>🛠 QoL Tools</h3><p style="color:var(--muted)">Auto-moderation, backups and anti-DDoS protection.</p></div>
+<div class="card reveal"><h3>🛒 Shop</h3><p style="color:var(--muted)">Ranks, cosmetics and small extras — <a href="#shop">visit the shop</a>.</p></div>
+<div class="card reveal"><h3>🎉 Community</h3><p style="color:var(--muted)">Contests, giveaways and creator events.</p></div>
+</div>
+</div>
+</section>
+<!-- SERVER INFO -->
+<section id="server">
+<div class="container">
+<h2 class="section-title reveal">Server Info</h2>
+<p class="section-sub reveal">Everything you need to connect</p>
+<div class="grid" style="grid-template-columns:repeat(2,1fr); gap:18px">
+<div class="card reveal">
+<h3>Connection</h3>
+<p style="color:var(--muted)"><strong>Address:</strong> <span class="badge-ip">minelegends.mc-game.xyz</span></p>
+<p style="color:var(--muted)"><strong>Version:</strong> Java Edition 1.21.1+</p>
+<p style="color:var(--muted)"><button class="btn" onclick="copyIP()">Copy IP</button></p>
+</div>
+<div class="card reveal">
+<h3>Performance &amp; Security</h3>
+<p style="color:var(--muted)">Optimized server configuration, scheduled backups, latency checks, tuned Paper settings and protections against DDoS &amp; common crash exploits.</p>
+<p style="color:var(--muted); margin-top:8px"><strong>Planned:</strong> region caching and Bedrock proxy support.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- NEWS & ROADMAP -->
+<section id="news">
+<div class="container">
+<h2 class="section-title reveal">Update News &amp; Roadmap</h2>
+<p class="section-sub reveal">What’s coming next — short &amp; honest.</p>
+<div class="timeline">
+<article class="news reveal">
+<span class="tag">New</span>
+<h4>🛒 Official Shop is Online</h4>
+<p style="color:var(--muted)">Our official shop is now live. See the section below. You can purchase ranks (VIP, VIP+, Mystery, Legendary, Mythic), items and extras such as XP boosters, Fly time and Kit God. After purchase, open a support ticket in Discord with your transaction proof for manual verification and delivery.</p>
+<small style="color:var(--muted)">Update · Q3</small>
+</article>
+<article class="news reveal">
+<span class="tag">Event</span><span class="tag">PvP</span>
+<h4>Monthly PvP Cups</h4>
+<p style="color:var(--muted)">Various modes (Kit PvP, Duos, Bedwars). Prizes and titles to be won.</p>
+<small style="color:var(--muted)">See #events in Discord for dates</small>
+</article>
+<article class="news reveal">
+<span class="tag">Community</span>
+<h4>Creator Program</h4>
+<p style="color:var(--muted)">Streamers and creators can apply for early info, event slots and shoutouts. Apply via Discord.</p>
+<small style="color:var(--muted)">New</small>
+</article>
+</div>
+</div>
+</section>
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+<div class="container">
+<h2 class="section-title reveal">Leaderboard</h2>
+<p class="section-sub reveal">Who's on top?</p>
+<div class="grid grid-3" style="margin-top:14px">
+<div class="card reveal"><h3>Season Points</h3><p style="color:var(--muted)">1. Player123 — 250<br/>2. CreeperKing — 180<br/>3. BuilderPro — 150</p></div>
+<div class="card reveal"><h3>Kill Rankings</h3><p style="color:var(--muted)">1. PvPGod — 412<br/>2. QuickStrafe — 369<br/>3. BowMaster — 341</p></div>
+<div class="card reveal"><h3>Builders</h3><p style="color:var(--muted)">1. ArchiSteve — 95 stars<br/>2. RedstonePro — 90 stars<br/>3. TerraFormer — 86 stars</p></div>
+</div>
+</div>
+</section>
+<!-- TEAM -->
+<section id="team">
+<div class="container">
+<h2 class="section-title reveal">Our Team</h2>
+<p class="section-sub reveal">Friendly, active and here to help — without images, clean layout.</p>
+<div class="team-grid" style="margin-top:12px">
+<div class="member reveal">
+<div class="role">Adminmax — <span class="badge co">Co Owner</span></div>
+<p style="color:var(--muted)">Organization, decisions &amp; server infrastructure.</p>
+</div>
+<div class="member reveal">
+<div class="role">billig7553 — <span class="badge">Team Lead</span></div>
+<p style="color:var(--muted)">Team management and coordination of support.</p>
+</div>
+<div class="member reveal">
+<div class="role">Nyx — <span class="badge head">Head Dev</span></div>
+<p style="color:var(--muted)">Development, plugins and performance optimization.</p>
+</div>
+<div class="member reveal">
+<div class="role">Leon — <span class="badge admin">Admin</span></div>
+<p style="color:var(--muted)">Administration, moderation &amp; events.</p>
+</div>
+<div class="member reveal">
+<div class="role">So Oli — <span class="badge admin">Head Admin</span></div>
+<p style="color:var(--muted)">Server administration, rules &amp; event management.</p>
+</div>
+<div class="member reveal">
+<div class="role">BaumeisterRyan — <span class="badge builder">Builder</span></div>
+<p style="color:var(--muted)">Map design and decorations.</p>
+</div>
+<div class="member reveal">
+<div class="role">Tiger — <span class="badge mod">Moderator</span></div>
+<p style="color:var(--muted)">Community moderation and enforcement.</p>
+</div>
+<div class="member reveal">
+<div class="role">Arthur — <span class="badge builder">Head Builder</span></div>
+<p style="color:var(--muted)">Overseeing large-scale builds and projects.</p>
+</div>
+<div class="member reveal">
+<div class="role">Motoxmo — <span class="badge support">Supporter</span></div>
+<p style="color:var(--muted)">Support tickets, helping players with issues.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CREATORS -->
+<section id="creators">
+<div class="container">
+<h2 class="section-title reveal">Content Creators</h2>
+<p class="section-sub reveal">Our streamers and video creators supporting the server.</p>
+<div class="team-grid" style="margin-top:12px">
+<div class="member reveal">
+<div class="role">Tobi — <span class="badge creator">Creator</span></div>
+<p style="color:var(--muted)">Streaming, community content, and event coverage.</p>
+</div>
+<div class="member reveal">
+<div class="role">Tim — <span class="badge creator">Creator</span></div>
+<p style="color:var(--muted)">Gameplay videos and tutorials.</p>
+</div>
+<div class="member reveal">
+<div class="role">Jean — <span class="badge creator">Creator</span></div>
+<p style="color:var(--muted)">Live streams and highlights.</p>
+</div>
+<!-- Natsu -->
+<div class="member reveal">
+<div class="role">Natsu — <span class="badge creator">Creator</span></div>
+<p style="color:var(--muted)">Streams, PvP highlights and community events.</p>
+</div>
+<!-- XxNiklasYt -->
+<div class="member reveal">
+<div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div>
+<p style="color:var(--muted)">Bedwars rushes, funny clips and stream raids.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section id="faq">
+<div class="container">
+<h2 class="section-title reveal">FAQ</h2>
+<p class="section-sub reveal">Common questions answered quickly.</p>
+<div class="faq">
+<details class="reveal">
+<summary>How do I join?</summary>
+<p style="color:var(--muted)">Open Minecraft (Java) → Multiplayer → Add Server → IP: <code>minelegends.mc-game.xyz</code> → Join.</p>
+</details>
+<details class="reveal">
+<summary>Is Bedrock supported?</summary>
+<p style="color:var(--muted)">Currently Java only. Bedrock proxy is planned.</p>
+</details>
+<details class="reveal">
+<summary>Who are the owners?</summary>
+<p style="color:var(--muted)"><strong>Adminmax</strong> (Co Owner) &amp; <strong>Teufel45</strong> (Owner)</p>
+</details>
+<details class="reveal">
+<summary>Shop — what to know?</summary>
+<div style="color:var(--muted)">
+<ul>
+<li>✅ Provide your exact in-game name (case-sensitive).</li>
+<li>✅ After payment, open a ticket in Discord and attach the payment proof (PayPal ID).</li>
+<li>✅ Delivery is usually manual and takes a few minutes (max ~1 hour).</li>
+<li>⚠ Digital goods are typically non-refundable except where law requires.</li>
+</ul>
+<div style="margin-top:8px; font-style:italic">Payments are processed via PayPal. We do not store payment details.</div>
+</div>
+</details>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<h2 class="section-title reveal">Contact</h2>
+<div class="contact-block reveal">
+<div>Server Address: <strong>minelegends.mc-game.xyz</strong></div>
+<div>Owners: <strong>Adminmax (Co Owner)</strong> &amp; <strong>Teufel45 (Owner)</strong></div>
+<div>Discord: <a class="link-cta" href="https://discord.gg/xZQZ9W9bjs" rel="noopener" target="_blank">Join Discord</a></div>
+</div>
+</div>
+</section>
+<!-- VOTIFIER & Voting / API INFO -->
+<!-- SHOP (quick buy via PayPal.me) -->
 
-  <!-- =====================================================================
-       ABOUT
-       ===================================================================== -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title reveal">Über BrawlCraft</h2>
-      <p class="section-sub reveal">Was wir sind & wofür wir stehen.</p>
-
-      <div class="card reveal" style="margin-top:14px">
-        <h3>Community‑first Minecraft Netzwerk</h3>
-        <p style="color:var(--muted); line-height:1.6">
-          BrawlCraft ist ein spielerorientiertes Netzwerk, das Menschen durch
-          Herausforderungen, kreative Projekte und erinnerungswürdige Events zusammenbringt.
-          Unser Ziel: eine stabile, faire und spaßige Umgebung für Casuals und
-          Competitives. Ein großartiger Server besteht aus mehr als Plugins:
-          Es ist eine Community, die Kreativität, gesunden Wettbewerb und freundliches
-          Miteinander fördert. Qualität‑of‑Life‑Verbesserungen (Automod, Backups, optimierte
-          Konfigurationen) sorgen für flüssiges Gameplay – selbst an vollen Tagen.
-        </p>
-        <p style="color:var(--muted); line-height:1.6; margin-top:8px">
-          Unser Shop bietet optionale Ränge, Cosmetics und Komfort‑Extras. Käufe laufen
-          über PayPal; nach Zahlung bitte im Discord ein Support‑Ticket mit Nachweis öffnen.
-          Balance‑Anpassungen und Updates besprechen wir offen mit der Community.
-          Von Saison‑Events und PvP‑Cups bis zu Build‑Wettbewerben – werde Teil von
-          BrawlCraft und gestalte das Netzwerk mit!
-        </p>
-        <p style="color:var(--muted); font-style:italic; margin-top:8px">
-          IP: brawlcraft.de | Version: 1.20+
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       FEATURES
-       ===================================================================== -->
-  <section id="features">
-    <div class="container">
-      <h2 class="section-title reveal">Funktionen</h2>
-      <p class="section-sub reveal">Das erwartet dich im Netzwerk</p>
-
-      <div class="ribbon reveal" style="margin-top:8px"><i></i></div>
-
-      <div class="grid grid-3" style="margin-top:18px">
-        <div class="card reveal"><h3>⚔ PvP & Events</h3><p>Turniere, Ranglisten‑Saisons & Spezial‑Modi.</p></div>
-        <div class="card reveal"><h3>🛡 Bedwars</h3><p>Schnelle Matches, eigene Maps & faire Balance.</p></div>
-        <div class="card reveal"><h3>🏝 Skyblock</h3><p>Wirtschaft, Insel‑Progress & Herausforderungen.</p></div>
-        <div class="card reveal"><h3>🛠 QoL Tools</h3><p>Automod, Backups & Schutz vor DDoS/Crash‑Exploits.</p></div>
-        <div class="card reveal"><h3>🛒 Laden</h3><p>Ränge, Cosmetics & kleine Extras — siehe unten.</p></div>
-        <div class="card reveal"><h3>🎉 Community</h3><p>Contests, Giveaways & Creator‑Events.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       SERVER INFO
-       ===================================================================== -->
-  <section id="server">
-    <div class="container">
-      <h2 class="section-title reveal">Server‑Info</h2>
-      <p class="section-sub reveal">Alles, was du zum Verbinden brauchst</p>
-
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <h3>Verbindung</h3>
-          <p><strong>Adresse:</strong> <span class="badge-ip">brawlcraft.de</span></p>
-          <p><strong>Version:</strong> Java Edition 1.21.1+</p>
-          <p><button class="btn" onclick="copyIP()">IP kopieren</button></p>
-        </div>
-
-        <div class="card reveal">
-          <h3>Performance & Sicherheit</h3>
-          <p>Optimierte Server‑Konfig, geplante Backups, Latenz‑Checks, Paper‑Tweaks
-             und Schutz gegen DDoS & gängige Crash‑Exploits.</p>
-          <p style="margin-top:8px"><strong>Geplant:</strong> Region‑Caching & Bedrock‑Proxy.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       NEWS / ROADMAP
-       ===================================================================== -->
-  <section id="news">
-    <div class="container">
-      <h2 class="section-title reveal">Updates & Roadmap</h2>
-      <p class="section-sub reveal">Kurz & ehrlich, was als Nächstes kommt</p>
-
-      <div class="timeline">
-        <article class="news reveal">
-          <span class="tag">Neu</span>
-          <h4>🛒 Laden (Quick‑Buy) aktiv</h4>
-          <p>
-            Unser Quick‑Buy ist live. Du kannst Ränge (VIP, VIP+, Mystery, Legendary, Mythic),
-            Items und Extras wie XP‑Booster, Fly‑Zeit oder Kit‑God unterstützen.
-            Nach dem Kauf im Discord ein Ticket mit Nachweis öffnen.
-          </p>
-          <small>Update · Q3</small>
-        </article>
-
-        <article class="news reveal">
-          <span class="tag">Event</span><span class="tag">PvP</span>
-          <h4>Monatliche PvP‑Cups</h4>
-          <p>Verschiedene Modi (Kit‑PvP, Duos, Bedwars). Gewinne Titel & Preise.</p>
-          <small>Termine in Discord (#events)</small>
-        </article>
-
-        <article class="news reveal">
-          <span class="tag">Community</span>
-          <h4>Creator‑Programm</h4>
-          <p>Streamer & Creator erhalten Frühzugang, Event‑Slots & Shoutouts. Bewerbung via Discord.</p>
-          <small>Neu</small>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       LEADERBOARD (Demo)
-       ===================================================================== -->
-  <section id="leaderboard">
-    <div class="container">
-      <h2 class="section-title reveal">Bestenlisten</h2>
-      <p class="section-sub reveal">Wer liegt vorn?</p>
-
-      <div class="grid grid-3" style="margin-top:14px">
-        <div class="card reveal">
-          <h3>Saison‑Punkte</h3>
-          <table class="table" aria-label="Saisonpunkte">
-            <thead><tr><th>#</th><th>Spieler</th><th>Punkte</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>Player123</td><td>250</td></tr>
-              <tr><td>2</td><td>CreeperKing</td><td>180</td></tr>
-              <tr><td>3</td><td>BuilderPro</td><td>150</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card reveal">
-          <h3>Kill‑Rangliste</h3>
-          <table class="table" aria-label="Kills">
-            <thead><tr><th>#</th><th>Spieler</th><th>Kills</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>PvPGod</td><td>412</td></tr>
-              <tr><td>2</td><td>QuickStrafe</td><td>369</td></tr>
-              <tr><td>3</td><td>BowMaster</td><td>341</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card reveal">
-          <h3>Builder</h3>
-          <table class="table" aria-label="Builderstars">
-            <thead><tr><th>#</th><th>Spieler</th><th>Sterne</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td>ArchiSteve</td><td>95</td></tr>
-              <tr><td>2</td><td>RedstonePro</td><td>90</td></tr>
-              <tr><td>3</td><td>TerraFormer</td><td>86</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       TEAM (aktualisiert)
-       ===================================================================== -->
-  <section id="team">
-    <div class="container">
-      <h2 class="section-title reveal">Team</h2>
-      <p class="section-sub reveal">Freundlich, aktiv & hilfsbereit – ohne Bilder, cleanes Layout</p>
-
-      <div class="team-grid" style="margin-top:12px">
-
-        <!-- Owner / Co‑Owner – aus deinem Screenshot beibehalten -->
-        <div class="member reveal">
-          <div class="role">Teufel45 — <span class="badge owner">Owner</span></div>
-          <p>Leitung, Entscheidungen & Infrastruktur.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">Tobsi — <span class="badge owner">Owner</span></div>
-          <p>Organisation, Moderation & Events.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">AdminMax — <span class="badge co">Co‑Owner</span></div>
-          <p>Technische Leitung & Server‑Architektur.</p>
-        </div>
-
-        <!-- Team Lead -->
-        <div class="member reveal">
-          <div class="role">Xx_Rim3… — <span class="badge">Team Lead</span></div>
-          <p>Team‑Management & Support‑Koordination.</p>
-        </div>
-
-        <!-- Head Developer -->
-        <div class="member reveal">
-          <div class="role">Nyx — <span class="badge head">Head Developer</span></div>
-          <p>Entwicklung, Plugins & Performance‑Optimierung.</p>
-        </div>
-
-        <!-- Admins -->
-        <div class="member reveal">
-          <div class="role">Leon — <span class="badge admin">Admin</span></div>
-          <p>Administration, Moderation & Events.</p>
-        </div>
-
-        <!-- NEU aus deiner Liste -->
-        <div class="member reveal">
-          <div class="role">Gianluzca_05 — <span class="badge admin">Admin</span></div>
-          <p>Admin‑Team, Moderation & Community.</p>
-        </div>
-
-        <!-- Deputy Admin -->
-        <div class="member reveal">
-          <div class="role">OliGHG — <span class="badge deputy">Deputy Admin</span></div>
-          <p>Stellv. Administration & Eskalationsfälle.</p>
-        </div>
-
-        <!-- Head Admin (aus Bestand) -->
-        <div class="member reveal">
-          <div class="role">So Oli — <span class="badge admin">Head Admin</span></div>
-          <p>Server‑Regeln, Staff‑Prozesse & Events.</p>
-        </div>
-
-        <!-- Head Mod -->
-        <div class="member reveal">
-          <div class="role">Finnefitty2010 — <span class="badge mod">Head Mod</span></div>
-          <p>Leitung Moderation & Moderationsrichtlinien.</p>
-        </div>
-
-        <!-- Test‑Admin (Bestand) -->
-        <div class="member reveal">
-          <div class="role">Pasc… — <span class="badge admin">Test Admin</span></div>
-          <p>Schichtleitung & Test‑Deployments.</p>
-        </div>
-
-        <!-- Builder -->
-        <div class="member reveal">
-          <div class="role">Head Builder | Arthur — <span class="badge builder">Head Builder</span></div>
-          <p>Großprojekte & Map‑Qualitätssicherung.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">PhantomJCA — <span class="badge builder">Builder</span></div>
-          <p>Map‑Design & Dekorationen.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">fxschk0pf — <span class="badge builder">Builder</span></div>
-          <p>Bau‑Support & Prototyping.</p>
-        </div>
-
-        <!-- Moderation / Support -->
-        <div class="member reveal">
-          <div class="role">Tiger — <span class="badge support">Supporter</span></div>
-          <p>Community‑Moderation & Durchsetzung.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">FunLynx134 — <span class="badge support">Supporter</span></div>
-          <p>Tickets, In‑Game‑Support & Hilfe.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">ƬIGΞR — <span class="badge support">Supporter</span></div>
-          <p>In‑Game‑Hilfe & Community.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">Zewo — <span class="badge test">Test Supporter</span></div>
-          <p>Onboarding & Test‑Schichten.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">Leve — <span class="badge test">Test Supporter</span></div>
-          <p>Erste Anlaufstelle, Tickets & Reports.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">Motoxmo — <span class="badge test">Test Supporter</span></div>
-          <p>Tickets, schnelle Hilfe & Basics.</p>
-        </div>
-
-        <div class="member reveal">
-          <div class="role">Manu… — <span class="badge support">Discord Moderator</span></div>
-          <p>Discord‑Moderation, Rollen & Sicherheit.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       CREATORS / STREAMER (gleich + Ergänzungen)
-       ===================================================================== -->
-  <section id="creators">
-    <div class="container">
-      <h2 class="section-title reveal">Creators & Streamer</h2>
-      <p class="section-sub reveal">Danke für euren Support! 🙌</p>
-
-      <div class="team-grid" style="margin-top:12px">
-        <div class="member reveal">
-          <div class="role">Tobi — <span class="badge creator">Creator</span></div>
-          <p>Livestreams, Community‑Content & Event‑Coverage.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Tim — <span class="badge creator">Creator</span></div>
-          <p>Gameplay‑Videos & Tutorials.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Jean — <span class="badge creator">Creator</span></div>
-          <p>Livestreams & Highlights.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">Natsu — <span class="badge creator">Creator</span></div>
-          <p>Streams, PvP‑Highlights & Community‑Events.</p>
-        </div>
-        <div class="member reveal">
-          <div class="role">XxNiklasYt — <span class="badge creator">Creator</span></div>
-          <p>Streams & Shorts rund um BrawlCraft.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       FAQ
-       ===================================================================== -->
-  <section id="faq">
-    <div class="container">
-      <h2 class="section-title reveal">Häufig gestellte Fragen</h2>
-      <p class="section-sub reveal">Schnelle Antworten</p>
-
-      <div class="faq">
-        <details class="reveal">
-          <summary>Wie trete ich bei?</summary>
-          <p>MC (Java) → Multiplayer → Server hinzufügen → IP: <code>brawlcraft.de</code> → Joinen.</p>
-        </details>
-
-        <details class="reveal">
-          <summary>Bedrock‑Support?</summary>
-          <p>Derzeit Java‑Only. Bedrock‑Proxy ist geplant.</p>
-        </details>
-
-        <details class="reveal">
-          <summary>Wer leitet den Server?</summary>
-          <p><strong>Teufel45</strong> & <strong>Tobsi</strong> (Owner), <strong>AdminMax</strong> (Co‑Owner)</p>
-        </details>
-
-        <details class="reveal">
-          <summary>Laden – was beachten?</summary>
-          <div>
-            <ul>
-              <li>✅ Exakten In‑Game‑Namen angeben (groß/klein beachten).</li>
-              <li>✅ Nach Zahlung im Discord ein Ticket mit PayPal‑Beleg öffnen.</li>
-              <li>✅ Manuelle Zustellung i.d.R. in wenigen Minuten (max ~1h).</li>
-              <li>⚠ Digitale Güter sind i.d.R. vom Widerruf ausgeschlossen (gesetzliche Ausnahmen vorbehalten).</li>
-            </ul>
-            <div style="margin-top:8px; font-style:italic">
-              Zahlungen laufen über PayPal. Wir speichern keine Zahlungsdaten.
-            </div>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       CONTACT
-       ===================================================================== -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title reveal">Kontakt</h2>
-      <div class="contact-block reveal">
-        <div>Server‑Adresse: <strong>brawlcraft.de</strong></div>
-        <div>Discord: <a class="link-cta" href="https://discord.gg/7RpcZkV7Ke" target="_blank" rel="noopener">Discord beitreten</a></div>
-        <div>Support‑Tickets: <strong>#tickets</strong> im Discord</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       VOTING / VOTIFIER – Beispiel
-       ===================================================================== -->
-  <section id="votifier">
-    <div class="container">
-      <h2 class="section-title reveal">Voting & Votifier</h2>
-      <p class="section-sub reveal">So richtest du IP/Port/PublicKey ein</p>
-
-      <div class="card reveal" style="margin-top:12px">
-        <h3>Votifier‑Beispieldaten</h3>
-        <p><strong>Votifier Host:</strong> brawlcraft.de</p>
-        <p><strong>Votifier Port:</strong> 25020</p>
-        <p>
-          Kopiere den <em>Public Key</em> deines Votifier‑Plugins in das Feld „Public Key“
-          der Vote‑Seite. Stelle sicher, dass der Port erreichbar ist (Firewall/Host).
-        </p>
-
-        <h4 style="margin-top:10px">API‑Abfragen (ServerKey Beispiel)</h4>
-        <pre style="background:#081731;color:#bfefff;padding:8px;border-radius:8px;overflow:auto">
-GET Serverdetails:
-https://minecraft-server.eu/api/v1/?object=servers&element=detail&key={ServerKey}
-
-GET Votes:
-https://minecraft-server.eu/api/v1/?object=servers&element=votes&key={ServerKey}
-        </pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       SHOP (Quick Buy – PayPal)
-       ===================================================================== -->
-  <section id="shop">
-    <div class="container">
-      <h2 class="section-title reveal">Laden (Quick‑Buy)</h2>
-      <p class="section-sub reveal">Direkte PayPal‑Links – nach Kauf bitte Ticket in Discord öffnen</p>
-
-      <div class="grid grid-auto" style="margin-top:12px">
-        <div class="card reveal"><h3>VIP</h3><p>Grund‑Perks</p><div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/15" target="_blank" rel="noopener">€15 kaufen</a></div></div>
-        <div class="card reveal"><h3>VIP+</h3><p>Bessere Perks</p><div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/20" target="_blank" rel="noopener">€20 kaufen</a></div></div>
-        <div class="card reveal"><h3>Mystery</h3><p>Überraschungs‑Box</p><div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/25" target="_blank" rel="noopener">€25 kaufen</a></div></div>
-        <div class="card reveal"><h3>Legendary</h3><p>Top‑Rang</p><div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/30" target="_blank" rel="noopener">€30 kaufen</a></div></div>
-        <div class="card reveal"><h3>Mythic</h3><p>Höchster Rang</p><div style="margin-top:8px"><a class="btn" href="https://paypal.me/MineLegends/35" target="_blank" rel="noopener">€35 kaufen</a></div></div>
-      </div>
-
-      <p style="color:var(--muted); margin-top:10px">
-        Nach der Zahlung bitte im <a href="https://discord.gg/7RpcZkV7Ke" target="_blank">Discord</a>
-        ein Ticket mit der Transaktions‑ID öffnen. Wir verifizieren & liefern die Items/Ränge.
-      </p>
-    </div>
-  </section>
-
-  <!-- =====================================================================
-       FOOTER
-       ===================================================================== -->
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
-      <div>© <span id="year"></span> BrawlCraft. Alle Rechte vorbehalten.</div>
-      <div style="opacity:.85">Made with ❤️ by the BrawlCraft Community.</div>
-    </div>
-  </footer>
-
-  <!-- =====================================================================
-       DEKORATIVE WAVES
-       ===================================================================== -->
-  <div style="position:fixed;left:0;right:0;bottom:-1px;height:18vh;z-index:0;overflow:hidden">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" preserveAspectRatio="none" style="width:200%;height:100%;transform:translateX(0);">
-      <path fill="rgba(88,101,242,.45)" d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z"></path>
-      <path fill="rgba(0,229,255,.18)" d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z"></path>
-    </svg>
-  </div>
-
-  <!-- =====================================================================
-       STICKY JOIN (MOBILE)
-       ===================================================================== -->
-  <a class="sticky-join" href="https://discord.gg/7RpcZkV7Ke">✨ Discord beitreten</a>
-
-  <!-- =====================================================================
-       SCRIPTS
-       ===================================================================== -->
-  <script>
-    // -------------------------------------------------------------
-    // Footer-Jahr
-    // -------------------------------------------------------------
+<!-- FOOTER -->
+<footer>
+<div class="container" style="display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap">
+<div>© <span id="year"></span> MineLegends. All rights reserved.</div>
+<div style="opacity:.85">Made with ❤️ by the MineLegends community.</div>
+</div>
+</footer>
+<!-- Waves (decorative) -->
+<div style="position:fixed;left:0;right:0;bottom:-1px;height:18vh;z-index:0;overflow:hidden">
+<svg preserveaspectratio="none" style="width:200%;height:100%;transform:translateX(0);" viewbox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,120 C240,180 480,60 720,120 C960,180 1080,120 1200,150 V200 H0 Z" fill="rgba(88,101,242,.45)"></path>
+<path d="M0,140 C260,200 520,80 780,140 C1040,200 1100,120 1200,160 V200 H0 Z" fill="rgba(0,229,255,.18)"></path>
+</svg>
+</div>
+<!-- Sticky Join (mobile) -->
+<a class="sticky-join" href="https://discord.gg/xZQZ9W9bjs">✨ Join</a>
+<!-- SCRIPTS -->
+<script>
+    // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // -------------------------------------------------------------
-    // IP kopieren
-    // -------------------------------------------------------------
+    // Copy IP button
     function copyIP(){
-      const ip = "brawlcraft.de";
+      const ip = "minelegends.mc-game.xyz";
       navigator.clipboard.writeText(ip).then(()=>{
         const btn = document.getElementById('copyBtn');
-        if(btn){ btn.textContent = "✅ IP kopiert"; setTimeout(()=> btn.textContent = "📋 IP kopieren", 1600); }
-        else{ alert("IP kopiert: " + ip); }
-      }).catch(()=>{ alert("Kopieren fehlgeschlagen – bitte manuell kopieren: " + ip); });
+        if(btn){ btn.textContent = "✅ IP copied"; setTimeout(()=> btn.textContent = "📋 Copy IP", 1600); }
+        else{ alert("IP copied: " + ip); }
+      }).catch(()=>{ alert("Copy failed — please copy manually: " + ip); });
     }
     const copyBtn = document.getElementById('copyBtn');
     if(copyBtn) copyBtn.addEventListener('click', copyIP);
 
-    // -------------------------------------------------------------
-    // Dark/Light Mode (persistiert)
-    // -------------------------------------------------------------
+    // Dark/Light mode toggle (persist)
     const modeBtn = document.getElementById('modeToggle');
     function setModeIcon(){ modeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙'; }
     if(modeBtn){
       modeBtn.addEventListener('click', ()=>{
         document.body.classList.toggle('light');
         setModeIcon();
-        try{ localStorage.setItem('brawlcraft-mode', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
+        try{ localStorage.setItem('minelegends-mode', document.body.classList.contains('light') ? 'light' : 'dark'); }catch(e){}
       });
     }
     try{
-      const stored = localStorage.getItem('brawlcraft-mode');
+      const stored = localStorage.getItem('minelegends-mode');
       if(stored === 'light'){ document.body.classList.add('light'); }
     }catch(e){}
     setModeIcon();
 
-    // -------------------------------------------------------------
-    // Echtzeit Server-Status
-    // 1) primär api.mcstatus.io
-    // 2) fallback mcsrvstat.us
-    // Host wurde auf brawlcraft.de umgestellt
-    // -------------------------------------------------------------
+    // Server status (mcstatus.io primary, mcsrvstat.us fallback)
     async function fetchStatus(){
-      const host = "brawlcraft.de";
+      const host = "minelegends.mc-game.xyz";
       const el = document.getElementById('serverStatus');
-
       function setText(ok, players){
         if(ok){
-          el.textContent = "✅ Online – " + players + " Spieler";
+          el.textContent = "✅ Online – " + players + " players";
           el.style.color = "lightgreen";
         } else {
           el.textContent = "❌ Offline";
@@ -880,9 +510,7 @@ https://minecraft-server.eu/api/v1/?object=servers&element=votes&key={ServerKey}
     fetchStatus();
     setInterval(fetchStatus, 15000);
 
-    // -------------------------------------------------------------
-    // Scroll-Reveal
-    // -------------------------------------------------------------
+    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries, obs)=>{
       entries.forEach(e=>{
@@ -891,5 +519,4 @@ https://minecraft-server.eu/api/v1/?object=servers&element=votes&key={ServerKey}
     }, { threshold: .12 });
     revealEls.forEach(el => io.observe(el));
   </script>
-</body>
-</html>
+</body></html>
